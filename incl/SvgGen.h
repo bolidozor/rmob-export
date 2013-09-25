@@ -1,9 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <string.h>
+#include <ctime>
 
 
-//using namespace std;
 
 
 std::string SvgCol(int Value, int Min, int Max)
@@ -210,6 +210,18 @@ for (int i = 0; i < 743; ++i){
 		
 		//std::cout << "-----" << out << "----" <<std::endl;
 }
+
+	time_t now = time(0);  
+	tm *ltm = localtime(&now);
+
+
+	//cout << "Year: "<< 1900 + ltm->tm_year << endl;
+	//cout << "Month: "<< 1 + ltm->tm_mon<< endl;
+	//cout << "Day: "<<  ltm->tm_mday << endl;
+	//cout << "Time: "<< 1 + ltm->tm_hour << ":";
+	//cout << 1 + ltm->tm_min << ":";
+	//cout << 1 + ltm->tm_sec << endl;
+
 
 
 std::cout<< "minimalni hodnota je:"<<MINhourcount<<"a maximalni hodmota je "<< MAXhourcount<<"To je zatim vse :))"<<std::endl;
@@ -1573,7 +1585,7 @@ svgout << "	       sodipodi:role=\"line\"	";
 svgout << "	       id=\"tspan3302\"	";
 svgout << "	       x=\"48.419983\"	";
 svgout << "	       y=\"179.09091\"	";
-svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">00:00:00 UT</tspan></text>	";
+svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"> " << ltm->tm_hour << ":" << ltm->tm_min << ":" <<  ltm->tm_sec << " </tspan></text>	";
 svgout << "	  <rect	";
 svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\"	";
 svgout << "	     id=\"recDay00-01\"	";
