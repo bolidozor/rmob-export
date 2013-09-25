@@ -1,13 +1,22 @@
---observatory--
+
+--Observatory--
 #
 --Country--
-
+#
 --City--
+#
 --Antenna--
+#
 --Preamp--
---Reciever---
+#
+--Reciever--
+#
 --Computer--
+#
 --Location-lat--
+#
 --Location-lon--
---Frequency--
+#
+143 050 000 Hz
+#
 --email--
