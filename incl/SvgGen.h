@@ -182,11 +182,58 @@ std::string SvgCol(int Value, int Min, int Max)
 }
 
 
+int SvgColRed(int num){
+	int out;
+	if (num <= 12){
+		out = 0;
+	}
+	if(num > 12 && num < 18){
+		out = ((num - 12) * 51);
+	}
+	if (num >= 18){
+		out = 255;
+	}
+}
+
+int SvgColBlue(int num){
+	int out;
+	if (num <= 6){
+		out = 255;
+	}
+	if(num > 6 && num < 12){
+		out = 255 - ((num -6 ) * 51);
+	}
+	if (num >= 12){
+		out = 0;
+	}
+}
+
+int SvgColGreen(int num){
+	int out;
+	if (num <= 0){
+		out = 0;
+	}
+	if(num > 0 && num < 6){
+		out = (num * 51);
+	}
+	if (num >= 6 && num <= 18){
+		out = 255;
+	}
+	if (num > 18)
+	{
+		out = 255 - ((num - 18) * 51);
+	}
+}
+
+
 
 int SvgGen(std::string svginfo[11], int hourcount[744]){
 
 int MINhourcount = 999;
 int MAXhourcount = 0;
+
+float x = 408.596;
+float y = 17.174;
 
 std::cout << svginfo[0] << std::endl;
 std::cout << svginfo[1] << std::endl;
@@ -206,9 +253,6 @@ for (int i = 0; i < 743; ++i){
 int out;
 for (int i = 0; i < 743; ++i){
 		
-		//out=SvgCol(hourcount[i],MINhourcount,MAXhourcount);
-		
-		//std::cout << "-----" << out << "----" <<std::endl;
 }
 
 	time_t now = time(0);  
@@ -1355,13 +1399,38 @@ svgout << "	       id=\"tspan4026\"	";
 svgout << "	       x=\"267.94196\"	";
 svgout << "	       y=\"58.546131\"	";
 svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[10] << "</tspan></text>	";
-svgout << "	  <rect	";
-svgout << "	     style=\"opacity:0.42049470000000000;fill:#ff0000;fill-opacity:1;stroke:none;stroke-opacity:1\"	";
-svgout << "	     id=\"rect3868\"	";
-svgout << "	     width=\"5.9932489\"	";
-svgout << "	     height=\"5.9932513\"	";
-svgout << "	     x=\"407.70615\"	";
-svgout << "	     y=\"16.174425\" />	";
+
+//svgout << "	  <rect	";
+//svgout << "	     style=\"opacity:0.42049470000000000;fill:#ff0000;fill-opacity:1;stroke:none;stroke-opacity:1\"	";
+//svgout << "	     id=\"rect3868\"	";
+//svgout << "	     width=\"5.9932489\"	";
+//svgout << "	     height=\"5.9932513\"	";
+//svgout << "	     x=\" "<< x << "\"	";
+//svgout << "	     y=\"" << y << "\" />	";
+
+	for (int i = 0; i < 32; ++i){
+		for (int j = 0; j < 24; ++j){
+			
+			svgout << "	  <rect	";
+			svgout << "	     style=\"opacity:0.42049470000000000;fill:#ff0000;fill-opacity:1;stroke:none;stroke-opacity:1\"	";
+			svgout << "	     id=\"rect3868\"	";
+			svgout << "	     width=\"5.9932489\"	";
+			svgout << "	     height=\"5.9932513\"	";
+			svgout << "	     x=\" "<< x+(7.668 * i) << "\"	";
+			svgout << "	     y=\"" << y+(7.887 * j) << "\" />	";
+
+		}
+	}
+
+//svgout << "	  <rect	";
+//svgout << "	     style=\"opacity:0.42049470000000000;fill:#fff000;fill-opacity:1;stroke:none;stroke-opacity:1\"	";
+//svgout << "	     id=\"rect3868\"	";
+//svgout << "	     width=\"5.9932489\"	";
+//svgout << "	     height=\"5.9932513\"	";
+//svgout << "	     x=\"408.596\"	";
+//svgout << "	     y=\"25.0614\" />	";
+
+
 svgout << "	  <rect	";
 svgout << "	     y=\"16.22628\"	";
 svgout << "	     x=\"657.7077\"	";
