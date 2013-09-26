@@ -46,12 +46,34 @@ int SvgColGreen(int num){
 	}
 	if (num > 18)
 	{
-		out = 255 - ((num - 18) * 51);
+		out = 255 - ((num - 18) * 42);
 	}
+
 	return out;
 }
 
+std::string SvgColAll(int max, int min, int actual){
+    std::string out;
+    float krok;
+    int num;
 
+    krok=(max - min)/23;
+    num=actual/krok;
+
+    out = "rgb(";
+   //out += SvgColRed(num);
+    out += "50";
+    out += ",";
+   // out += SvgColGreen(num);
+    out += "50";
+    out += ",";
+  // out += SvgColBlue(num);
+    out += "50";
+    out += ")";
+	//sprintf(out,"rgb(%d,%d,%d)",SvgColRed(num),SvgColGreen(num),SvgColBlue(num));
+	std::cout<<"[[[[[[[[[[["<<out<<"  min"<<min<<"  max"<<max<<"  actual"<< actual<< "  krok"<<krok<< "  num"<< num<< "  Red"<< SvgColRed(num) <<"  GR"<< SvgColGreen(num) <<"  Bl"<< SvgColBlue(num) <<std::endl ;
+    return out;
+}
 
 int SvgGen(std::string svginfo[11], int hourcount[744]){
 
@@ -61,10 +83,6 @@ int MAXhourcount = 0;
 float x = 408.596;
 float y = 17.174;
 
-std::cout << svginfo[0] << std::endl;
-std::cout << svginfo[1] << std::endl;
-std::cout << svginfo[10] << std::endl;
-std::cout << svginfo[3] << std::endl;
 
 for (int i = 0; i < 743; ++i){
 
@@ -76,22 +94,11 @@ for (int i = 0; i < 743; ++i){
 		MAXhourcount = hourcount[i];
 	}
 }
+
+
 int out;
-for (int i = 0; i < 743; ++i){
-		
-}
-
-	time_t now = time(0);  
-	tm *ltm = localtime(&now);
-
-
-	//cout << "Year: "<< 1900 + ltm->tm_year << endl;
-	//cout << "Month: "<< 1 + ltm->tm_mon<< endl;
-	//cout << "Day: "<<  ltm->tm_mday << endl;
-	//cout << "Time: "<< 1 + ltm->tm_hour << ":";
-	//cout << 1 + ltm->tm_min << ":";
-	//cout << 1 + ltm->tm_sec << endl;
-
+time_t now = time(0);  
+tm *ltm = localtime(&now);
 
 
 std::cout<< "minimalni hodnota je:"<<MINhourcount<<"a maximalni hodmota je "<< MAXhourcount<<"To je zatim vse :))"<<std::endl;
@@ -1238,7 +1245,7 @@ svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;
 		for (int j = 0; j < 24; ++j){
 			
 			svgout << "	  <rect	";
-			svgout << "	     style=\"opacity:1;fill:rgb("<< 50 << "," << 10 << "," << 10 <<");fill-opacity:1;stroke:none;stroke-opacity:1\"	";
+			svgout << "	     style=\"opacity:1;fill:" << SvgColAll(MAXhourcount, MINhourcount, hourcount[i*j]) << ";fill-opacity:1;stroke:none;stroke-opacity:1\"	";
 			svgout << "	     id=\"rect3868\"	";
 			svgout << "	     width=\"5.9932489\"	";
 			svgout << "	     height=\"5.9932513\"	";
