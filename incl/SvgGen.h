@@ -5,183 +5,6 @@
 
 
 
-
-std::string SvgCol(int Value, int Min, int Max)
-{   
-	int r, g, b;
-	int hodnot, krok, aktualne;
-
-	hodnot=Max-Min;
-	krok=hodnot/24;
-
-	aktualne=Value/krok;
-
-	//std::cout<<Value <<"aa"<< aktualne<<std::endl;
-	//return krok;
-
-	switch (aktualne) {
-		case 0:
-			r= 0;
-			g= 0;
-			b= 255;
-		case 1:
-			r= 0;
-			g= 42;
-			b= 255;
-
-			break;
-		case 2:
-			r= 0;
-			g= 85;
-			b= 255;
-
-			break;
-		case 3:
-			r= 0;
-			g= 127;
-			b= 255;
-
-			break;
-		case 4:
-			
-			r= 0;
-			g= 169;
-			b= 255;
-			break;
-		case 5:
-			r= 0;
-			g= 211;
-			b= 255;
-
-			break;
-		case 6:
-			r= 0;
-			g= 255;
-			b= 255;
-
-			break;
-		case 7:
-			r= 0;
-			g= 255;
-			b= 211;
-
-			break;
-		case 8:
-			r= 0;
-			g= 255;
-			b= 169;
-
-			break;
-		case 9:
-			r= 0;
-			g= 255;
-			b= 127;
-
-			break;
-		case 10:
-			r= 0;
-			g= 255;
-			b= 85;
-
-			break;
-		case 11:
-			r= 0;
-			g= 255;
-			b= 42;
-
-			break;
-		case 12:
-			r= 0;
-			g= 255;
-			b= 0;
-
-			break;
-		case 13:
-			r= 42;
-			g= 255;
-			b= 0;
-
-			break;
-		case 14:
-			r= 85;
-			g= 255;
-			b= 0;
-
-			break;
-		case 15:
-			r= 127;
-			g= 255;
-			b= 0;
-
-			break;
-		case 16:
-			r= 169;
-			g= 255;
-			b= 0;
-
-			break;
-		case 17:
-			r= 211;
-			g= 255;
-			b= 0;
-
-			break;
-		case 18:
-			r= 255;
-			g= 255;
-			b= 0;
-
-			break;
-		case 19:
-			r= 255;
-			g= 211;
-			b= 0;
-
-			break;
-		case 20:
-			r= 255;
-			g= 169;
-			b= 0;
-
-			break;
-		case 21:
-			r= 255;
-			g= 127;
-			b= 0;
-
-			break;
-		case 22:
-			r= 255;
-			g= 85;
-			b= 0;
-
-			break;
-		case 23:
-			r= 255;
-			g= 42;
-			b= 0;
-
-			break;
-		case 24:
-			r= 255;
-			g= 0;
-			b= 0;
-			break;
-		default:
-			break;
-	}
-
-	//std::cout << "color" << r << " g " << g << " b " << b << std::endl;
-	//char hexcol[16];
-	//snprintf(hexcol, sizeof hexcol, "%02x%02x%02x", r, g, b);
-	
-	//std::stringstream ss;
-	//ss  << "rgb(" << r << "," << g << "," << b << ")";
-	//std::strig out = ss.str();
-	//return out;
-}
-
-
 int SvgColRed(int num){
 	int out;
 	if (num <= 12){
@@ -193,6 +16,7 @@ int SvgColRed(int num){
 	if (num >= 18){
 		out = 255;
 	}
+	return out;
 }
 
 int SvgColBlue(int num){
@@ -206,6 +30,7 @@ int SvgColBlue(int num){
 	if (num >= 12){
 		out = 0;
 	}
+	return out;
 }
 
 int SvgColGreen(int num){
@@ -223,6 +48,7 @@ int SvgColGreen(int num){
 	{
 		out = 255 - ((num - 18) * 51);
 	}
+	return out;
 }
 
 
@@ -975,14 +801,14 @@ svgout << "	     xml:space=\"preserve\"	";
 svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
 svgout << "	     x=\"666.72394\"	";
 svgout << "	     y=\"207.47627\"	";
-svgout << "	     id=\"editMinMonth\"	";
+svgout << "	     id=\"editMaxMonth\"	";
 svgout << "	     linespacing=\"125%\"	";
 svgout << "	     sodipodi:linespacing=\"125%\"><tspan	";
 svgout << "	       role=\"line\"	";
 svgout << "	       id=\"tspan3974\"	";
 svgout << "	       x=\"666.72394\"	";
 svgout << "	       y=\"207.47627\"	";
-svgout << "	       style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">min</tspan></text>	";
+svgout << "	       style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">max</tspan></text>	";
 svgout << "	  <text	";
 svgout << "	     xml:space=\"preserve\"	";
 svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#9000d3;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
@@ -1098,7 +924,7 @@ svgout << "	     xml:space=\"preserve\"	";
 svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
 svgout << "	     x=\"666.72394\"	";
 svgout << "	     y=\"22.712807\"	";
-svgout << "	     id=\"editMaxMonth\"	";
+svgout << "	     id=\"editMinMonth\"	";
 svgout << "	     linespacing=\"125%\"	";
 svgout << "	     sodipodi:linespacing=\"125%\"><tspan	";
 svgout << "	       role=\"line\"	";
@@ -1412,7 +1238,7 @@ svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;
 		for (int j = 0; j < 24; ++j){
 			
 			svgout << "	  <rect	";
-			svgout << "	     style=\"opacity:0.42049470000000000;fill:#ff0000;fill-opacity:1;stroke:none;stroke-opacity:1\"	";
+			svgout << "	     style=\"opacity:1;fill:rgb("<< 50 << "," << 10 << "," << 10 <<");fill-opacity:1;stroke:none;stroke-opacity:1\"	";
 			svgout << "	     id=\"rect3868\"	";
 			svgout << "	     width=\"5.9932489\"	";
 			svgout << "	     height=\"5.9932513\"	";
@@ -1437,168 +1263,168 @@ svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-9\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(0) << "," << SvgColGreen(0) << "," << SvgColBlue(0) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"24.224943\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-5\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(1) << "," << SvgColGreen(1) << "," << SvgColBlue(1) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"32.223595\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-0\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(2) << "," << SvgColGreen(2) << "," << SvgColBlue(2) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"200.19554\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-6\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(23) << "," << SvgColGreen(23) << "," << SvgColBlue(23) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"192.19688\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-92\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(22) << "," << SvgColGreen(22) << "," << SvgColBlue(22) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"184.19821\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-44\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(21) << "," << SvgColGreen(21) << "," << SvgColBlue(21) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"168.20088\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-2\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(19) << "," << SvgColGreen(19) << "," << SvgColBlue(19) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"176.19955\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-8\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(20) << "," << SvgColGreen(20) << "," << SvgColBlue(20) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"120.2089\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-25\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(14) << "," << SvgColGreen(14) << "," << SvgColBlue(14) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"128.20757\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-99\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(15) << "," << SvgColGreen(15) << "," << SvgColBlue(15) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"136.20622\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-50\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(16) << "," << SvgColGreen(16) << "," << SvgColBlue(16) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"144.2049\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-1\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(17) << "," << SvgColGreen(17) << "," << SvgColBlue(17) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"152.20355\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-21\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(18) << "," << SvgColGreen(18) << "," << SvgColBlue(18) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"160.20222\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-87\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(19) << "," << SvgColGreen(19) << "," << SvgColBlue(19) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"112.21024\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-49\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(13) << "," << SvgColGreen(13) << "," << SvgColBlue(13) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"104.21157\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-3\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(12) << "," << SvgColGreen(12) << "," << SvgColBlue(12) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"96.212906\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-68\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(11) << "," << SvgColGreen(11) << "," << SvgColBlue(11) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"48.220921\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-7\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(5) << "," << SvgColGreen(5) << "," << SvgColBlue(5) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"56.219597\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-15\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(6) << "," << SvgColGreen(6) << "," << SvgColBlue(6) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"64.218254\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-18\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(7) << "," << SvgColGreen(7) << "," << SvgColBlue(7) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"80.215591\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-41\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(9) << "," << SvgColGreen(9) << "," << SvgColBlue(9) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"88.214249\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-51\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(10) << "," << SvgColGreen(10) << "," << SvgColBlue(10) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"40.22226\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-63\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(4) << "," << SvgColGreen(4) << "," << SvgColBlue(4) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <rect	";
 svgout << "	     y=\"72.216919\"	";
 svgout << "	     x=\"657.7077\"	";
 svgout << "	     height=\"5.9932513\"	";
 svgout << "	     width=\"5.9932489\"	";
 svgout << "	     id=\"rect3868-156\"	";
-svgout << "	     style=\"opacity:0.42049471;fill:#ff0000;fill-opacity:1;stroke:none\" />	";
+svgout << "	     style=\"opacity:1;fill:rgb("<< SvgColRed(8) << "," << SvgColGreen(8) << "," << SvgColBlue(8) <<");fill-opacity:1;stroke:none\" />	";
 svgout << "	  <g	";
 svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
 svgout << "	     id=\"texUpdated\">	";
