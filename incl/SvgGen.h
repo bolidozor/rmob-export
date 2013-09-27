@@ -2,6 +2,8 @@
 #include <fstream>
 #include <string.h>
 #include <ctime>
+#include <string>
+#include <sstream>
 
 
 
@@ -60,19 +62,26 @@ std::string SvgColAll(int max, int min, int actual){
     krok=(max - min)/23;
     num=actual/krok;
 
-    out = "rgb(";
+    std::ostringstream ss;
+    
+    ss << "rgb("<< SvgColRed(num) <<","<< SvgColGreen(num) <<","<< SvgColBlue(num)<<")";
+    //std::cout<< ss.str();
+    
+    return ss.str();
+
+    //out = "rgb(";
    //out += SvgColRed(num);
-    out += "50";
-    out += ",";
+    //out += "50";
+    //out += ",";
    // out += SvgColGreen(num);
-    out += "50";
-    out += ",";
+    //out += "50";
+    //out += ",";
   // out += SvgColBlue(num);
-    out += "50";
-    out += ")";
+    //out += "50";
+    //out += ")";
 	//sprintf(out,"rgb(%d,%d,%d)",SvgColRed(num),SvgColGreen(num),SvgColBlue(num));
-	std::cout<<"[[[[[[[[[[["<<out<<"  min"<<min<<"  max"<<max<<"  actual"<< actual<< "  krok"<<krok<< "  num"<< num<< "  Red"<< SvgColRed(num) <<"  GR"<< SvgColGreen(num) <<"  Bl"<< SvgColBlue(num) <<std::endl ;
-    return out;
+	//std::cout<<"[[[[[[[[[[["<<out<<"  min"<<min<<"  max"<<max<<"  actual"<< actual<< "  krok"<<krok<< "  num"<< num<< "  Red"<< SvgColRed(num) <<"  GR"<< SvgColGreen(num) <<"  Bl"<< SvgColBlue(num) <<std::endl ;
+    //return out;
 }
 
 int SvgGen(std::string svginfo[11], int hourcount[744]){
