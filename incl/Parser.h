@@ -48,6 +48,9 @@ void ParRmobFile(int hcount[], std::string RelPath){
 	}
 
 	RelPath = RelPath + "RMOB-" + date.str() + month.str() + ".dat";
+	char* den;
+	char* hodina;
+	char* hodnota;
 
 	std::string line;
 	std::ifstream myfile ("./../Spectrum/RMOB-201310.dat");
@@ -67,9 +70,17 @@ void ParRmobFile(int hcount[], std::string RelPath){
 			{
 				std::cout<< "--" << line.substr(0,10) <<"-aaa  ";
 			}*/
+
+
+				//atoi(dob.substr(2,3).c_str());
+
+
+		//	den = line.substr(6,2);
+		//	hodina = line.substr(8,2);
+		//	hodnota = line.substr(18,18-line.length());
 			std::cout << line.substr(6,2) << ";" << line.substr(8,2) << ";" << line.substr(18,18-line.length()) << std::endl;
 			
-			//hcount[(line.substr(6,2)*line.substr(8,2))]=0;
+			hcount[atoi(line.substr(6,2).c_str())*atoi(line.substr(8,2).c_str())]=atoi(line.substr(18,18-line.length()).c_str());
 
 			//std::cout << line << std::endl;
 		}
