@@ -12,7 +12,7 @@ using namespace std;
 
 int main(int argc, char const *argv[]){
 
-	string ObsInfo[11];
+	string ObsInfo[13];
 	int HourCount[744];
 
 
@@ -21,11 +21,13 @@ int main(int argc, char const *argv[]){
 
 
 	for (int i = 0; i < 743; ++i){
-		HourCount[i] = rand() % 100;
-		cout<< HourCount[i]<<endl;
+		//HourCount[i] = rand() % 100;
+		//cout<< HourCount[i]<<endl;
+		HourCount[i]=0;
 	}
 
 	ParObsInfo(ObsInfo);
+	ParRmobFile(HourCount,ObsInfo[11]);
 	SvgGen(ObsInfo,HourCount);
 	SvgPng("./io/");
 

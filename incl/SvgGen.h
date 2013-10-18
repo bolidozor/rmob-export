@@ -796,7 +796,7 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 	svgout << "	       id=\"tspan3970\"	";
 	svgout << "	       x=\"666.98639\"	";
 	svgout << "	       y=\"118.50355\"	";
-	svgout << "	       style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">20</tspan></text>	";
+	svgout << "	       style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">"<< MINhourcount + ((MAXhourcount - MINhourcount) / 2) <<"</tspan></text>	";
 	svgout << "	  <text	";
 	svgout << "	     xml:space=\"preserve\"	";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
@@ -809,7 +809,7 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 	svgout << "	       id=\"tspan3974\"	";
 	svgout << "	       x=\"666.72394\"	";
 	svgout << "	       y=\"207.47627\"	";
-	svgout << "	       style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">max</tspan></text>	";
+	svgout << "	       style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">"<< MAXhourcount <<"</tspan></text>	";
 	svgout << "	  <text	";
 	svgout << "	     xml:space=\"preserve\"	";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#9000d3;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
@@ -919,7 +919,7 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 	svgout << "	       id=\"tspan3866\"	";
 	svgout << "	       x=\"97.458359\"	";
 	svgout << "	       y=\"117.3799\"	";
-	svgout << "	       style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">max</tspan></text>	";
+	svgout << "	       style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">"<<MAXhourcount<<"</tspan></text>	";
 	svgout << "	  <text	";
 	svgout << "	     xml:space=\"preserve\"	";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
@@ -932,7 +932,7 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 	svgout << "	       id=\"tspan3974-5\"	";
 	svgout << "	       x=\"666.72394\"	";
 	svgout << "	       y=\"22.712807\"	";
-	svgout << "	       style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">min</tspan></text>	";
+	svgout << "	       style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">"<<MINhourcount<<"</tspan></text>	";
 	svgout << "	  <rect	";
 	svgout << "	     style=\"fill:#000000;fill-opacity:1;stroke:none\"	";
 	svgout << "	     id=\"rect3818\"	";
