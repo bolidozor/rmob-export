@@ -822,7 +822,7 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 	svgout << "	       id=\"tspan3842\"	";
 	svgout << "	       x=\"242.85931\"	";
 	svgout << "	       y=\"108.27513\"	";
-	svgout << "	       style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;fill:#9000d3;fill-opacity:1\">2013 - 12 - 21</tspan></text>	";
+	svgout << "	       style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;fill:#9000d3;fill-opacity:1\">" << ltm->tm_year+1900 << " - " << ltm->tm_mon+1 << " - " <<  ltm->tm_sec << " </tspan></text>	";
 	svgout << "	  <g	";
 	svgout << "	     style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;opacity:0.77999998;fill:#000000;fill-opacity:1;stroke:none;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
 	svgout << "	     id=\"text3856\">	";
