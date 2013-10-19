@@ -7,17 +7,15 @@
 #include <ctime>
 
 std::string ParArg(int argc, char const *argv[]){
+	
 	std::string arv;
-
 	for (int i = 1; i < argc; ++i)
 	{
 		arv = argv[i];
 
 		if (arv.substr(0,6)=="-input")
-		{
-			
+		{	
 			std::cout << "Vstup -- " << arv.substr( 7 , arv.length()-7) <<std::endl;
-			
 		}
 	}
 	return arv.substr( 7 , arv.length()-7);
@@ -26,7 +24,6 @@ std::string ParArg(int argc, char const *argv[]){
 void ParObsInfo(std::string data[], std::string path){
 
 	std::ifstream file ( path.c_str() );
-	
 	std::string value;
 	int line;
 	line = 0;
@@ -39,9 +36,7 @@ void ParObsInfo(std::string data[], std::string path){
 			data[line]=value;
 			line++;
 		}
-		
 	}
-
 }
 
 void ParRmobFile(int hcount[], std::string RelPath){
@@ -51,7 +46,6 @@ void ParRmobFile(int hcount[], std::string RelPath){
 
 	time_t now = time(0);  
 	tm *ltm = localtime(&now);
-	
 
 	std::stringstream date;
 	date << ltm->tm_year+ 1900;
@@ -76,30 +70,8 @@ void ParRmobFile(int hcount[], std::string RelPath){
 	{
 		while ( getline (myfile,line) )
 		{
-			/*idnet << ltm->tm_year+ 1900;
-			if ((ltm->tm_mon + 1) << 10)
-			{
-				idnet << "0"<< ltm->tm_mon + 1;
-			}else{
-				idnet << ltm->tm_mon + 1;
-			}
-			if( line.substr (0,10) == "")
-			{
-				std::cout<< "--" << line.substr(0,10) <<"-aaa  ";
-			}*/
-
-
-				//atoi(dob.substr(2,3).c_str());
-
-
-		//	den = line.substr(6,2);
-		//	hodina = line.substr(8,2);
-		//	hodnota = line.substr(18,18-line.length());
 			std::cout << line.substr(6,2) << ";" << line.substr(8,2) << ";" << line.substr(18,18-line.length()) << std::endl;
-			
 			hcount[atoi(line.substr(6,2).c_str())*24 + atoi(line.substr(8,2).c_str())]=atoi(line.substr(18,18-line.length()).c_str());
-
-			//std::cout << line << std::endl;
 		}
 		myfile.close();
 	}

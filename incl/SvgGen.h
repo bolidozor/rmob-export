@@ -74,9 +74,15 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 	int MINhourcount = 999;
 	int MAXhourcount = 0;
 
+	int DayMINhourcount = 999;
+	int DayMAXhourcount = 0;
+
 	float x = 408.596;
 	float y = 17.174;
 
+	int out;
+	time_t now = time(0);  
+	tm *ltm = localtime(&now);
 
 	for (int i = 0; i < 743; ++i){
 
@@ -89,13 +95,22 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 		}
 	}
 
+	for (int i = ltm->tm_mday * 24; i < ltm->tm_mday*24 + 24; ++i){
 
-	int out;
-	time_t now = time(0);  
-	tm *ltm = localtime(&now);
+		if (DayMINhourcount > hourcount[i]){
+			DayMINhourcount = hourcount[i];
+		}
+
+		if (DayMAXhourcount < hourcount[i]){
+			DayMAXhourcount = hourcount[i];
+		}
+	}
 
 
-	std::cout<< "minimalni hodnota je:"<<MINhourcount<<"a maximalni hodmota je "<< MAXhourcount<<"To je zatim vse :))"<<std::endl;
+
+
+
+	std::cout<< "minimalni hodnota je:"<<MINhourcount<<"a maximalni hodmota je "<< MAXhourcount<<" A deni minimalni hodnota je:"<<DayMINhourcount<<"a maximalni deni hodmota je "<< DayMAXhourcount<<" To je zatim vse :))"<<std::endl;
 
 
 	std::ofstream svgout;
@@ -919,7 +934,7 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 	svgout << "	       id=\"tspan3866\"	";
 	svgout << "	       x=\"97.458359\"	";
 	svgout << "	       y=\"117.3799\"	";
-	svgout << "	       style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">"<<MAXhourcount<<"</tspan></text>	";
+	svgout << "	       style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">"<<DayMAXhourcount<<"</tspan></text>	";
 	svgout << "	  <text	";
 	svgout << "	     xml:space=\"preserve\"	";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
@@ -1472,6 +1487,12 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 	svgout << "	       id=\"path4411\"	";
 	svgout << "	       inkscape:connector-curvature=\"0\" />	";
 	svgout << "	  </g>	";
+
+
+	//  zakladna hisntogramu  -- 34,86588
+	
+
+
 	svgout << "	  <text	";
 	svgout << "	     xml:space=\"preserve\"	";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
