@@ -80,7 +80,7 @@ void ParRmobFile(int hcount[], std::string RelPath){
 		//	hodnota = line.substr(18,18-line.length());
 			std::cout << line.substr(6,2) << ";" << line.substr(8,2) << ";" << line.substr(18,18-line.length()) << std::endl;
 			
-			hcount[atoi(line.substr(6,2).c_str())*atoi(line.substr(8,2).c_str())]=atoi(line.substr(18,18-line.length()).c_str());
+			hcount[atoi(line.substr(6,2).c_str())*24 + atoi(line.substr(8,2).c_str())]=atoi(line.substr(18,18-line.length()).c_str());
 
 			//std::cout << line << std::endl;
 		}

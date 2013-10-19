@@ -29,6 +29,13 @@ int main(int argc, char const *argv[]){
 	ParObsInfo(ObsInfo);
 	ParRmobFile(HourCount,ObsInfo[11]);
 	SvgGen(ObsInfo,HourCount);
+
+	for (int i = 0; i < 743; ++i){
+		//HourCount[i] = rand() % 100;
+		cout<<i<<" - " << HourCount[i] << endl;
+		//HourCount[i]=0;
+	}
+
 	SvgPng("./io/");
 
 	return 0;
