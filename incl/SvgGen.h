@@ -1237,15 +1237,15 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 
 		for (int i = 0; i < 31; ++i){
 			
-			for (int j = 0; j < 23; ++j){
+			for (int j = 0; j < 24; ++j){
 				
 				svgout << "	  <rect	";
 				svgout << "	     style=\"opacity:1;fill:" << SvgColAll(MAXhourcount, MINhourcount, hourcount[i*24+j]) << ";fill-opacity:1;stroke:none;stroke-opacity:1\"	";
 				svgout << "	     id=\"rect3868\"	";
 				svgout << "	     width=\"5.9932489\"	";
 				svgout << "	     height=\"5.9932513\"	";
-				svgout << "	     x=\" "<< x+(7.668 * i) << "\"	";
-				svgout << "	     y=\"" << y+(7.887 * j) << "\" />	";
+				svgout << "	     x=\" "<< x+(7.898 * i) << "\"	";
+				svgout << "	     y=\"" << y+(7.897 * j) << "\" />	";
 				std::cout<< "SvgGen: "<< i*24 + j << " > "<<hourcount[i*24+j]<<std::endl;
 
 			}
