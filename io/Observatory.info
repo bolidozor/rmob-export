@@ -1,26 +1,27 @@
 
+# Observatory name
 --Observatory--
-#
+# Country
 --Country--
-#
+# City
 --City--
-#
+# Antenna
 --Antenna--
-#
+# Pramp
 --Preamp--
-#
+# Reciever
 --Reciever--
-#
+# Computer
 --Computer--
-#
+# Latitude to image
 --Location-lat--
-#
+# Longtitude to image
 --Location-lon--
-#
+# Frequency
 143 050 000 Hz
-#
+# email
 --email--
-#
+# Relative path to RMOB file as -- ./../Spectrum/
 ./../Spectrum/
-#
+# 
 Store
