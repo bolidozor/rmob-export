@@ -1,3 +1,19 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//																									//
+//		||||||||\	||\	   /||	//||||||\\	||||||\\		//||||||\\	||||||||	||\	   ||		//
+//		||		||	||\\  //||	||		||	||	  ||		||			||			||\\   ||		//
+//		||		||	|| \\// ||	||		||	||__ //			||			||____		|| \\  ||		//
+//		||||||||<	||		||	||		||	||   \\			||	||||\\	||			||	\\ ||		//	
+//		||	  \\	||		||	||		||	||    ||		||		||	||			||	 \\||		//
+//		||	   \\	||		||	\\||||||//	||||||//		\\||||||//	||||||||	||	  \||		//
+//																									//
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//		Run whit -input parameter whit path to .info file as: ./RmobGen -input-./io/Observatory.info
+//
+//
+
 #include <iostream>
 #include <string.h>
 #include <fstream>
@@ -16,27 +32,21 @@ int main(int argc, char const *argv[]){
 	int HourCount[744];
 
 
-	std::cout << ObsInfo[1] << std::endl;
-	std::cout << ObsInfo[2] << std::endl;
-
-
 	for (int i = 0; i < 743; ++i){
-		//HourCount[i] = rand() % 100;
-		//cout<< HourCount[i]<<endl;
 		HourCount[i]=0;
 	}
 
-	ParObsInfo(ObsInfo);
+
+	ParObsInfo(ObsInfo, ParArg(argc, argv) );
 	ParRmobFile(HourCount,ObsInfo[11]);
 	SvgGen(ObsInfo,HourCount);
 
 	for (int i = 0; i < 743; ++i){
 		//HourCount[i] = rand() % 100;
-		cout<<i<<" - " << HourCount[i] << endl;
+		//cout<<i<<" - " << HourCount[i] << endl;
 		//HourCount[i]=0;
 	}
 
 	SvgPng("./io/");
-
 	return 0;
 }

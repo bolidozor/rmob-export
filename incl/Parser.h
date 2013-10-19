@@ -6,9 +6,26 @@
 #include <sstream>
 #include <ctime>
 
-void ParObsInfo(std::string data[]){
+std::string ParArg(int argc, char const *argv[]){
+	std::string arv;
 
-	std::ifstream file ( "io/Observatory.info" );
+	for (int i = 1; i < argc; ++i)
+	{
+		arv = argv[i];
+
+		if (arv.substr(0,6)=="-input")
+		{
+			
+			std::cout << "Vstup -- " << arv.substr( 7 , arv.length()-7) <<std::endl;
+			
+		}
+	}
+	return arv.substr( 7 , arv.length()-7);
+}
+
+void ParObsInfo(std::string data[], std::string path){
+
+	std::ifstream file ( path.c_str() );
 	
 	std::string value;
 	int line;
