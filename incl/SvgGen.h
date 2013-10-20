@@ -1652,14 +1652,14 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
 	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 18] << "\"		";
-	svgout << "	     x=\"305.13281\"		";
+	svgout << "	     x=\"295.13132\"		";
 	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 18]) << "\"		";
 	svgout << "	     id=\"recDay17-18\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
 	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 19] << "\"		";
-	svgout << "	     x=\"295.13132\"		";
+	svgout << "	     x=\"305.13281\"		";
 	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 19]) << "\"		";
 	svgout << "	     id=\"recDay18-19\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
@@ -1718,4 +1718,87 @@ int SvgPng(std::string path){
 	Magick::Image svgImage(path + "rmob.svg");
 	svgImage.magick("png");
 	svgImage.write(path + "rmob.png");
+}
+
+
+void TxtGen(std::string svginfo[11], int hourcount[744]){
+
+
+
+	std::ofstream txtout;
+	txtout.open ("io/rmob.txt");
+
+	txtout << "oct| 00h| 01h| 02h| 03h| 04h| 05h| 06h| 07h| 08h| 09h| 10h| 11h| 12h| 13h| 14h| 15h| 16h| 17h| 18h| 19h| 20h| 21h| 22h| 23h|\n";
+	for (int i = 1; i < 32; ++i)
+	{
+		txtout <<  i <<"|"<< hourcount[24* i-1 +0] <<"|"<< hourcount[24* i-1 +1] <<"|"<< hourcount[24* i-1 +2] <<"|"<< hourcount[24* i-1 +3] <<"|"<< hourcount[24* i-1 +4] <<"|"<< hourcount[24* i-1 +5] <<"|"<< hourcount[24* i-1 +6] <<"|"<< hourcount[24* i-1 +7] <<"|"<< hourcount[24* i-1 +8] <<"|"<< hourcount[24* i-1 +9] <<"|"<< hourcount[24* i-1 + 10] <<"|"<< hourcount[24* i-1 + 11] <<"|"<< hourcount[24* i-1 + 12] <<"|"<< hourcount[24* i-1 + 13] <<"|"<< hourcount[24* i-1 + 14] <<"|"<< hourcount[24* i-1 + 15] <<"|"<< hourcount[24* i-1 + 16] <<"|"<< hourcount[24* i-1 + 17] <<"|"<< hourcount[24* i-1 + 18] <<"|"<< hourcount[24* i-1 + 19] <<"|"<< hourcount[24* i-1 + 20] <<"|"<< hourcount[24* i-1 + 21] <<"|"<< hourcount[24* i-1 + 22] <<"|"<< hourcount[24* i-1 + 23] <<"|\n";
+	}
+
+
+	txtout << "[Observer]" <<  svginfo[0] << "\n";
+	txtout << "[Country]" <<  svginfo[1] << "\n";
+	txtout << "[City]" <<  svginfo[2] << "\n";
+	txtout << "[Longitude]" <<  svginfo[8] << "\n";
+	txtout << "[Latitude ]" <<  svginfo[7] << "\n";
+	txtout << "[Longitude GMAP]" <<  svginfo[8] << "\n";
+	txtout << "[Latitude GMAP]" <<  svginfo[7] << "\n";
+	txtout << "[Frequencies]" <<  svginfo[9] << "\n";
+	txtout << "[Antenna]" <<  svginfo[3] << "\n";
+	txtout << "[Azimut Antenna]" <<  "-" << "\n";
+	txtout << "[Elevation Antenna]" <<  "-" << "\n";
+	txtout << "[Pre-Amplifier]" <<  svginfo[4] << "\n";
+	txtout << "[Receiver]" <<  svginfo[5] << "\n";
+	txtout << "[Observing Method]" <<  "Fordward scattering" << "\n";
+	txtout << "[Remarks]" <<  svginfo[6] << "\n";
+	txtout << "[Soft FTP] Astrozor RMOBgen v0.5\n";
+	txtout << "[E]" <<  "-" << "\n";
+
+
+
+	/*
+
+
+[Observer]Roman ZVPPCB
+[Country]Czech Republic 
+[City]Ceske Budejovice
+[Longitude]014°2804 E
+[Latitude ]048°2821 N
+[Longitude GMAP]14.4675321
+[Latitude GMAP]48.9869761
+[Frequencies]143 050 000 Hz - Graves
+[Antenna]1/4 GP
+[Azimut Antenna]290
+[Elevation Antenna]30
+[Pre-Amplifier]LNA01A www.mlab.cz
+[Receiver]SDRX01B www.mlab.cz
+[Observing Method]Fordward scattering
+[Remarks]Ion PC
+[Soft FTP]Colorgramme RMOB Lab v 2.5
+[E]{fdhg$mf{hbIldh`e'js
+
+
+[Observer]
+[Country] 
+[City]
+[Longitude]
+[Latitude ]
+[Longitude GMAP]
+[Latitude GMAP]
+[Frequencies]
+[Antenna]
+[Azimut Antenna]
+[Elevation Antenna]
+[Pre-Amplifier]
+[Receiver]
+[Observing Method]
+[Remarks]
+[Soft FTP] Astrozor RMOBgen v0.5
+[E]
+
+
+
+	*/
+
+
+	txtout.close();
 }

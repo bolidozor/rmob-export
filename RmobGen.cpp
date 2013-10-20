@@ -25,7 +25,6 @@
 
 using namespace std;
 
-
 int main(int argc, char const *argv[]){
 
 	string ObsInfo[13];
@@ -39,7 +38,9 @@ int main(int argc, char const *argv[]){
 
 	ParObsInfo(ObsInfo, ParArg(argc, argv) );
 	ParRmobFile(HourCount,ObsInfo[11]);
+	TxtGen(ObsInfo,HourCount);
 	SvgGen(ObsInfo,HourCount);
+
 
 	for (int i = 0; i < 743; ++i){
 		//HourCount[i] = rand() % 100;
