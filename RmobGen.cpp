@@ -32,7 +32,7 @@ int main(int argc, char const *argv[]){
 	int HourCount[744];
 
 
-	for (int i = 0; i < 743; ++i){
+	for (int i = 0; i < 744; ++i){
 		HourCount[i]=0;
 	}
 

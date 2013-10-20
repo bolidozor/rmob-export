@@ -41,6 +41,10 @@ void ParObsInfo(std::string data[], std::string path){
 
 void ParRmobFile(int hcount[], std::string RelPath){
 
+	for (int i = 0; i < 744; ++i){
+		hcount[i]=1111; // Black
+	}
+
 	int him =0;
 	std::stringstream ident;
 
