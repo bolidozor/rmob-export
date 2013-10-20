@@ -1491,6 +1491,9 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 
 	//  zakladna hisntogramu  -- 34,86588
 	
+	float Dkrok = 0.00000;
+	Dkrok = (float)DayMAXhourcount/(float)84;
+	std::cout << DayMAXhourcount <<"|"<< Dkrok<< "|" << 34.86588 + (Dkrok*20) << "|"<< Dkrok*20;
 
 
 	svgout << "	  <text	";
@@ -1509,16 +1512,16 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\"	";
 	svgout << "	     id=\"recDay00-01\"	";
 	svgout << "	     width=\"8\"	";
-	svgout << "	     height=\"84\"	";
+	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 0] << "\"	";
 	svgout << "	     x=\"122.698\"	";
-	svgout << "	     y=\"118.86588\" />	";
+	svgout << "	     y=\"" << 34.86588 + (Dkrok*hourcount[ltm->tm_mday*24 + 0]) << "\" />	";
 	svgout << "	  <rect	";
 	svgout << "	     style=\"fill:#000000;fill-opacity:1;stroke:none\"	";
 	svgout << "	     id=\"recDay01-02\"	";
 	svgout << "	     width=\"8\"	";
-	svgout << "	     height=\"84\"	";
+	svgout << "	     height=\"" << Dkrok*20 << "\"	";
 	svgout << "	     x=\"133.28015\"	";
-	svgout << "	     y=\"118.44749\" />	";
+	svgout << "	     y=\"" << 34.86588 + (Dkrok*20) << "\" />	";
 	svgout << "	  <rect	";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\"	";
 	svgout << "	     id=\"recDay02-03\"	";
