@@ -63,12 +63,13 @@ void ParRmobFile(int hcount[], std::string RelPath){
 	}
 
 	RelPath = RelPath + "RMOB-" + date.str() + month.str() + ".dat";
+
 	char* den;
 	char* hodina;
 	char* hodnota;
 
 	std::string line;
-	std::ifstream myfile ("./../Spectrum/RMOB-201310.dat");
+	std::ifstream myfile (RelPath.c_str());
 	
 	if (myfile.is_open())
 	{
