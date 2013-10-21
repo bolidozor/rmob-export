@@ -1720,10 +1720,14 @@ int SvgPng(std::string path){
 	svgImage.write(path + "rmob.png");
 }
 
+int SvgPng(std::string path){
+	Magick::Image svgImage(path + "rmob.svg");
+	svgImage.magick("jpg");
+	svgImage.write(path + "rmob.jpg");
+}
+
 
 void TxtGen(std::string svginfo[11], int hourcount[744]){
-
-
 
 	std::ofstream txtout;
 	txtout.open ("io/rmob.txt");
@@ -1740,8 +1744,8 @@ void TxtGen(std::string svginfo[11], int hourcount[744]){
 	txtout << "[City]" <<  svginfo[2] << "\n";
 	txtout << "[Longitude]" <<  svginfo[8] << "\n";
 	txtout << "[Latitude ]" <<  svginfo[7] << "\n";
-	txtout << "[Longitude GMAP]" <<  svginfo[8] << "\n";
-	txtout << "[Latitude GMAP]" <<  svginfo[7] << "\n";
+	txtout << "[Longitude GMAP]" <<  "14.4675321" << "\n";
+	txtout << "[Latitude GMAP]" <<  "48.9869761" << "\n";
 	txtout << "[Frequencies]" <<  svginfo[9] << "\n";
 	txtout << "[Antenna]" <<  svginfo[3] << "\n";
 	txtout << "[Azimut Antenna]" <<  "-" << "\n";
@@ -1794,8 +1798,6 @@ void TxtGen(std::string svginfo[11], int hourcount[744]){
 [Remarks]
 [Soft FTP] Astrozor RMOBgen v0.5
 [E]
-
-
 
 	*/
 

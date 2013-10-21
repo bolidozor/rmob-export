@@ -49,5 +49,6 @@ int main(int argc, char const *argv[]){
 	}
 
 	SvgPng("./io/");
+	SvgJpg("./io/");
 	return 0;
 }
