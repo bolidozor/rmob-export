@@ -1720,7 +1720,7 @@ int SvgPng(std::string path){
 	svgImage.write(path + "rmob.png");
 }
 
-int SvgPng(std::string path){
+int SvgJpg(std::string path){
 	Magick::Image svgImage(path + "rmob.svg");
 	svgImage.magick("jpg");
 	svgImage.write(path + "rmob.jpg");
