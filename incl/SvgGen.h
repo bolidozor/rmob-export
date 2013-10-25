@@ -1208,7 +1208,7 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 	svgout << "	       id=\"tspan4014\"	";
 	svgout << "	       x=\"267.68707\"	";
 	svgout << "	       y=\"11.545778\"	";
-	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[7] << "</tspan></text>	";
+	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[7].substr(0,3) <<"\u00B0"<< atoi(svginfo[7].substr(4,2).c_str())*60 << "</tspan></text>	";
 	svgout << "	  <text	";
 	svgout << "	     xml:space=\"preserve\"	";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#9000d3;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
@@ -1221,7 +1221,7 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 	svgout << "	       id=\"tspan4018\"	";
 	svgout << "	       x=\"267.68707\"	";
 	svgout << "	       y=\"27.212563\"	";
-	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[8] << "</tspan></text>	";
+	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[8].substr(0,3) <<"\u00B0"<< atoi(svginfo[8].substr(4,2).c_str())*60 << "</tspan></text>	";
 	svgout << "	  <text	";
 	svgout << "	     xml:space=\"preserve\"	";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#9000d3;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
@@ -1521,7 +1521,7 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 	svgout << "	       id=\"tspan3302\"	";
 	svgout << "	       x=\"48.419983\"	";
 	svgout << "	       y=\"179.09091\"	";
-	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"> " << ltm->tm_hour << ":" << ltm->tm_min << ":" <<  ltm->tm_sec << " </tspan></text>	";
+	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"> " << ltm->tm_hour << ":" << ltm->tm_min << ":" <<  ltm->tm_sec << " LT </tspan></text>	";
 	
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\" ";
@@ -1729,23 +1729,29 @@ int SvgJpg(std::string path){
 
 void TxtGen(std::string svginfo[11], int hourcount[744]){
 
+const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Jul", "aug", "sep", "oct", "nov", "dec"};
+	
+
+	time_t now = time(0);  
+	tm *ltm = localtime(&now);
+
 	std::ofstream txtout;
 	txtout.open ("io/rmob.txt");
 
-	txtout << "oct| 00h| 01h| 02h| 03h| 04h| 05h| 06h| 07h| 08h| 09h| 10h| 11h| 12h| 13h| 14h| 15h| 16h| 17h| 18h| 19h| 20h| 21h| 22h| 23h|\n";
+	txtout << MonthNames[ ltm->tm_mon ] << "| 00h | 01h | 02h | 03h | 04h | 05h | 06h | 07h | 08h | 09h | 10h | 11h | 12h | 13h | 14h | 15h | 16h | 17h | 18h | 19h | 20h | 21h | 22h | 23h |\n";
 	for (int i = 1; i < 32; ++i)
 	{
-		txtout <<  i <<"|"<< hourcount[24* i-1 +0] <<"|"<< hourcount[24* i-1 +1] <<"|"<< hourcount[24* i-1 +2] <<"|"<< hourcount[24* i-1 +3] <<"|"<< hourcount[24* i-1 +4] <<"|"<< hourcount[24* i-1 +5] <<"|"<< hourcount[24* i-1 +6] <<"|"<< hourcount[24* i-1 +7] <<"|"<< hourcount[24* i-1 +8] <<"|"<< hourcount[24* i-1 +9] <<"|"<< hourcount[24* i-1 + 10] <<"|"<< hourcount[24* i-1 + 11] <<"|"<< hourcount[24* i-1 + 12] <<"|"<< hourcount[24* i-1 + 13] <<"|"<< hourcount[24* i-1 + 14] <<"|"<< hourcount[24* i-1 + 15] <<"|"<< hourcount[24* i-1 + 16] <<"|"<< hourcount[24* i-1 + 17] <<"|"<< hourcount[24* i-1 + 18] <<"|"<< hourcount[24* i-1 + 19] <<"|"<< hourcount[24* i-1 + 20] <<"|"<< hourcount[24* i-1 + 21] <<"|"<< hourcount[24* i-1 + 22] <<"|"<< hourcount[24* i-1 + 23] <<"|\n";
+		txtout <<  i <<" |"<< hourcount[24* i-1 +0] <<"|"<< hourcount[24* i-1 +1] <<"|"<< hourcount[24* i-1 +2] <<"|"<< hourcount[24* i-1 +3] <<"|"<< hourcount[24* i-1 +4] <<"|"<< hourcount[24* i-1 +5] <<"|"<< hourcount[24* i-1 +6] <<"|"<< hourcount[24* i-1 +7] <<"|"<< hourcount[24* i-1 +8] <<"|"<< hourcount[24* i-1 +9] <<"|"<< hourcount[24* i-1 + 10] <<"|"<< hourcount[24* i-1 + 11] <<"|"<< hourcount[24* i-1 + 12] <<"|"<< hourcount[24* i-1 + 13] <<"|"<< hourcount[24* i-1 + 14] <<"|"<< hourcount[24* i-1 + 15] <<"|"<< hourcount[24* i-1 + 16] <<"|"<< hourcount[24* i-1 + 17] <<"|"<< hourcount[24* i-1 + 18] <<"|"<< hourcount[24* i-1 + 19] <<"|"<< hourcount[24* i-1 + 20] <<"|"<< hourcount[24* i-1 + 21] <<"|"<< hourcount[24* i-1 + 22] <<"|"<< hourcount[24* i-1 + 23] <<"|\n";
 	}
 
 
 	txtout << "[Observer]" <<  svginfo[0] << "\n";
 	txtout << "[Country]" <<  svginfo[1] << "\n";
 	txtout << "[City]" <<  svginfo[2] << "\n";
-	txtout << "[Longitude]" <<  svginfo[8] << "\n";
-	txtout << "[Latitude ]" <<  svginfo[7] << "\n";
-	txtout << "[Longitude GMAP]" <<  "14.4675321" << "\n";
-	txtout << "[Latitude GMAP]" <<  "48.9869761" << "\n";
+	txtout << "[Longitude]" <<  svginfo[8].substr(0,3) <<"d"<< atoi(svginfo[8].substr(4,2).c_str())*60 << "\n";
+	txtout << "[Latitude ]" <<  svginfo[7].substr(0,3) <<"d"<< atoi(svginfo[7].substr(4,2).c_str())*60 << "\n";
+	txtout << "[Longitude GMAP]" << svginfo[8] << "\n";
+	txtout << "[Latitude GMAP]" << svginfo[7] << "\n";
 	txtout << "[Frequencies]" <<  svginfo[9] << "\n";
 	txtout << "[Antenna]" <<  svginfo[3] << "\n";
 	txtout << "[Azimut Antenna]" <<  "-" << "\n";
