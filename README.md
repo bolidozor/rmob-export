@@ -5,8 +5,8 @@ Generator of colorgramme graphs to rmob observers database.
 
 ### Ubuntu 13.04
 
- sudo apt-get install libmagick++4
- sudo apt-get install libmagick++-dev
+  sudo apt-get install libmagick++4
+  sudo apt-get install libmagick++-dev
  
 
 ## Howto
