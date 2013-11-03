@@ -101,7 +101,7 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 		}
 	}
 
-	for (int i = ltm->tm_mday * 24; i < ltm->tm_mday*24 + 24; ++i){
+	for (int i = (ltm->tm_mday-1) * 24; i < (ltm->tm_mday-1)*24 + 24; ++i){
 
 		if (DayMINhourcount > hourcount[i] && hourcount[i] != 1111){
 			DayMINhourcount = hourcount[i];
@@ -1258,17 +1258,17 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 	//svgout << "	     y=\"" << y << "\" />	";
 
 		for (int i = 0; i < 31; ++i){
-			
+
 			for (int j = 0; j < 24; ++j){
-				
+
 				svgout << "	  <rect	";
-				svgout << "	     style=\"opacity:1;fill:" << SvgColAll(MAXhourcount, MINhourcount, hourcount[i*24+j]) << ";fill-opacity:1;stroke:none;stroke-opacity:1\"	";
+				svgout << "	     style=\"opacity:1;fill:" << SvgColAll(MAXhourcount, MINhourcount, hourcount[(i*24)+j]) << ";fill-opacity:1;stroke:none;stroke-opacity:1\"	";
 				svgout << "	     id=\"rect3868\"	";
 				svgout << "	     width=\"5.9932489\"	";
 				svgout << "	     height=\"5.9932513\"	";
 				svgout << "	     x=\" "<< x+(7.898 * i) << "\"	";
 				svgout << "	     y=\"" << y+(7.897 * j) << "\" />	";
-				std::cout<< "SvgGen: "<< i*24 + j << " > "<<hourcount[i*24+j]<<std::endl;
+				std::cout<< "SvgGen: "<< i*24 + j << " >ma hodnotu> "<<hourcount[i*24+j]<<std::endl;
 
 			}
 		}
@@ -1497,12 +1497,14 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 
 
 	//  zakladna hisntogramu  -- 34,86588
-	
+
 	float Dkrok = 0.00000;
+	std::cout << DayMAXhourcount <<"|" ;
 	Dkrok = (float)84/(float)DayMAXhourcount;
-	std::cout << DayMAXhourcount <<"|"<< Dkrok<< "|" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 4]) << "|"<< Dkrok*hourcount[ltm->tm_mday*24 + 4] << "|"<< hourcount[ltm->tm_mday*24 + 4];
-	
+	std::cout << DayMAXhourcount <<"|"<< Dkrok<< "|" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 4]) << "|"<< Dkrok*hourcount[(ltm->tm_mday-1)*24 + 4] << "|"<< hourcount[(ltm->tm_mday-1)*24 + 4];
+
 	for (int i = 0; i < 744; ++i){
+		//if (hourcount[i] > 999 || hourcount[i] < 0)
 		if (hourcount[i]==1111)
 		{
 			hourcount[i]=0;
@@ -1525,177 +1527,177 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 	
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\" ";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 0] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 0] << "\"		";
 	svgout << "	     x=\"115.10423\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 0]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 0]) << "\"		";
 	svgout << "	     id=\"recDay24-00\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\" ";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 1] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 1] << "\"		";
 	svgout << "	     x=\"125.10574\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 1]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 1]) << "\"		";
 	svgout << "	     id=\"recDay00-01\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 2] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 2] << "\"		";
 	svgout << "	     x=\"135.10724\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 2]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 2]) << "\"		";
 	svgout << "	     id=\"recDay01-02\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 3] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 3] << "\"		";
 	svgout << "	     x=\"145.10875\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 3]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 3]) << "\"		";
 	svgout << "	     id=\"recDay02-03\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 4] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 4] << "\"		";
 	svgout << "	     x=\"155.11026\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 4]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 4]) << "\"		";
 	svgout << "	     id=\"recDay03-04\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 5] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 5] << "\"		";
 	svgout << "	     x=\"165.11176\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 5]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 5]) << "\"		";
 	svgout << "	     id=\"recDay04-05\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 6] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 6] << "\"		";
 	svgout << "	     x=\"175.11327\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 6]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 6]) << "\"		";
 	svgout << "	     id=\"recDay05-06\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 7] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 7] << "\"		";
 	svgout << "	     x=\"185.11476\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 7]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 7]) << "\"		";
 	svgout << "	     id=\"recDay06-07\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 8] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 8] << "\"		";
 	svgout << "	     x=\"195.11627\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 8]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 8]) << "\"		";
 	svgout << "	     id=\"recDay07-08\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 9] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 9] << "\"		";
 	svgout << "	     x=\"205.11778\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 9]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 9]) << "\"		";
 	svgout << "	     id=\"recDay08-09\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 10] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 10] << "\"		";
 	svgout << "	     x=\"215.11928\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 10]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 10]) << "\"		";
 	svgout << "	     id=\"recDay09-10\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 11] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 11] << "\"		";
 	svgout << "	     x=\"225.12079\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 11]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 11]) << "\"		";
 	svgout << "	     id=\"recDay10-11\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 12] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 12] << "\"		";
 	svgout << "	     x=\"235.12228\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 12]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 12]) << "\"		";
 	svgout << "	     id=\"recDay11-12\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 13] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 13] << "\"		";
 	svgout << "	     x=\"245.12379\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 13]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 13]) << "\"		";
 	svgout << "	     id=\"recDay12-13\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 14] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 14] << "\"		";
 	svgout << "	     x=\"255.12531\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 14]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 14]) << "\"		";
 	svgout << "	     id=\"recDay13-14\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 15] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 15] << "\"		";
 	svgout << "	     x=\"265.1268\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 15]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 15]) << "\"		";
 	svgout << "	     id=\"recDay14-15\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 16] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 16] << "\"		";
 	svgout << "	     x=\"275.1283\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 16]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 16]) << "\"		";
 	svgout << "	     id=\"recDay15-16\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 17] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 17] << "\"		";
 	svgout << "	     x=\"285.12982\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 17]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 17]) << "\"		";
 	svgout << "	     id=\"recDay16-17\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 18] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 18] << "\"		";
 	svgout << "	     x=\"295.13132\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 18]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 18]) << "\"		";
 	svgout << "	     id=\"recDay17-18\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 19] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 19] << "\"		";
 	svgout << "	     x=\"305.13281\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 19]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 19]) << "\"		";
 	svgout << "	     id=\"recDay18-19\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 20] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 20] << "\"		";
 	svgout << "	     x=\"315.13434\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 20]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 20]) << "\"		";
 	svgout << "	     id=\"recDay19-20\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 21] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 21] << "\"		";
 	svgout << "	     x=\"325.13583\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 21]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 21]) << "\"		";
 	svgout << "	     id=\"recDay20-21\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 22] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 22] << "\"		";
 	svgout << "	     x=\"335.13733\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 22]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 22]) << "\"		";
 	svgout << "	     id=\"recDay21-22\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 23] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 23] << "\"		";
 	svgout << "	     x=\"345.13885\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 23]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 23]) << "\"		";
 	svgout << "	     id=\"recDay22-23\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\"		";
-	svgout << "	     height=\"" << Dkrok*hourcount[ltm->tm_mday*24 + 24] << "\"		";
+	svgout << "	     height=\"" << Dkrok*hourcount[(ltm->tm_mday-1)*24 + 24] << "\"		";
 	svgout << "	     x=\"355.14035\"		";
-	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[ltm->tm_mday*24 + 24]) << "\"		";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 24]) << "\"		";
 	svgout << "	     id=\"recDay23-24\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 
@@ -1730,18 +1732,19 @@ int SvgJpg(std::string path){
 void TxtGen(std::string svginfo[11], int hourcount[744]){
 
 const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Jul", "aug", "sep", "oct", "nov", "dec"};
-	
 
-	time_t now = time(0);  
+
+	time_t now = time(0);
 	tm *ltm = localtime(&now);
 
 	std::ofstream txtout;
 	txtout.open ("io/rmob.txt");
 
 	txtout << MonthNames[ ltm->tm_mon ] << "| 00h | 01h | 02h | 03h | 04h | 05h | 06h | 07h | 08h | 09h | 10h | 11h | 12h | 13h | 14h | 15h | 16h | 17h | 18h | 19h | 20h | 21h | 22h | 23h |\n";
-	for (int i = 1; i < 32; ++i)
+	for (int i = 0; i < 31; ++i)
 	{
-		txtout <<  i <<" |"<< hourcount[24* i-1 +0] <<"|"<< hourcount[24* i-1 +1] <<"|"<< hourcount[24* i-1 +2] <<"|"<< hourcount[24* i-1 +3] <<"|"<< hourcount[24* i-1 +4] <<"|"<< hourcount[24* i-1 +5] <<"|"<< hourcount[24* i-1 +6] <<"|"<< hourcount[24* i-1 +7] <<"|"<< hourcount[24* i-1 +8] <<"|"<< hourcount[24* i-1 +9] <<"|"<< hourcount[24* i-1 + 10] <<"|"<< hourcount[24* i-1 + 11] <<"|"<< hourcount[24* i-1 + 12] <<"|"<< hourcount[24* i-1 + 13] <<"|"<< hourcount[24* i-1 + 14] <<"|"<< hourcount[24* i-1 + 15] <<"|"<< hourcount[24* i-1 + 16] <<"|"<< hourcount[24* i-1 + 17] <<"|"<< hourcount[24* i-1 + 18] <<"|"<< hourcount[24* i-1 + 19] <<"|"<< hourcount[24* i-1 + 20] <<"|"<< hourcount[24* i-1 + 21] <<"|"<< hourcount[24* i-1 + 22] <<"|"<< hourcount[24* i-1 + 23] <<"|\n";
+		txtout <<  i <<" |"<< hourcount[24* i-0 +0] <<"|"<< hourcount[24* i-0 +1] <<"|"<< hourcount[24* i-0 +2] <<"|"<< hourcount[24* i-0 +3] <<"|"<< hourcount[24* i-0 +4] <<"|"<< hourcount[24* i-0 +5] <<"|"<< hourcount[24* i-0 +6] <<"|"<< hourcount[24* i-0 +7] <<"|"<< hourcount[24* i-0 +8] <<"|"<< hourcount[24* i-0 +9] <<"|"<< hourcount[24* i-0 + 10] <<"|"<< hourcount[24* i-0 + 11] <<"|"<< hourcount[24* i-0 + 12] <<"|"<< hourcount[24* i-0 + 13] <<"|"<< hourcount[24* i-0 + 14] <<"|"<< hourcount[24* i-0 + 15] <<"|"<< hourcount[24* i-0 + 16] <<"|"<< hourcount[24* i-0 + 17] <<"|"<< hourcount[24* i-0 + 18] <<"|"<< hourcount[24* i-0 + 19] <<"|"<< hourcount[24* i-0 + 20] <<"|"<< hourcount[24* i-0 + 21] <<"|"<< hourcount[24* i-0 + 22] <<"|"<< hourcount[24* i-0 + 23] <<"|\n";
+		std::cout <<  i <<" |0 "<< hourcount[24* i-0 +0] <<"|1 "<< hourcount[24* i-0 +1] <<"|2 "<< hourcount[24* i-0 +2] <<"|3 "<< hourcount[24* i-0 +3] <<"|4 "<< hourcount[24* i-0 +4] <<"|5 "<< hourcount[24* i-0 +5] <<"|6 "<< hourcount[24* i-0 +6] <<"|7 "<< hourcount[24* i-0 +7] <<"|8 "<< hourcount[24* i-0 +8] <<"|9 "<< hourcount[24* i-0 +9] <<"|10 "<< hourcount[24* i-0 + 10] <<"|11 "<< hourcount[24* i-0 + 11] <<"|12 "<< hourcount[24* i-0 + 12] <<"|13 "<< hourcount[24* i-0 + 13] <<"|14 "<< hourcount[24* i-0 + 14] <<"|15 "<< hourcount[24* i-0 + 15] <<"|16 "<< hourcount[24* i-0 + 16] <<"|17 "<< hourcount[24* i-0 + 17] <<"|18 "<< hourcount[24* i-0 + 18] <<"|19 "<< hourcount[24* i-0 + 19] <<"|20 "<< hourcount[24* i-0 + 20] <<"|21 "<< hourcount[24* i-0 + 21] <<"|22 "<< hourcount[24* i-0 + 22] <<"|23 "<< hourcount[24* i-0 + 23] <<"|"<<std::endl;
 	}
 
 
