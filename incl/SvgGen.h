@@ -116,7 +116,7 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 
 
 
-	std::cout<< "minimalni hodnota je:"<<MINhourcount<<"a maximalni hodmota je "<< MAXhourcount<<" A deni minimalni hodnota je:"<<DayMINhourcount<<"a maximalni deni hodmota je "<< DayMAXhourcount<<" To je zatim vse :))"<<std::endl;
+	//std::cout<< "minimalni hodnota je:"<<MINhourcount<<"a maximalni hodmota je "<< MAXhourcount<<" A deni minimalni hodnota je:"<<DayMINhourcount<<"a maximalni deni hodmota je "<< DayMAXhourcount<<" To je zatim vse :))"<<std::endl;
 
 
 	std::ofstream svgout;
@@ -1268,7 +1268,7 @@ int SvgGen(std::string svginfo[11], int hourcount[744]){
 				svgout << "	     height=\"5.9932513\"	";
 				svgout << "	     x=\" "<< x+(7.898 * i) << "\"	";
 				svgout << "	     y=\"" << y+(7.897 * j) << "\" />	";
-				std::cout<< "SvgGen: "<< i*24 + j << " >ma hodnotu> "<<hourcount[i*24+j]<<std::endl;
+				//std::cout<< "SvgGen: "<< i*24 + j << " >ma hodnotu> "<<hourcount[i*24+j]<<std::endl;
 
 			}
 		}
@@ -1744,7 +1744,7 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 	for (int i = 0; i < 31; ++i)
 	{
 		txtout <<  i <<" |"<< hourcount[24* i-0 +0] <<"|"<< hourcount[24* i-0 +1] <<"|"<< hourcount[24* i-0 +2] <<"|"<< hourcount[24* i-0 +3] <<"|"<< hourcount[24* i-0 +4] <<"|"<< hourcount[24* i-0 +5] <<"|"<< hourcount[24* i-0 +6] <<"|"<< hourcount[24* i-0 +7] <<"|"<< hourcount[24* i-0 +8] <<"|"<< hourcount[24* i-0 +9] <<"|"<< hourcount[24* i-0 + 10] <<"|"<< hourcount[24* i-0 + 11] <<"|"<< hourcount[24* i-0 + 12] <<"|"<< hourcount[24* i-0 + 13] <<"|"<< hourcount[24* i-0 + 14] <<"|"<< hourcount[24* i-0 + 15] <<"|"<< hourcount[24* i-0 + 16] <<"|"<< hourcount[24* i-0 + 17] <<"|"<< hourcount[24* i-0 + 18] <<"|"<< hourcount[24* i-0 + 19] <<"|"<< hourcount[24* i-0 + 20] <<"|"<< hourcount[24* i-0 + 21] <<"|"<< hourcount[24* i-0 + 22] <<"|"<< hourcount[24* i-0 + 23] <<"|\n";
-		std::cout <<  i <<" |0 "<< hourcount[24* i-0 +0] <<"|1 "<< hourcount[24* i-0 +1] <<"|2 "<< hourcount[24* i-0 +2] <<"|3 "<< hourcount[24* i-0 +3] <<"|4 "<< hourcount[24* i-0 +4] <<"|5 "<< hourcount[24* i-0 +5] <<"|6 "<< hourcount[24* i-0 +6] <<"|7 "<< hourcount[24* i-0 +7] <<"|8 "<< hourcount[24* i-0 +8] <<"|9 "<< hourcount[24* i-0 +9] <<"|10 "<< hourcount[24* i-0 + 10] <<"|11 "<< hourcount[24* i-0 + 11] <<"|12 "<< hourcount[24* i-0 + 12] <<"|13 "<< hourcount[24* i-0 + 13] <<"|14 "<< hourcount[24* i-0 + 14] <<"|15 "<< hourcount[24* i-0 + 15] <<"|16 "<< hourcount[24* i-0 + 16] <<"|17 "<< hourcount[24* i-0 + 17] <<"|18 "<< hourcount[24* i-0 + 18] <<"|19 "<< hourcount[24* i-0 + 19] <<"|20 "<< hourcount[24* i-0 + 20] <<"|21 "<< hourcount[24* i-0 + 21] <<"|22 "<< hourcount[24* i-0 + 22] <<"|23 "<< hourcount[24* i-0 + 23] <<"|"<<std::endl;
+		//std::cout <<  i <<" |0 "<< hourcount[24* i-0 +0] <<"|1 "<< hourcount[24* i-0 +1] <<"|2 "<< hourcount[24* i-0 +2] <<"|3 "<< hourcount[24* i-0 +3] <<"|4 "<< hourcount[24* i-0 +4] <<"|5 "<< hourcount[24* i-0 +5] <<"|6 "<< hourcount[24* i-0 +6] <<"|7 "<< hourcount[24* i-0 +7] <<"|8 "<< hourcount[24* i-0 +8] <<"|9 "<< hourcount[24* i-0 +9] <<"|10 "<< hourcount[24* i-0 + 10] <<"|11 "<< hourcount[24* i-0 + 11] <<"|12 "<< hourcount[24* i-0 + 12] <<"|13 "<< hourcount[24* i-0 + 13] <<"|14 "<< hourcount[24* i-0 + 14] <<"|15 "<< hourcount[24* i-0 + 15] <<"|16 "<< hourcount[24* i-0 + 16] <<"|17 "<< hourcount[24* i-0 + 17] <<"|18 "<< hourcount[24* i-0 + 18] <<"|19 "<< hourcount[24* i-0 + 19] <<"|20 "<< hourcount[24* i-0 + 20] <<"|21 "<< hourcount[24* i-0 + 21] <<"|22 "<< hourcount[24* i-0 + 22] <<"|23 "<< hourcount[24* i-0 + 23] <<"|"<<std::endl;
 	}
 
 

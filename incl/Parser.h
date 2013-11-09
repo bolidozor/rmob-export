@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <sstream>
 #include <ctime>
+#include <iomanip>
 
 std::string ParArg(int argc, char const *argv[]){
 	
@@ -32,7 +33,7 @@ void ParObsInfo(std::string data[], std::string path){
 		getline ( file, value);
 		if (value!="" && value!="#" && value.substr(0,1)!="#")
 		{
-			std::cout <<line<<"-"<< value<<""<<std::endl;
+			//std::cout <<line<<"-"<< value<<""<<std::endl;
 			data[line]=value;
 			line++;
 		}
@@ -75,9 +76,41 @@ void ParRmobFile(int hcount[], std::string RelPath){
 	{
 		while ( getline (myfile,line) )
 		{
-			std::cout << line.substr(6,2) << ";" << line.substr(8,2) << ";" << line.substr(18,18-line.length()) << std::endl;
+			//std::cout << line.substr(6,2) << ";" << line.substr(8,2) << ";" << line.substr(18,18-line.length()) << std::endl;
 			hcount[(atoi(line.substr(6,2).c_str())-1)*24 + atoi(line.substr(8,2).c_str())]=atoi(line.substr(18,18-line.length()).c_str());
 		}
 		myfile.close();
 	}
+}
+
+
+void ParBolidozorFile(int hcount[], std::string RelPath){	
+
+
+	std::stringstream ss;
+
+	time_t rawtime;
+  	struct tm * utc;
+
+  	time ( &rawtime );
+  	utc = gmtime ( &rawtime );
+
+	for (int i = 0; i < 744; ++i){
+		hcount[i]=1111; // Black
+	}
+
+
+  	std::cout << "UTC čas je " << utc->tm_hour << " hodin a " << utc->tm_min << " minut. den je " << utc->tm_yday << std::endl;
+
+  	for (int i = 0; i < (utc->tm_hour+(24*utc->tm_mday-1)); ++i)
+  	{
+  		ss.str("");
+  		ss << "ZVPP" << utc->tm_year+1900 << std::setw(2) << std::setfill('0')<< utc->tm_mon << std::setw(2) << std::setfill('0')<< utc->tm_mday << std::setw(2) << std::setfill('0') << utc->tm_hour << ".dat";
+  		//RelPath = RelPath + ss.str();
+
+  		std::cout << RelPath << ss.str() << std::endl;
+  	}
+
+
+
 }

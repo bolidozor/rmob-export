@@ -37,6 +37,7 @@ int main(int argc, char const *argv[]){
 
 
 	ParObsInfo(ObsInfo, ParArg(argc, argv) );
+	ParBolidozorFile(HourCount,ObsInfo[11]);
 	ParRmobFile(HourCount,ObsInfo[11]);
 	TxtGen(ObsInfo,HourCount);
 	SvgGen(ObsInfo,HourCount);
