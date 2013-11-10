@@ -7,6 +7,7 @@
 #include <ctime>
 #include <iomanip>
 
+
 std::string ParArg(int argc, char const *argv[]){
 	
 	std::string arv;
@@ -86,8 +87,9 @@ void ParRmobFile(int hcount[], std::string RelPath){
 
 void ParBolidozorFile(int hcount[], std::string RelPath){	
 
-
+	std::string RPath;
 	std::stringstream ss;
+	std::string line;
 
 	time_t rawtime;
   	struct tm * utc;
@@ -102,15 +104,55 @@ void ParBolidozorFile(int hcount[], std::string RelPath){
 
   	std::cout << "UTC čas je " << utc->tm_hour << " hodin a " << utc->tm_min << " minut. den je " << utc->tm_yday << std::endl;
 
-  	for (int i = 0; i < (utc->tm_hour+(24*utc->tm_mday-1)); ++i)
+  	//// for (int i = 0; i < (utc->tm_hour+(24*utc->tm_mday-1)); ++i){
+  	for (int x = 0; x < utc->tm_mon+1; ++x)	// mesic
   	{
+  	for (int y = 0; y < 31; ++y)			// den
+  	{
+  	for (int z = 0; z < 24; ++z)			// hodina
+  	{
+
+  		
+
+  		line="";
   		ss.str("");
-  		ss << "ZVPP" << utc->tm_year+1900 << std::setw(2) << std::setfill('0')<< utc->tm_mon << std::setw(2) << std::setfill('0')<< utc->tm_mday << std::setw(2) << std::setfill('0') << utc->tm_hour << ".dat";
-  		//RelPath = RelPath + ss.str();
+  		ss << "ZVPP" 
+  		   << utc->tm_year+1900;
+  		ss << std::setw(2)<<std::setfill('0')<<x+1
+  		   << std::setw(2)<<std::setfill('0')<<y+1
+  		   << std::setw(2)<<std::setfill('0')<<z 
+  		   << ".dat";
+
+
+  		RPath = RelPath + ss.str();	
+
+  		
+		std::ifstream myfile (RPath.c_str());
+		if (myfile.is_open()){
+			hcount[y*24 + z] = 0;
+			std::cout << "File exist ";
+			while ( getline (myfile,line) ){
+				
+				if ( line.substr(17,6)!="no_met" )
+				{
+					hcount[y*24 + z] ++;
+				}
+				
+			
+			}
+			std::cout << "hodina" <<y*24 + z<< "-" << hcount[y*24 + z] << " ";
+			myfile.close();
+		}
+		else{
+			std::cout << "File is NOT exist ";
+		}
+
+  		
 
   		std::cout << RelPath << ss.str() << std::endl;
+  	//// }
   	}
-
-
+	}
+	}
 
 }
