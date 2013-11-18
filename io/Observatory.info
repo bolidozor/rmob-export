@@ -26,5 +26,5 @@ Czech republic
 --email--
 # Relative path to RMOB file as -- ./../Spectrum/
 ./../Spectrum/
-# 
-Store
+# Type of input data eg. "Bolidozor", "Rmob"
+Bolidozor

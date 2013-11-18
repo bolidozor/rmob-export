@@ -75,7 +75,7 @@ std::string SvgColAll(int max, int min, int actual){
 }
 
 
-int SvgGen(std::string svginfo[11], int hourcount[744]){
+int SvgGen(std::string svginfo[12], int hourcount[744]){
 
 	int MINhourcount = 999;
 	int MAXhourcount = 0;
@@ -1729,7 +1729,7 @@ int SvgJpg(std::string path){
 }
 
 
-void TxtGen(std::string svginfo[11], int hourcount[744]){
+void TxtGen(std::string svginfo[12], int hourcount[744]){
 
 const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Jul", "aug", "sep", "oct", "nov", "dec"};
 

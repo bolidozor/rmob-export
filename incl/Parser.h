@@ -34,7 +34,7 @@ void ParObsInfo(std::string data[], std::string path){
 		getline ( file, value);
 		if (value!="" && value!="#" && value.substr(0,1)!="#")
 		{
-			//std::cout <<line<<"-"<< value<<""<<std::endl;
+			std::cout <<line<<" - "<< value<<""<<std::endl;
 			data[line]=value;
 			line++;
 		}
