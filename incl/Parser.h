@@ -85,7 +85,7 @@ void ParRmobFile(int hcount[], std::string RelPath){
 }
 
 
-void ParBolidozorFile(int hcount[], std::string RelPath){	
+void ParBolidozorFile(int hcount[], std::string RelPath){
 
 	std::string RPath;
 	std::stringstream ss;
@@ -116,32 +116,34 @@ void ParBolidozorFile(int hcount[], std::string RelPath){
 
   		line="";
   		ss.str("");
-  		ss << "ZVPP" 
+  		ss << "ZVPP"
   		   << utc->tm_year+1900;
   		ss << std::setw(2)<<std::setfill('0')<<x+1
   		   << std::setw(2)<<std::setfill('0')<<y+1
-  		   << std::setw(2)<<std::setfill('0')<<z 
+  		   << std::setw(2)<<std::setfill('0')<<z
   		   << ".dat";
 
 
-  		RPath = RelPath + ss.str();	
+  		RPath = RelPath + ss.str();
 
   		
 		std::ifstream myfile (RPath.c_str());
-		if (myfile.is_open()){
-			hcount[y*24 + z] = 0;
-			std::cout << "File exist ";
-			while ( getline (myfile,line) ){
-				
-				if ( line.substr(17,6)!="no_met" )
-				{
-					hcount[y*24 + z] ++;
+		if (x+1 == utc->tm_mon+1){
+			if (myfile.is_open()){
+				hcount[y*24 + z] = 0;
+				std::cout << "File exist ";
+				while ( getline (myfile,line) ){
+					
+					if ( line.substr(17,6)!="no_met" )
+					{
+						hcount[y*24 + z] ++;
+					}
+					
 				}
-				
-			
+
+				std::cout << "hodina" <<y*24 + z<< "-" << hcount[y*24 + z] << " ";
+				myfile.close();
 			}
-			std::cout << "hodina" <<y*24 + z<< "-" << hcount[y*24 + z] << " ";
-			myfile.close();
 		}
 		else{
 			std::cout << "File is NOT exist ";
