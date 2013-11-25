@@ -1225,7 +1225,7 @@ int SvgGen(std::string svginfo[15], int hourcount[744]){
 	svgout << "	       id=\"tspan4014\"	";
 	svgout << "	       x=\"267.68707\"	";
 	svgout << "	       y=\"11.545778\"	";
-	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[7].substr(0,3) <<"\u00B0"<< atoi(svginfo[7].substr(4,2).c_str())*60 << "</tspan></text>	";
+	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[7].substr(0,3) <<"\u00B0"<< atoi(svginfo[7].substr(4,2).c_str())*60 << " " << svginfo[9]<< "</tspan></text>	";
 	svgout << "	  <text	";
 	svgout << "	     xml:space=\"preserve\"	";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#9000d3;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
@@ -1238,7 +1238,7 @@ int SvgGen(std::string svginfo[15], int hourcount[744]){
 	svgout << "	       id=\"tspan4018\"	";
 	svgout << "	       x=\"267.68707\"	";
 	svgout << "	       y=\"27.212563\"	";
-	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[8].substr(0,3) <<"\u00B0"<< atoi(svginfo[8].substr(4,2).c_str())*60 << "</tspan></text>	";
+	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[8].substr(0,3) <<"\u00B0"<< atoi(svginfo[8].substr(4,2).c_str())*60 << " " << svginfo[10]<< "</tspan></text>	";
 	svgout << "	  <text	";
 	svgout << "	     xml:space=\"preserve\"	";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#9000d3;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
@@ -1251,7 +1251,7 @@ int SvgGen(std::string svginfo[15], int hourcount[744]){
 	svgout << "	       id=\"tspan4022\"	";
 	svgout << "	       x=\"267.69147\"	";
 	svgout << "	       y=\"42.879349\"	";
-	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[9] << "</tspan></text>	";
+	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[11] << "</tspan></text>	";
 	svgout << "	  <text	";
 	svgout << "	     xml:space=\"preserve\"	";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#9000d3;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
@@ -1264,7 +1264,7 @@ int SvgGen(std::string svginfo[15], int hourcount[744]){
 	svgout << "	       id=\"tspan4026\"	";
 	svgout << "	       x=\"267.94196\"	";
 	svgout << "	       y=\"58.546131\"	";
-	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[10] << "</tspan></text>	";
+	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[12] << "</tspan></text>	";
 
 	//svgout << "	  <rect	";
 	//svgout << "	     style=\"opacity:0.42049470000000000;fill:#ff0000;fill-opacity:1;stroke:none;stroke-opacity:1\"	";
