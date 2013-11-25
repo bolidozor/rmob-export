@@ -2,6 +2,14 @@
 # 
 # https://github.com/MLAB-project/rmob-export
 #
+#
+#	If you using SQL data source  
+#
+#
+#
+#
+#
+#
 # Observatory name
 --Observatory
 # Country
@@ -20,11 +28,15 @@ Czech republic
 000.000000
 # Longtitude yyy.yyyyyy
 000.000000
+# Latitude direction 
+E
+# Longtitude direction
+N
 # Frequency
 143 050 000 Hz
 # email
 --email--
 # Relative path to RMOB file as -- ./../Spectrum/
 ./../Spectrum/
-# Type of input data eg. "Bolidozor", "Rmob"
+# Type of input data eg. "Bolidozor", "Rmob", "MySQL"
 Bolidozor

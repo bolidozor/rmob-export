@@ -8,13 +8,16 @@
 
 int SvgColRed(int num){
 	int out;
-	if (num <= 12){
+	if (num <= 12)
+	{
 		out = 0;
 	}
-	if(num > 12 && num < 18){
+	if(num > 12 && num < 18)
+	{
 		out = ((num - 12) * 51);
 	}
-	if (num >= 18){
+	if (num >= 18)
+	{
 		out = 255;
 	}
 	return out;
@@ -23,13 +26,16 @@ int SvgColRed(int num){
 
 int SvgColBlue(int num){
 	int out;
-	if (num <= 6){
+	if (num <= 6)
+	{
 		out = 255;
 	}
-	if(num > 6 && num < 12){
+	if(num > 6 && num < 12)
+	{
 		out = 255 - ((num -6 ) * 51);
 	}
-	if (num >= 12){
+	if (num >= 12)
+	{
 		out = 0;
 	}
 	return out;
@@ -38,13 +44,16 @@ int SvgColBlue(int num){
 
 int SvgColGreen(int num){
 	int out;
-	if (num <= 0){
+	if (num <= 0)
+	{
 		out = 0;
 	}
-	if(num > 0 && num < 6){
+	if(num > 0 && num < 6)
+	{
 		out = (num * 51);
 	}
-	if (num >= 6 && num <= 18){
+	if (num >= 6 && num <= 18)
+	{
 		out = 255;
 	}
 	if (num > 18)
@@ -65,17 +74,19 @@ std::string SvgColAll(int max, int min, int actual){
 	num=actual/krok;
 	std::ostringstream ss;
 
-	if (actual == 1111){
+	if (actual == 1111)
+	{
 		ss<< "rgb(0,0,0)";
 	}
-	else{
+	else
+	{
 		ss << "rgb("<< SvgColRed(num) <<","<< SvgColGreen(num) <<","<< SvgColBlue(num)<<")"; 
 	}
 	return ss.str();
 }
 
 
-int SvgGen(std::string svginfo[12], int hourcount[744]){
+int SvgGen(std::string svginfo[15], int hourcount[744]){
 
 	int MINhourcount = 999;
 	int MAXhourcount = 0;
@@ -90,24 +101,30 @@ int SvgGen(std::string svginfo[12], int hourcount[744]){
 	time_t now = time(0);  
 	tm *ltm = localtime(&now);
 
-	for (int i = 0; i < 744; ++i){
+	for (int i = 0; i < 744; ++i)
+	{
 
-		if (MINhourcount > hourcount[i] && hourcount[i] != 1111){
+		if (MINhourcount > hourcount[i] && hourcount[i] != 1111)
+		{
 			MINhourcount = hourcount[i];
 		}
 
-		if (MAXhourcount < hourcount[i] && hourcount[i] != 1111){
+		if (MAXhourcount < hourcount[i] && hourcount[i] != 1111)
+		{
 			MAXhourcount = hourcount[i];
 		}
 	}
 
-	for (int i = (ltm->tm_mday-1) * 24; i < (ltm->tm_mday-1)*24 + 24; ++i){
+	for (int i = (ltm->tm_mday-1) * 24; i < (ltm->tm_mday-1)*24 + 24; ++i)
+	{
 
-		if (DayMINhourcount > hourcount[i] && hourcount[i] != 1111){
+		if (DayMINhourcount > hourcount[i] && hourcount[i] != 1111)
+		{
 			DayMINhourcount = hourcount[i];
 		}
 
-		if (DayMAXhourcount < hourcount[i] && hourcount[i] != 1111){
+		if (DayMAXhourcount < hourcount[i] && hourcount[i] != 1111)
+		{
 			DayMAXhourcount = hourcount[i];
 		}
 	}
@@ -1257,9 +1274,10 @@ int SvgGen(std::string svginfo[12], int hourcount[744]){
 	//svgout << "	     x=\" "<< x << "\"	";
 	//svgout << "	     y=\"" << y << "\" />	";
 
-		for (int i = 0; i < 31; ++i){
-
-			for (int j = 0; j < 24; ++j){
+		for (int i = 0; i < 31; ++i)
+		{
+			for (int j = 0; j < 24; ++j)
+			{
 
 				svgout << "	  <rect	";
 				svgout << "	     style=\"opacity:1;fill:" << SvgColAll(MAXhourcount, MINhourcount, hourcount[(i*24)+j]) << ";fill-opacity:1;stroke:none;stroke-opacity:1\"	";
@@ -1503,7 +1521,8 @@ int SvgGen(std::string svginfo[12], int hourcount[744]){
 	Dkrok = (float)84/(float)DayMAXhourcount;
 	std::cout << DayMAXhourcount <<"|"<< Dkrok<< "|" << 202.866002 - (Dkrok*hourcount[(ltm->tm_mday-1)*24 + 4]) << "|"<< Dkrok*hourcount[(ltm->tm_mday-1)*24 + 4] << "|"<< hourcount[(ltm->tm_mday-1)*24 + 4];
 
-	for (int i = 0; i < 744; ++i){
+	for (int i = 0; i < 744; ++i)
+	{
 		//if (hourcount[i] > 999 || hourcount[i] < 0)
 		if (hourcount[i]==1111)
 		{
@@ -1729,7 +1748,7 @@ int SvgJpg(std::string path){
 }
 
 
-void TxtGen(std::string svginfo[12], int hourcount[744]){
+void TxtGen(std::string svginfo[15], int hourcount[744]){
 
 const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Jul", "aug", "sep", "oct", "nov", "dec"};
 
@@ -1751,11 +1770,11 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 	txtout << "[Observer]" <<  svginfo[0] << "\n";
 	txtout << "[Country]" <<  svginfo[1] << "\n";
 	txtout << "[City]" <<  svginfo[2] << "\n";
-	txtout << "[Longitude]" <<  svginfo[8].substr(0,3) <<"d"<< atoi(svginfo[8].substr(4,2).c_str())*60 << "\n";
-	txtout << "[Latitude ]" <<  svginfo[7].substr(0,3) <<"d"<< atoi(svginfo[7].substr(4,2).c_str())*60 << "\n";
+	txtout << "[Longitude]" <<  svginfo[8].substr(0,3) <<"d"<< atoi(svginfo[8].substr(4,2).c_str())*60 <<" "<< svginfo[10] << "\n";
+	txtout << "[Latitude ]" <<  svginfo[7].substr(0,3) <<"d"<< atoi(svginfo[7].substr(4,2).c_str())*60 <<" "<< svginfo[9] << "\n";
 	txtout << "[Longitude GMAP]" << svginfo[8] << "\n";
 	txtout << "[Latitude GMAP]" << svginfo[7] << "\n";
-	txtout << "[Frequencies]" <<  svginfo[9] << "\n";
+	txtout << "[Frequencies]" <<  svginfo[11] << "\n";
 	txtout << "[Antenna]" <<  svginfo[3] << "\n";
 	txtout << "[Azimut Antenna]" <<  "-" << "\n";
 	txtout << "[Elevation Antenna]" <<  "-" << "\n";
@@ -1765,9 +1784,6 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 	txtout << "[Remarks]" <<  svginfo[6] << "\n";
 	txtout << "[Soft FTP] Astrozor RMOBgen v0.5\n";
 	txtout << "[E]" <<  "-" << "\n";
-
-
-
 	/*
 
 
@@ -1807,7 +1823,6 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 [Remarks]
 [Soft FTP] Astrozor RMOBgen v0.5
 [E]
-
 	*/
 
 

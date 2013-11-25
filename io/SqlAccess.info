@@ -1,0 +1,20 @@
+######################################################
+##													##
+##	KONFIGURACNI SOUBOR PRO MySQL DATABAZY S DATY 	##
+##													##
+##													##
+##													##
+##													##
+######################################################
+#
+#	Server
+localhost
+#
+#	Login
+root
+#
+#	Passsworld
+heslo
+#
+#	Database
+Bolidozor

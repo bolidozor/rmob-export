@@ -19,6 +19,8 @@
 #include <fstream>
 #include <stdlib.h>
 #include <Magick++.h>
+#include <mysql/mysql.h>
+
 
 #include "incl/SvgGen.h"
 #include "incl/Parser.h"
@@ -27,40 +29,43 @@ using namespace std;
 
 int main(int argc, char const *argv[]){
 
-	string ObsInfo[13];
+	string ObsInfo[15];
 	int HourCount[744];
 
-
-	for (int i = 0; i < 744; ++i){
+	for (int i = 0; i < 744; ++i)
+	{
 		HourCount[i]=0;
 	}
 
 
-	ParObsInfo(ObsInfo, ParArg(argc, argv) );
+	ParArgB(argc, argv);
 
-	if (ObsInfo[12] == "Bolidozor")
+	ParObsInfo(ObsInfo, ParArg(argc, argv));
+
+
+	if (ObsInfo[14] == "Bolidozor")
 	{
-		ParBolidozorFile(HourCount,ObsInfo[11]);
+		ParBolidozorFile(HourCount,ObsInfo[13]);
+		TxtGen(ObsInfo,HourCount);
+		SvgGen(ObsInfo,HourCount);
+		SvgJpg("./io/");
 	}
-	if (ObsInfo[12] == "Rmob")
+	if (ObsInfo[14] == "Rmob")
 	{
-		ParRmobFile(HourCount,ObsInfo[11]);
+		ParRmobFile(HourCount,ObsInfo[13]);
+		TxtGen(ObsInfo,HourCount);
+		SvgGen(ObsInfo,HourCount);
+		SvgJpg("./io/");
+	}
+	if (ObsInfo[14] == "MySQL")
+	{
+		ParMySQL(HourCount);
 	}
 
 
-	//ParBolidozorFile(HourCount,ObsInfo[12]);
-	//ParRmobFile(HourCount,ObsInfo[12]);
-	TxtGen(ObsInfo,HourCount);
-	SvgGen(ObsInfo,HourCount);
+	//ParBolidozorFile(HourCount,ObsInfo[15]);
+	//ParRmobFile(HourCount,ObsInfo[15]);
 
-
-	for (int i = 0; i < 743; ++i){
-		//HourCount[i] = rand() % 100;
-		//cout<<i<<" - " << HourCount[i] << endl;
-		//HourCount[i]=0;
-	}
-
-	SvgPng("./io/");
-	SvgJpg("./io/");
+	//SvgPng("./io/");
 	return 0;
 }
