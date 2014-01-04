@@ -68,7 +68,7 @@ void ParRmobFile(int hcount[], std::string RelPath){
 	int him =0;
 	std::stringstream ident;
 
-	time_t now = time(0);  
+	time_t now = time(0);
 	tm *ltm = localtime(&now);
 
 	std::stringstream date;
@@ -110,10 +110,10 @@ void ParBolidozorFile(int hcount[], std::string RelPath){
 	std::string line;
 
 	time_t rawtime;
-  	struct tm * utc;
+	struct tm * utc;
 
-  	time ( &rawtime );
-  	utc = gmtime ( &rawtime );
+	time ( &rawtime );
+	utc = gmtime ( &rawtime );
 
 	for (int i = 0; i < 744; ++i)
 	{
@@ -121,28 +121,28 @@ void ParBolidozorFile(int hcount[], std::string RelPath){
 	}
 
 
-  	std::cout << "UTC čas je " << utc->tm_hour << " hodin a " << utc->tm_min << " minut. den je " << utc->tm_yday << std::endl;
+	std::cout << "UTC čas je " << utc->tm_hour << " hodin a " << utc->tm_min << " minut. den je " << utc->tm_yday << std::endl;
 
 
-  	for (int x = 0; x < utc->tm_mon+1; ++x)	// mesic
-  	{
-  	for (int y = 0; y < 31; ++y)			// den
-  	{
-  	for (int z = 0; z < 24; ++z)			// hodina
-  	{
+	for (int x = 0; x < utc->tm_mon+1; ++x)	// mesic
+	{
+	for (int y = 0; y < 31; ++y)			// den
+	{
+	for (int z = 0; z < 24; ++z)			// hodina
+	{
 
 
 
-  		line="";
-  		ss.str("");
-  		ss << "ZVPP"
-  		   << utc->tm_year+1900;
-  		ss << std::setw(2)<<std::setfill('0')<<x+1
-  		   << std::setw(2)<<std::setfill('0')<<y+1
-  		   << std::setw(2)<<std::setfill('0')<<z
-  		   << ".dat";
+		line="";
+		ss.str("");
+		ss << "ZVPP"
+			<< utc->tm_year+1900;
+		ss << std::setw(2)<<std::setfill('0')<<x+1
+			<< std::setw(2)<<std::setfill('0')<<y+1
+			<< std::setw(2)<<std::setfill('0')<<z
+			<< ".dat";
 
-  		RPath = RelPath + ss.str();
+		RPath = RelPath + ss.str();
 
 		std::ifstream myfile (RPath.c_str());
 		if (x+1 == utc->tm_mon+1)
@@ -167,16 +167,15 @@ void ParBolidozorFile(int hcount[], std::string RelPath){
 			std::cout << "File is NOT exist ";
 		}
 
-  		std::cout << RelPath << ss.str() << std::endl;
+		std::cout << RelPath << ss.str() << std::endl;
 
-  	}	// konec hodina
+	}	// konec hodina
 	}	// konec mesic
 	}	// konec rok
 }
 
 
-void ParMySQL(int hcount[]){	
-
+void ParMySQL(int hcount[]){
 
 	std::ifstream file ("./io/SqlAccess.in");
 	std::string value;
@@ -201,8 +200,8 @@ void ParMySQL(int hcount[]){
 	/*char *server = SQLconf[1].str();
 	char *user = SQLconf[2].c_str();
 	char *password = SQLconf[3].c_str();
-	char *database = SQLconf[4].c_str();
-*/
+	char *database = SQLconf[4].c_str();*/
+
 
 	char *server = "localhost";
 	char *user = "root";
@@ -210,12 +209,11 @@ void ParMySQL(int hcount[]){
 	char *database = "Bolidozor";
 
 
-
 	conn = mysql_init(NULL);
 
 	/* Pripojeni */
-	if (!mysql_real_connect(conn, server,
-		user, password, database, 0, NULL, 0)) {
+	if (!mysql_real_connect(conn, server, user, password, database, 0, NULL, 0))
+	{
 		fprintf(stderr, "%s\n", mysql_error(conn));
 		exit(1);
 	}
@@ -230,7 +228,7 @@ void ParMySQL(int hcount[]){
 	res = mysql_use_result(conn);
 
 	/* Jmeno tabulky */
-	printf("MySQL tabulek v DB:\n");
+	printf("tabulek: \n");
 	while ((row = mysql_fetch_row(res)) != NULL)
 	printf("%s \n", row[0]);
 
