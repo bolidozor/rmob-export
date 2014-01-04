@@ -197,10 +197,10 @@ void ParMySQL(int hcount[]){
 	MYSQL_RES *res;
 	MYSQL_ROW row;
 
-	/*char *server = SQLconf[1].str();
-	char *user = SQLconf[2].c_str();
-	char *password = SQLconf[3].c_str();
-	char *database = SQLconf[4].c_str();*/
+	//char *server = SQLconf[1].str();
+	//char *user = SQLconf[2].c_str();
+	//char *password = SQLconf[3].c_str();
+	//char *database = SQLconf[4].c_str();
 
 
 	char *server = "localhost";
@@ -211,14 +211,14 @@ void ParMySQL(int hcount[]){
 
 	conn = mysql_init(NULL);
 
-	/* Pripojeni */
+	// Pripojeni
 	if (!mysql_real_connect(conn, server, user, password, database, 0, NULL, 0))
 	{
 		fprintf(stderr, "%s\n", mysql_error(conn));
 		exit(1);
 	}
 
-	/* MySQL query */
+	// MySQL dotaz
 	if (mysql_query(conn, "show tables"))
 	{
 		fprintf(stderr, "%s\n", mysql_error(conn));
@@ -227,12 +227,12 @@ void ParMySQL(int hcount[]){
 
 	res = mysql_use_result(conn);
 
-	/* Jmeno tabulky */
+	//tabulka
 	printf("tabulek: \n");
 	while ((row = mysql_fetch_row(res)) != NULL)
 	printf("%s \n", row[0]);
 
-	/* close connection */
+	// ukoncit pripojeni
 	mysql_free_result(res);
 	mysql_close(conn);
 
