@@ -68,21 +68,27 @@ void ParRmobFile(int hcount[], std::string RelPath){
 	int him =0;
 	std::stringstream ident;
 
-	time_t now = time(0);
-	tm *ltm = localtime(&now);
+	//time_t now = time(0);
+	//tm *ltm = localtime(&now);
 
-	std::stringstream date;
-	date << ltm->tm_year+ 1900;
+	
+
+	time_t rawtime;
+	struct tm * utc;
+	
+	time ( &rawtime );
+	utc = gmtime ( &rawtime );
+
+	std::stringstream year;
+	year << utc->tm_year+ 1900;
 
 	std::stringstream month;
-	//if ((ltm->tm_mon + 1) << 10)
-	//{
-	//	month << "0"<< ltm->tm_mon + 1;
-	//}else{
-		month << ltm->tm_mon + 1;
-	//}
+	month << utc->tm_mon + 1;
 
-	RelPath = RelPath + "RMOB-" + date.str() + month.str() + ".dat";
+
+	RelPath = RelPath + "RMOB-" + year.str() + month.str() + ".dat";
+
+	std::cout<< "Cesta k souboru:" << RelPath << std::endl;
 
 	char* den;
 	char* hodina;
