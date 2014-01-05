@@ -83,7 +83,15 @@ void ParRmobFile(int hcount[], std::string RelPath){
 	year << utc->tm_year+ 1900;
 
 	std::stringstream month;
+	if ((utc->tm_mon + 1) << 10)
+	{
+		month << "0" << utc->tm_mon + 1;
+	}else
+	{
 	month << utc->tm_mon + 1;
+	}
+
+
 
 
 	RelPath = RelPath + "RMOB-" + year.str() + month.str() + ".dat";
