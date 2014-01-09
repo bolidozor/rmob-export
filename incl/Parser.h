@@ -140,7 +140,7 @@ void ParBolidozorFile(int hcount[], std::string RelPath){
 
 	for (int x = 0; x < utc->tm_mon+1; ++x)	// mesic
 	{
-	for (int y = 0; y < 31; ++y)			// den
+	for (int y = 0; y < 32; ++y)			// den
 	{
 	for (int z = 0; z < 24; ++z)			// hodina
 	{
@@ -186,6 +186,122 @@ void ParBolidozorFile(int hcount[], std::string RelPath){
 	}	// konec hodina
 	}	// konec mesic
 	}	// konec rok
+}
+
+void ParBolidozor14File(int hcount[], std::string RelPath){
+
+	std::string RPath;
+	std::stringstream ss;
+	std::string line;
+
+	time_t rawtime;
+	struct tm * utc;
+
+	time ( &rawtime );
+	utc = gmtime ( &rawtime );
+
+	for (int i = 0; i < 744; ++i)
+	{
+		hcount[i]=1111; // Black
+	}
+
+
+	std::cout << "UTC čas je " << utc->tm_hour << " hodin a " << utc->tm_min << " minut. den je " << utc->tm_yday << std::endl;
+
+	int r = utc->tm_year+1900;
+
+	//for (int x = 0; x < utc->tm_mon+1; ++x)	// mesic
+	//{
+	for (int y = 0; y < 32; ++y)			// den
+	{
+	for (int z = 0; z < 24; ++z)			// hodina
+	{
+
+
+
+int numOfChar = 0;
+
+
+		line="";
+		ss.str("");
+
+		ss << utc->tm_year+1900 << "/";
+
+		if (utc->tm_mon+1 < 10)
+		{
+			ss << "0" << utc->tm_mon+1;
+		}else{
+			ss << utc->tm_mon+1;
+		}
+		ss << "/";
+
+		if (y+1 < 10)
+		{
+			ss << "0" << y+1;
+		}else{
+			ss << y+1;
+		}
+		ss << "/";
+
+		ss << utc->tm_year+1900;
+
+		if (utc->tm_mon+1 < 10)
+		{
+			ss << "0" << utc->tm_mon+1;
+		}else{
+			ss << utc->tm_mon+1;
+		}
+
+		if (y+1 < 10)
+		{
+			ss << "0" << y+1;
+		}else{
+			ss << y+1;
+		}
+		
+		ss << std::setw(2)<<std::setfill('0') << z
+			<< "_SVAKOV-R2"
+			<< ".dat";
+
+		RPath = RelPath + ss.str();
+
+		std::ifstream myfile (RPath.c_str());
+
+		if (utc->tm_mon == utc->tm_mon)
+		{
+			if (myfile.is_open())
+			{
+				hcount[y*24 + z] = 0;
+				std::cout << "File exist ";
+				while ( getline (myfile,line) )
+				{
+
+					if (line.find("_met") != std::string::npos) {
+						std::cout << "  Met  ";
+						hcount[y*24 + z] ++;
+					}
+
+					if (line.find("_fb") != std::string::npos) {
+						std::cout << "  FB  ";
+						hcount[y*24 + z] ++;
+					}
+
+				}
+				std::cout << "hodina" <<y*24 + z<< "-" << hcount[y*24 + z] << " ";
+				myfile.close();
+			}
+			else
+			{
+				std::cout << "File is NOT exist ";
+			}
+		}
+		
+
+		std::cout << RelPath << ss.str() << std::endl;
+
+	}	// konec hodina
+	}	// konec mesic
+	//}	// konec rok
 }
 
 

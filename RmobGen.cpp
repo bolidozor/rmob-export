@@ -32,7 +32,13 @@ int main(int argc, char const *argv[]){
 
 	ParObsInfo(ObsInfo, ParArg(argc, argv));
 
+	if(ObsInfo[14] == "Bolidozor_14"){
+		ParBolidozor14File(HourCount,ObsInfo[13]);
+		TxtGen(ObsInfo,HourCount);
+		SvgGen(ObsInfo,HourCount);
+		SvgJpg("./io/");
 
+	}
 	if (ObsInfo[14] == "Bolidozor")
 	{
 		ParBolidozorFile(HourCount,ObsInfo[13]);

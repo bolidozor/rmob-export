@@ -39,4 +39,4 @@ N
 # Relative path to RMOB file as -- ./../Spectrum/
 ./../Spectrum/
 # Type of input data eg. "Bolidozor", "Rmob", "MySQL"
-Bolidozor_14
+Bolidozor
