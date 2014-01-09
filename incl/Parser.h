@@ -58,7 +58,7 @@ void ParObsInfo(std::string data[], std::string path){
 	}
 }
 
-void ParRmobFile(int hcount[], std::string RelPath){
+void ParRmobFile(int hcount[], std::string ObsInfo[20]){
 
 	for (int i = 0; i < 744; ++i)
 	{
@@ -93,8 +93,8 @@ void ParRmobFile(int hcount[], std::string RelPath){
 
 
 
-
-	RelPath = RelPath + "RMOB-" + year.str() + month.str() + ".dat";
+	std::string RelPath;
+	RelPath = ObsInfo[13] + "RMOB-" + year.str() + month.str() + ".dat";
 
 	std::cout<< "Cesta k souboru:" << RelPath << std::endl;
 
@@ -117,7 +117,7 @@ void ParRmobFile(int hcount[], std::string RelPath){
 }
 
 
-void ParBolidozorFile(int hcount[], std::string RelPath){
+void ParBolidozorFile(int hcount[], std::string ObsInfo[20]){
 
 	std::string RPath;
 	std::stringstream ss;
@@ -149,14 +149,14 @@ void ParBolidozorFile(int hcount[], std::string RelPath){
 
 		line="";
 		ss.str("");
-		ss << "ZVPP"
+		ss << ObsInfo[15]
 			<< utc->tm_year+1900;
 		ss << std::setw(2)<<std::setfill('0')<<x+1
 			<< std::setw(2)<<std::setfill('0')<<y+1
 			<< std::setw(2)<<std::setfill('0')<<z
 			<< ".dat";
 
-		RPath = RelPath + ss.str();
+		RPath = ObsInfo[13] + ss.str();
 
 		std::ifstream myfile (RPath.c_str());
 		if (x+1 == utc->tm_mon+1)
@@ -181,14 +181,14 @@ void ParBolidozorFile(int hcount[], std::string RelPath){
 			std::cout << "File is NOT exist ";
 		}
 
-		std::cout << RelPath << ss.str() << std::endl;
+		std::cout << ObsInfo[13] << ss.str() << std::endl;
 
 	}	// konec hodina
 	}	// konec mesic
 	}	// konec rok
 }
 
-void ParBolidozor14File(int hcount[], std::string RelPath){
+void ParBolidozor14File(int hcount[], std::string ObsInfo[20]){
 
 	std::string RPath;
 	std::stringstream ss;
@@ -210,8 +210,6 @@ void ParBolidozor14File(int hcount[], std::string RelPath){
 
 	int r = utc->tm_year+1900;
 
-	//for (int x = 0; x < utc->tm_mon+1; ++x)	// mesic
-	//{
 	for (int y = 0; y < 32; ++y)			// den
 	{
 	for (int z = 0; z < 24; ++z)			// hodina
@@ -260,10 +258,10 @@ int numOfChar = 0;
 		}
 		
 		ss << std::setw(2)<<std::setfill('0') << z
-			<< "_SVAKOV-R2"
+			<< ObsInfo[15]
 			<< ".dat";
 
-		RPath = RelPath + ss.str();
+		RPath = ObsInfo[13] + ss.str();
 
 		std::ifstream myfile (RPath.c_str());
 
@@ -277,17 +275,15 @@ int numOfChar = 0;
 				{
 
 					if (line.find("_met") != std::string::npos) {
-						std::cout << "  Met  ";
 						hcount[y*24 + z] ++;
 					}
 
 					if (line.find("_fb") != std::string::npos) {
-						std::cout << "  FB  ";
 						hcount[y*24 + z] ++;
 					}
 
 				}
-				std::cout << "hodina" <<y*24 + z<< "-" << hcount[y*24 + z] << " ";
+				std::cout << "hodina " << y*24 + z<< "; pocet " << hcount[y*24 + z] << "; ";
 				myfile.close();
 			}
 			else
@@ -297,11 +293,10 @@ int numOfChar = 0;
 		}
 		
 
-		std::cout << RelPath << ss.str() << std::endl;
+		std::cout << ObsInfo[13] << ss.str() << std::endl;
 
 	}	// konec hodina
 	}	// konec mesic
-	//}	// konec rok
 }
 
 

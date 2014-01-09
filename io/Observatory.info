@@ -38,5 +38,7 @@ N
 --email--
 # Relative path to RMOB file as -- ./../Spectrum/
 ./../Spectrum/
-# Type of input data eg. "Bolidozor", "Rmob", "MySQL"
+# Type of input data eg. "Bolidozor_14", "Bolidozor", "Rmob", "MySQL"
 Bolidozor_14
+# Observatory Prefix
+--Prefix--

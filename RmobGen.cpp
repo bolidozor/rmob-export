@@ -19,7 +19,7 @@ using namespace std;
 
 int main(int argc, char const *argv[]){
 
-	string ObsInfo[15];
+	string ObsInfo[16];
 	int HourCount[745];
 
 	for (int i = 0; i < 745; ++i)
@@ -33,7 +33,7 @@ int main(int argc, char const *argv[]){
 	ParObsInfo(ObsInfo, ParArg(argc, argv));
 
 	if(ObsInfo[14] == "Bolidozor_14"){
-		ParBolidozor14File(HourCount,ObsInfo[13]);
+		ParBolidozor14File(HourCount,ObsInfo);
 		TxtGen(ObsInfo,HourCount);
 		SvgGen(ObsInfo,HourCount);
 		SvgJpg("./io/");
@@ -41,14 +41,14 @@ int main(int argc, char const *argv[]){
 	}
 	if (ObsInfo[14] == "Bolidozor")
 	{
-		ParBolidozorFile(HourCount,ObsInfo[13]);
+		ParBolidozorFile(HourCount,ObsInfo);
 		TxtGen(ObsInfo,HourCount);
 		SvgGen(ObsInfo,HourCount);
 		SvgJpg("./io/");
 	}
 	if (ObsInfo[14] == "Rmob")
 	{
-		ParRmobFile(HourCount,ObsInfo[13]);
+		ParRmobFile(HourCount,ObsInfo);
 		TxtGen(ObsInfo,HourCount);
 		SvgGen(ObsInfo,HourCount);
 		SvgJpg("./io/");
