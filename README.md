@@ -5,11 +5,11 @@ Generator of colorgramme graphs to rmob observers database.
 
 ### Ubuntu 13.04
 
-sudo apt-get install libmagick++4
+  sudo apt-get install libmagick++4
 
-sudo apt-get install libmagick++-dev
+  sudo apt-get install libmagick++-dev
 
-sudo apt-get install libmysqlclient-dev
+  sudo apt-get install libmysqlclient-dev
  
 
 ## Howto
@@ -20,10 +20,17 @@ sudo apt-get install libmysqlclient-dev
 
 2. make
 
+### Setting
+
+1. Open file rmob-export/io/Observatory.info
+
+2. In Observatory.info file change all parameters
+
 
 ### Running
 
-./RmobGen -input-[Path-to-.info-file]
+  ./RmobGen -input-[Path-to-.info-file]
+
 
 ## License
 

@@ -1,14 +1,32 @@
-# RmobGen Configuration file
-# 
+#															#
+# 				RmobGen Configuration file					#
+#															#
+# ###########################################################
+# ###########################################################
 # https://github.com/MLAB-project/rmob-export
 #
 #
-#	If you using SQL data source  
+#		Description of inpute data types:
+#
+#			"Bolidozor_14" (Recommended)
+#				
+#				
+#
+#			"Bolidozor"
+#				
 #
 #
+#			"Rmob"
+#				Standard colorgramm file typ
 #
 #
+#			"MySQL"
+#				Only for specific use !!!
 #
+#
+#															
+# ##########################################################
+# ##########################################################
 #
 # Observatory name
 --Observatory
@@ -40,5 +58,5 @@ N
 ./../Spectrum/
 # Type of input data eg. "Bolidozor_14", "Bolidozor", "Rmob", "MySQL"
 Bolidozor_14
-# Observatory Prefix
+# Observatory Prefix 
 --Prefix--
