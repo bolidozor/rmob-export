@@ -1761,6 +1761,39 @@ int SvgJpg(std::string path){
 
 void TxtGen(std::string svginfo[15], int hourcount[745]){
 
+std::string strhourcount[745];
+std::stringstream c;
+
+for (int i; i < 745 ; ++i)
+{	
+	c.str("");
+    c << hourcount[i];
+	if (hourcount[i] < 10)
+	{
+		c.str("");
+		c << "   " << hourcount[i];
+	}
+	if (hourcount[i] > 9 && hourcount[i] < 100)
+	{
+		c.str("");
+		c << "  " << hourcount[i];
+	}
+	if (hourcount[i] > 99 && hourcount[i] < 1000)
+	{
+		c.str("");
+		c << " " << hourcount[i];
+	}
+    if (hourcount[i]==1111)
+    {
+    	c.str("");
+    	c << "??? ";
+    }
+
+    strhourcount[i] = c.str();
+}
+
+
+
 const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Jul", "aug", "sep", "oct", "nov", "dec"};
 
 
@@ -1776,10 +1809,10 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 	std::ofstream txtout;
 	txtout.open ("io/rmob.txt");
 
-	txtout << MonthNames[ utc->tm_mon ] << "| 00h | 01h | 02h | 03h | 04h | 05h | 06h | 07h | 08h | 09h | 10h | 11h | 12h | 13h | 14h | 15h | 16h | 17h | 18h | 19h | 20h | 21h | 22h | 23h |\n";
+	txtout << MonthNames[ utc->tm_mon ] << "| 00h| 01h| 02h| 03h| 04h| 05h| 06h| 07h| 08h| 09h| 10h| 11h| 12h| 13h| 14h| 15h| 16h| 17h| 18h| 19h| 20h| 21h| 22h| 23h|\n";
 	for (int i = 0; i < 31; ++i)
 	{
-		txtout <<  i <<" |"<< hourcount[24* i-0 +0] <<"|"<< hourcount[24* i-0 +1] <<"|"<< hourcount[24* i-0 +2] <<"|"<< hourcount[24* i-0 +3] <<"|"<< hourcount[24* i-0 +4] <<"|"<< hourcount[24* i-0 +5] <<"|"<< hourcount[24* i-0 +6] <<"|"<< hourcount[24* i-0 +7] <<"|"<< hourcount[24* i-0 +8] <<"|"<< hourcount[24* i-0 +9] <<"|"<< hourcount[24* i-0 + 10] <<"|"<< hourcount[24* i-0 + 11] <<"|"<< hourcount[24* i-0 + 12] <<"|"<< hourcount[24* i-0 + 13] <<"|"<< hourcount[24* i-0 + 14] <<"|"<< hourcount[24* i-0 + 15] <<"|"<< hourcount[24* i-0 + 16] <<"|"<< hourcount[24* i-0 + 17] <<"|"<< hourcount[24* i-0 + 18] <<"|"<< hourcount[24* i-0 + 19] <<"|"<< hourcount[24* i-0 + 20] <<"|"<< hourcount[24* i-0 + 21] <<"|"<< hourcount[24* i-0 + 22] <<"|"<< hourcount[24* i-0 + 23] <<"|\n";
+		txtout <<  i <<" |"<< strhourcount[24* i-0 +0] <<"|"<< strhourcount[24* i-0 +1] <<"|"<< strhourcount[24* i-0 +2] <<"|"<< strhourcount[24* i-0 +3] <<"|"<< strhourcount[24* i-0 +4] <<"|"<< strhourcount[24* i-0 +5] <<"|"<< strhourcount[24* i-0 +6] <<"|"<< strhourcount[24* i-0 +7] <<"|"<< strhourcount[24* i-0 +8] <<"|"<< strhourcount[24* i-0 +9] <<"|"<< strhourcount[24* i-0 + 10] <<"|"<< strhourcount[24* i-0 + 11] <<"|"<< strhourcount[24* i-0 + 12] <<"|"<< strhourcount[24* i-0 + 13] <<"|"<< strhourcount[24* i-0 + 14] <<"|"<< strhourcount[24* i-0 + 15] <<"|"<< strhourcount[24* i-0 + 16] <<"|"<< strhourcount[24* i-0 + 17] <<"|"<< strhourcount[24* i-0 + 18] <<"|"<< strhourcount[24* i-0 + 19] <<"|"<< strhourcount[24* i-0 + 20] <<"|"<< strhourcount[24* i-0 + 21] <<"|"<< strhourcount[24* i-0 + 22] <<"|"<< strhourcount[24* i-0 + 23] <<"|\n";
 		//std::cout <<  i <<" |0 "<< hourcount[24* i-0 +0] <<"|1 "<< hourcount[24* i-0 +1] <<"|2 "<< hourcount[24* i-0 +2] <<"|3 "<< hourcount[24* i-0 +3] <<"|4 "<< hourcount[24* i-0 +4] <<"|5 "<< hourcount[24* i-0 +5] <<"|6 "<< hourcount[24* i-0 +6] <<"|7 "<< hourcount[24* i-0 +7] <<"|8 "<< hourcount[24* i-0 +8] <<"|9 "<< hourcount[24* i-0 +9] <<"|10 "<< hourcount[24* i-0 + 10] <<"|11 "<< hourcount[24* i-0 + 11] <<"|12 "<< hourcount[24* i-0 + 12] <<"|13 "<< hourcount[24* i-0 + 13] <<"|14 "<< hourcount[24* i-0 + 14] <<"|15 "<< hourcount[24* i-0 + 15] <<"|16 "<< hourcount[24* i-0 + 16] <<"|17 "<< hourcount[24* i-0 + 17] <<"|18 "<< hourcount[24* i-0 + 18] <<"|19 "<< hourcount[24* i-0 + 19] <<"|20 "<< hourcount[24* i-0 + 20] <<"|21 "<< hourcount[24* i-0 + 21] <<"|22 "<< hourcount[24* i-0 + 22] <<"|23 "<< hourcount[24* i-0 + 23] <<"|"<<std::endl;
 	}
 
@@ -1799,7 +1832,7 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 	txtout << "[Receiver]" <<  svginfo[5] << "\n";
 	txtout << "[Observing Method]" <<  "Fordward scattering" << "\n";
 	txtout << "[Remarks]" <<  svginfo[6] << "\n";
-	txtout << "[Soft FTP] Astrozor RMOBgen v0.5\n";
+	txtout << "[Soft FTP] Astrozor RMOBgen v0.7\n";
 	txtout << "[E]" <<  "-" << "\n";
 	/*
 

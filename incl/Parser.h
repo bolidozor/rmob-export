@@ -257,7 +257,8 @@ int numOfChar = 0;
 			ss << y+1;
 		}
 		
-		ss << std::setw(2)<<std::setfill('0') << z
+		ss	<< std::setw(2)<<std::setfill('0') << z
+			<< "_"
 			<< ObsInfo[15]
 			<< ".dat";
 
