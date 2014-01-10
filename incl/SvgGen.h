@@ -691,6 +691,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "	       id=\"path4454\"	";
 	svgout << "	       inkscape:connector-curvature=\"0\" />	";
 	svgout << "	  </g>	";
+	/*
 	svgout << "	  <g	";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
 	svgout << "	     id=\"texCopy\">	";
@@ -829,7 +830,79 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
 	svgout << "	       id=\"path4319\"	";
 	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	  </g>	";
+	svgout << "	  </g>	";*/
+
+
+	//svgout << "	<g  ";
+	//svgout << "		id=\"VerInfoGroup\">  ";
+	//svgout << "	<text  ";
+	//svgout << "		sodipodi:linespacing=\"125%\"  ";
+	//svgout << "			id=\"VerInfoLable\"  ";
+	//svgout << "			y=\"217.77635\"  ";
+	//svgout << "			x=\"406.8938\"  ";
+	//svgout << "			style=\"font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Sans Bold\"  ";
+	//svgout << "			style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">"<<MINhourcount<<"</tspan></text>	";
+	//svgout << "			xml:space=\"preserve\"><tspan  ";
+	//svgout << "		style=\"font-size:14px;font-weight:normal;fill:#fff0016;fill-opacity:0;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"  ";
+	//svgout << "		y=\"217.77635\"  ";
+	//svgout << "		x=\"406.8938\"  ";
+	//svgout << "		id=\"tspan4765\"  ";
+	//svgout << "		sodipodi:role=\"line\">Astrozar.cz  -   RMOBgen      </tspan></text>  ";
+	//svgout << "	<text  ";
+	//svgout << "		sodipodi:linespacing=\"125%\"  ";
+	//svgout << "			id=\"VerInfoNum\"  ";
+	//svgout << "			y=\"217.64696\"  ";
+	//svgout << "			x=\"623.55505\"  ";
+	//svgout << "			style=\"font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Sans Bold\"  ";
+	//svgout << "			xml:space=\"preserve\"><tspan  ";
+	//svgout << "		style=\"font-size:14px;font-weight:normal;fill:#ff0016;fill-opacity:0;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"  ";
+	///svgout << "		y=\"217.64696\"	";
+	//svgout << "		x=\"623.55505\"  ";
+	//svgout << "		id=\"tspan4765-7\"  ";
+	//svgout << "		sodipodi:role=\"line\">ver.: 0.8 </tspan></text>   ";
+	//svgout << "	</g>  ";
+
+	svgout << "	<g  ";
+	svgout << "		id=\"Version\">  ";
+	svgout << "	<text  ";
+	svgout << "		xml:space=\"preserve\"  ";
+	svgout << "		style=\"font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#ff0016;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Sans Bold\"  ";
+	svgout << "		x=\"405.43259\"  ";
+	svgout << "		y=\"217.30455\"  ";
+	svgout << "		id=\"text4735\"  ";
+	svgout << "		sodipodi:linespacing=\"125%\"><tspan  ";
+	svgout << "			sodipodi:role=\"line\"  ";
+	svgout << "			id=\"tspan4737\"  ";
+	svgout << "			x=\"405.43259\"  ";
+	svgout << "			y=\"217.30455\"  ";
+	svgout << "			style=\"font-size:10px;font-weight:normal;fill:#ff0016;fill-opacity:1;-inkscape-font-specification:Ubuntu\">Bolidozor.cz  -   RMOBgen</tspan></text>  ";
+	svgout << "	<text  ";
+	svgout << "		xml:space=\"preserve\"  ";
+	svgout << "		style=\"font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ff0016;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"  ";
+	svgout << "		x=\"638.93542\"  ";
+	svgout << "		y=\"217.30455\"  ";
+	svgout << "		id=\"text4739\"  ";
+	svgout << "		sodipodi:linespacing=\"125%\"><tspan  ";
+	svgout << "			sodipodi:role=\"line\"  ";
+	svgout << "			id=\"tspan4741\"  ";
+	svgout << "			x=\"638.93542\"  ";
+	svgout << "			y=\"217.30455\"  ";
+	svgout << "			style=\"font-size:9px;fill:#ff0016;fill-opacity:1\">ver.:</tspan></text>  ";
+	svgout << "	<text  ";
+	svgout << "		xml:space=\"preserve\"  ";
+	svgout << "		style=\"font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ff0016;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Sans Bold\"  ";
+	svgout << "		x=\"654.65887\"  ";
+	svgout << "		y=\"217.30455\"  ";
+	svgout << "		id=\"text4743\"  ";
+	svgout << "		sodipodi:linespacing=\"125%\"><tspan  ";
+	svgout << "			sodipodi:role=\"line\"  ";
+	svgout << "			id=\"tspan4745\"  ";
+	svgout << "			x=\"654.65887\"  ";
+	svgout << "			y=\"217.30455\"  ";
+	svgout << "			style=\"font-size:10px;font-weight:normal;fill:#ff0016;fill-opacity:1;-inkscape-font-specification:Ubuntu\">0.8</tspan></text>  ";
+	svgout << "	</g>  ";
+
+
 	svgout << "	  <text	";
 	svgout << "	     xml:space=\"preserve\"	";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
@@ -1832,7 +1905,7 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 	txtout << "[Receiver]" <<  svginfo[5] << "\n";
 	txtout << "[Observing Method]" <<  "Fordward scattering" << "\n";
 	txtout << "[Remarks]" <<  svginfo[6] << "\n";
-	txtout << "[Soft FTP] Astrozor RMOBgen v0.7\n";
+	txtout << "[Soft FTP] Astrozor RMOBgen v0.8\n";
 	txtout << "[E]" <<  "-" << "\n";
 	/*
 
