@@ -1,15 +1,11 @@
 rmob-export
 ===========
 
-Generator of colorgramme graphs to rmob observers database.
+Generator of colorgramme graphs to rmob observers database. This program generate rmob (http://www.rmob.org/livedata/main.php) compitible graphs from radio meteor detection sofware data. 
 
 ### Ubuntu 13.04
 
-  sudo apt-get install libmagick++4
-
-  sudo apt-get install libmagick++-dev
-
-  sudo apt-get install libmysqlclient-dev
+    sudo apt-get install libmagick++4 libmagick++-dev libmysqlclient-dev
  
 
 ## Howto
