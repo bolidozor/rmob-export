@@ -4,7 +4,8 @@
 #include <ctime>
 #include <string>
 #include <sstream>
-
+#include <cmath>
+#include <iomanip>
 
 int SvgColRed(int num){
 	int out;
@@ -1932,8 +1933,8 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 	txtout << "[Observer]" <<  svginfo[0] << "\n";
 	txtout << "[Country]" <<  svginfo[1] << "\n";
 	txtout << "[City]" <<  svginfo[2] << "\n";
-	txtout << "[Longitude]" <<  svginfo[8].substr(0,3) <<"d"<< atoi(svginfo[8].substr(4,2).c_str())*60 <<" "<< svginfo[10] << "\n";
-	txtout << "[Latitude ]" <<  svginfo[7].substr(0,3) <<"d"<< atoi(svginfo[7].substr(4,2).c_str())*60 <<" "<< svginfo[9] << "\n";
+	txtout << "[Longitude]" <<  svginfo[8].substr(0,3) <<"d"<< std::setw(2)<< std::setfill('0') << round((atoi(svginfo[8].substr(4,4).c_str())/10000 *60)) << std::setw(2)<< std::setfill('0') << round((atoi(svginfo[8].substr(4,4).c_str())/10000 *60)-round((atoi(svginfo[8].substr(4,4).c_str())/10000 *60))*100)  <<" "<< svginfo[10] << "\n";
+	txtout << "[Latitude ]" <<  svginfo[7].substr(0,3) <<"d"<< std::setw(2)<< std::setfill('0') << round((atoi(svginfo[7].substr(4,4).c_str())/10000 *60)) << std::setw(2)<< std::setfill('0') << round((atoi(svginfo[7].substr(4,4).c_str())/10000 *60)-round((atoi(svginfo[7].substr(4,4).c_str())/10000 *60))*100)<<" "<< svginfo[9] << "\n";
 	txtout << "[Longitude GMAP]" << svginfo[8] << "\n";
 	txtout << "[Latitude GMAP]" << svginfo[7] << "\n";
 	txtout << "[Frequencies]" <<  svginfo[11] << "\n";
