@@ -1825,14 +1825,35 @@ int SvgPng(std::string path){
 	svgImage.write(path + "rmob.png");
 }
 
-int SvgJpg(std::string path){
+int SvgJpg(std::string path, std::string svginfo[15]){
+
+	time_t rawtime;
+	struct tm * utc;
+
+	time ( &rawtime );
+	utc = gmtime ( &rawtime );
+
 	Magick::Image svgImage(path + "rmob.svg");
 	svgImage.magick("jpg");
-	svgImage.write(path + "rmob.jpg");
+	std::stringstream JpgName;
+
+	JpgName << svginfo[0] << "_";
+	if (utc->tm_mon+1 < 10)
+	{
+		JpgName << "0" << utc->tm_mon+1;
+	}else{
+		JpgName << utc->tm_mon+1 ;
+	}
+	JpgName << utc->tm_year+1900 << ".jpg";
+
+	std::string string;
+	string = JpgName.str();
+	svgImage.write(path + string);
 }
 
 
-void TxtGen(std::string svginfo[15], int hourcount[745]){
+void TxtGen(std::string svginfo[15], int hourcount[745],std::string path){
+
 
 std::string strhourcount[745];
 std::stringstream c;
@@ -1880,7 +1901,25 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 	utc = gmtime ( &rawtime );
 
 	std::ofstream txtout;
-	txtout.open ("io/rmob.txt");
+
+	
+
+// ZVPPCB_012014rmob.TXT
+
+	std::stringstream JpgName;
+
+	JpgName << path << svginfo[0] << "_";
+	if (utc->tm_mon+1 < 10)
+	{
+		JpgName << "0" << utc->tm_mon+1;
+	}else{
+		JpgName << utc->tm_mon+1 ;
+	}
+	JpgName << utc->tm_year+1900 << "rmob.TXT";
+
+
+
+	txtout.open (JpgName.str().c_str() );
 
 	txtout << MonthNames[ utc->tm_mon ] << "| 00h| 01h| 02h| 03h| 04h| 05h| 06h| 07h| 08h| 09h| 10h| 11h| 12h| 13h| 14h| 15h| 16h| 17h| 18h| 19h| 20h| 21h| 22h| 23h|\n";
 	for (int i = 0; i < 31; ++i)
