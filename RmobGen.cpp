@@ -34,24 +34,24 @@ int main(int argc, char const *argv[]){
 
 	if(ObsInfo[14] == "Bolidozor_14"){
 		ParBolidozor14File(HourCount,ObsInfo);
-		TxtGen(ObsInfo,HourCount, "./io/");
+		TxtGen(ObsInfo,HourCount, "./io/gen/");
 		SvgGen(ObsInfo,HourCount);
-		SvgJpg("./io/",ObsInfo);
+		SvgJpg("./io/gen/",ObsInfo);
 
 	}
 	if (ObsInfo[14] == "Bolidozor")
 	{
 		ParBolidozorFile(HourCount,ObsInfo);
-		TxtGen(ObsInfo,HourCount, "./io/");
+		TxtGen(ObsInfo,HourCount, "./io/gen/");
 		SvgGen(ObsInfo,HourCount);
-		SvgJpg("./io/",ObsInfo);
+		SvgJpg("./io/gen/",ObsInfo);
 	}
 	if (ObsInfo[14] == "Rmob")
 	{
 		ParRmobFile(HourCount,ObsInfo);
-		TxtGen(ObsInfo,HourCount, "./io/");
+		TxtGen(ObsInfo,HourCount, "./io/gen/");
 		SvgGen(ObsInfo,HourCount);
-		SvgJpg("./io/",ObsInfo);
+		SvgJpg("./io/gen/",ObsInfo);
 	}
 	if (ObsInfo[14] == "MySQL")
 	{

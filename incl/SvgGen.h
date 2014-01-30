@@ -900,7 +900,9 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "			id=\"tspan4745\"  ";
 	svgout << "			x=\"654.65887\"  ";
 	svgout << "			y=\"217.30455\"  ";
-	svgout << "			style=\"font-size:10px;font-weight:normal;fill:#ff0016;fill-opacity:1;-inkscape-font-specification:Ubuntu\">0.8</tspan></text>  ";
+
+	///// Ver ver version verze Ver.: Ver.:
+	svgout << "			style=\"font-size:10px;font-weight:normal;fill:#ff0016;fill-opacity:1;-inkscape-font-specification:Ubuntu\">0.9</tspan></text>  ";
 	svgout << "	</g>  ";
 
 
@@ -1834,7 +1836,7 @@ int SvgJpg(std::string path, std::string svginfo[15]){
 	time ( &rawtime );
 	utc = gmtime ( &rawtime );
 
-	Magick::Image svgImage(path + "rmob.svg");
+	Magick::Image svgImage( "./io/rmob.svg");
 	svgImage.magick("jpg");
 	std::stringstream JpgName;
 
@@ -1933,8 +1935,8 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 	txtout << "[Observer]" <<  svginfo[0] << "\n";
 	txtout << "[Country]" <<  svginfo[1] << "\n";
 	txtout << "[City]" <<  svginfo[2] << "\n";
-	txtout << "[Longitude]" <<  svginfo[8].substr(0,3) <<"d"<< std::setw(2)<< std::setfill('0') << round((atoi(svginfo[8].substr(4,4).c_str())/10000 *60)) << std::setw(2)<< std::setfill('0') << round((atoi(svginfo[8].substr(4,4).c_str())/10000 *60)-round((atoi(svginfo[8].substr(4,4).c_str())/10000 *60))*100)  <<" "<< svginfo[10] << "\n";
-	txtout << "[Latitude ]" <<  svginfo[7].substr(0,3) <<"d"<< std::setw(2)<< std::setfill('0') << round((atoi(svginfo[7].substr(4,4).c_str())/10000 *60)) << std::setw(2)<< std::setfill('0') << round((atoi(svginfo[7].substr(4,4).c_str())/10000 *60)-round((atoi(svginfo[7].substr(4,4).c_str())/10000 *60))*100)<<" "<< svginfo[9] << "\n";
+	txtout << "[Longitude]" <<  svginfo[8].substr(0,3) <<"d"<< std::setw(2)<< std::setfill('0') << round((atoi(svginfo[8].substr(4,4).c_str())/10000 *60)) << std::setw(2)<< std::setfill('0') << round((atoi(svginfo[8].substr(4,4).c_str())/10000 *60)-round((atoi(svginfo[8].substr(4,4).c_str())/10000 *60))*100)  <<" "<< svginfo[9] << "\n";
+	txtout << "[Latitude ]" <<  svginfo[7].substr(0,3) <<"d"<< std::setw(2)<< std::setfill('0') << round((atoi(svginfo[7].substr(4,4).c_str())/10000 *60)) << std::setw(2)<< std::setfill('0') << round((atoi(svginfo[7].substr(4,4).c_str())/10000 *60)-round((atoi(svginfo[7].substr(4,4).c_str())/10000 *60))*100)<<" "<< svginfo[10] << "\n";
 	txtout << "[Longitude GMAP]" << svginfo[8] << "\n";
 	txtout << "[Latitude GMAP]" << svginfo[7] << "\n";
 	txtout << "[Frequencies]" <<  svginfo[11] << "\n";
@@ -1945,7 +1947,7 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 	txtout << "[Receiver]" <<  svginfo[5] << "\n";
 	txtout << "[Observing Method]" <<  "Fordward scattering" << "\n";
 	txtout << "[Remarks]" <<  svginfo[6] << "\n";
-	txtout << "[Soft FTP] Astrozor RMOBgen v0.8\n";
+	txtout << "[Soft FTP] Astrozor RMOBgen v0.9\n";
 	txtout << "[E]" <<  "-" << "\n";
 	/*
 
