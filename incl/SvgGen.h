@@ -19,4 +19,5 @@ int SvgJpg(std::string path, std::string svginfo[15]);
 
 void TxtGen(std::string svginfo[15], int hourcount[745],std::string path);
 
+#include "SvgGen.c"
 #endif

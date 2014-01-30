@@ -16,4 +16,5 @@ void ParBolidozor14File(int hcount[], std::string ObsInfo[20]);
 
 void ParMySQL(int hcount[]);
 
+#include "Parser.c"
 #endif
