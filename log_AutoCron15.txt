@@ -14,3 +14,4 @@ Zacatek prenosu str(datetime.datetime.now() >> str(datetime.datetime.now() - kon
 Zacatek prenosu str(datetime.datetime.now()Zacatek prenosu str(datetime.datetime.now()Zacatek prenosu str(datetime.datetime.now()Zacatek prenosu str(datetime.datetime.now()Zacatek prenosu str(datetime.datetime.now() >> str(datetime.datetime.now() - konec prenosu 
 Zacatek prenosu str(datetime.datetime.now() >> str(datetime.datetime.now() - konec prenosu 
 Zacatek prenosu str(datetime.datetime.now() >> str(datetime.datetime.now() - konec prenosu 
+Zacatek prenosu 2014-01-30 17:50:34 >> 2014-01-30 17:50:34 - konec prenosu 

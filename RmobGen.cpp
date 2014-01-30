@@ -11,9 +11,10 @@
 #include <Magick++.h>
 #include <mysql/mysql.h>
 
-
 #include "incl/SvgGen.h"
 #include "incl/Parser.h"
+#include "incl/SvgGen.c"
+#include "incl/Parser.c"
 
 using namespace std;
 
