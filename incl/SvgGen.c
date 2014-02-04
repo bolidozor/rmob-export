@@ -1619,12 +1619,11 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 
 	//  zakladna hisntogramu  -- 34,86588
 
-	float Dkrok = 0.00000; // Kolik px zabere v sloupci 1 meteor
+	float Dkrok = 0.00001; // Kolik px zabere v sloupci 1 meteor
 	std::cout << DayMAXhourcount <<"|" ;
-	Dkrok = (float)84/(float)DayMAXhourcount;
-	if (Dkrok == 0)		// Ochrana proti sikmym caram
+	if (DayMAXhourcount != 0)
 	{
-		Dkrok = 0.00001;
+		Dkrok = (float)84/(float)DayMAXhourcount;
 	}
 	std::cout << DayMAXhourcount <<"|"<< Dkrok<< "|" << 202.866002 - (Dkrok*hourcount[(utc->tm_mday-1)*24 + 4]) << "|"<< Dkrok*hourcount[(utc->tm_mday-1)*24 + 4] << "|"<< hourcount[(utc->tm_mday-1)*24 + 4];
 
