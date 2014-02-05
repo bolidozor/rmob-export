@@ -25,7 +25,9 @@ Generator of colorgramme graphs to rmob observers database. This program generat
 
 ### Running
 
-  ./RmobGen -input-[Path-to-.info-file]
+1. go to project directory - rmob-export
+
+2. python Run.py
 
 
 ## License
