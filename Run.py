@@ -9,16 +9,6 @@ log.write('Zacatek prenosu '+ dt )
 
 os.system('./RmobGen -input-./io/Observatory.info')
 
-#os.system('mv ./rmob-export/io/*jpg ./RMOB_upload/rmob.jpg')
-#os.rename('./RMOB_upload/rmob.jpg', newnamejpg)
-
-#os.system('mv ./rmob-export/io/*txt ./RMOB_upload/rmob.txt')
-#os.rename('./RMOB_upload/rmob.txt', newnametxt)
-
-#os.system('mv ./rmob-export/io/*png ./RMOB_img/rmob.png')
-#os.rename('./RMOB_img/rmob.png', newname)
-
-
 session = ftplib.FTP('217.169.242.217','radiodata','meteor')
 
 for root, dirs, file in os.walk('./io/gen'):
