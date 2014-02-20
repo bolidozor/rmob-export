@@ -29,6 +29,10 @@ Generator of colorgramme graphs to rmob observers database. This program generat
 
 2. python Run.py
 
+## FAQ
+after run Run.py
+  what():  Magick: unable to open image `./io/gen/ZVPP_022014.jpg':  @ error/blob.c/OpenBlob/2587
+
 
 ## License
 

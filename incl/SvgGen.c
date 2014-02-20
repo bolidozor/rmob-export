@@ -1623,7 +1623,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	std::cout << DayMAXhourcount <<"|" ;
 	if (DayMAXhourcount != 0)
 	{
-		Dkrok = 84/DayMAXhourcount;
+		Dkrok = (float)84/(float)DayMAXhourcount;
 	}
 	if (Dkrok < 0)
 	{
