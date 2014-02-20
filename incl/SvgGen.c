@@ -922,7 +922,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "			y=\"217.30455\"  ";
 
 	///// Ver ver version verze Ver.: Ver.:
-	svgout << "			style=\"font-size:10px;font-weight:normal;fill:#ff0016;fill-opacity:1;-inkscape-font-specification:Ubuntu\">0.9</tspan></text>  ";
+	svgout << "			style=\"font-size:10px;font-weight:normal;fill:#ff0016;fill-opacity:1;-inkscape-font-specification:Ubuntu\">1.0</tspan></text>  ";
 	svgout << "	</g>  ";
 
 
@@ -1623,9 +1623,13 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	std::cout << DayMAXhourcount <<"|" ;
 	if (DayMAXhourcount != 0)
 	{
-		Dkrok = (float)84/(float)DayMAXhourcount;
+		Dkrok = 84/DayMAXhourcount;
 	}
-	std::cout << DayMAXhourcount <<"|"<< Dkrok<< "|" << 202.866002 - (Dkrok*hourcount[(utc->tm_mday-1)*24 + 4]) << "|"<< Dkrok*hourcount[(utc->tm_mday-1)*24 + 4] << "|"<< hourcount[(utc->tm_mday-1)*24 + 4];
+	if (Dkrok < 0)
+	{
+		Dkrok = 0;
+	}
+
 
 	for (int i = 0; i < 744; ++i)
 	{
@@ -1635,6 +1639,9 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 			hourcount[i]=0;
 		}
 	}
+
+	std::cout << DayMAXhourcount <<"|B "<< Dkrok<< "|C " << hourcount[(utc->tm_mday-1)*24 + 4] <<"|D " << 202.866002 - (Dkrok*hourcount[(utc->tm_mday-1)*24 + 4]) << "|E "<< Dkrok*hourcount[(utc->tm_mday-1)*24 + 4] << "|"<< hourcount[(utc->tm_mday-1)*24 + 4] << std::endl;
+
 
 
 	svgout << "	  <text	";
@@ -1966,7 +1973,7 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 	txtout << "[Receiver]" <<  svginfo[5] << "\n";
 	txtout << "[Observing Method]" <<  "Fordward scattering" << "\n";
 	txtout << "[Remarks]" <<  svginfo[6] << "\n";
-	txtout << "[Soft FTP] Astrozor RMOBgen v0.9\n";
+	txtout << "[Soft FTP] Astrozor RMOBgen v1.0\n";
 	txtout << "[E]" <<  "-" << "\n";
 	/*
 

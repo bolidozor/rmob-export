@@ -15,3 +15,26 @@ Zacatek prenosu str(datetime.datetime.now()Zacatek prenosu str(datetime.datetime
 Zacatek prenosu str(datetime.datetime.now() >> str(datetime.datetime.now() - konec prenosu 
 Zacatek prenosu str(datetime.datetime.now() >> str(datetime.datetime.now() - konec prenosu 
 Zacatek prenosu 2014-01-30 17:50:34 >> 2014-01-30 17:50:34 - konec prenosu 
+Zacatek prenosu 2014-02-20 18:41:14 >> 2014-02-20 18:41:14 - konec prenosu 
+Zacatek prenosu 2014-02-20 18:59:02 >> 2014-02-20 18:59:02 - konec prenosu 
+Zacatek prenosu 2014-02-20 18:59:22Zacatek prenosu 2014-02-20 18:59:39 >> 2014-02-20 18:59:39 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:00:04 >> 2014-02-20 19:00:04 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:00:38 >> 2014-02-20 19:00:38 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:01:30 >> 2014-02-20 19:01:30 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:01:54 >> 2014-02-20 19:01:54 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:04:33 >> 2014-02-20 19:04:33 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:04:45 >> 2014-02-20 19:04:45 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:06:18 >> 2014-02-20 19:06:18 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:08:46 >> 2014-02-20 19:08:46 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:12:21 >> 2014-02-20 19:12:21 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:13:02 >> 2014-02-20 19:13:02 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:13:24 >> 2014-02-20 19:13:24 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:14:00 >> 2014-02-20 19:14:00 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:14:43 >> 2014-02-20 19:14:43 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:15:41 >> 2014-02-20 19:15:41 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:16:08 >> 2014-02-20 19:16:08 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:16:12 >> 2014-02-20 19:16:12 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:16:24 >> 2014-02-20 19:16:24 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:18:16 >> 2014-02-20 19:18:16 - konec prenosu 
+Zacatek prenosu 2014-02-20 19:22:55 >> 2014-02-20 19:22:55 - konec prenosu 
+Zacatek prenosu 2014-02-20 20:07:50 >> 2014-02-20 20:07:50 - konec prenosu 

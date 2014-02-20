@@ -25,3 +25,4 @@ os.system('mv ./io/gen/*jpg ./io/old/')
 
 log.write(' >> ' + dt + ' - konec prenosu \n')
 log.close()
+exit(0)
