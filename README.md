@@ -5,7 +5,7 @@ Generator of colorgramme graphs to rmob observers database. This program generat
 
 ### Ubuntu 13.04
 
-    sudo apt-get install libmagick++5 libmagick++-dev libmysqlclient-dev
+    sudo apt-get install g++ libmagick++5 libmagick++-dev libmysqlclient-dev
  
 
 ## Howto
@@ -32,6 +32,8 @@ Generator of colorgramme graphs to rmob observers database. This program generat
 ## FAQ
 after run Run.py
   what():  Magick: unable to open image `./io/gen/ZVPP_022014.jpg':  @ error/blob.c/OpenBlob/2587
+
+  mkdir ./io/gen/
 
 
 ## License

@@ -55,8 +55,8 @@ N
 # email
 --email--
 # Relative path to RMOB file as -- ./../Spectrum/
-./../Spectrum/
+/home/roman/ion/home/roman/MetData/ZVPP/Sort/data/
 # Type of input data eg. "Bolidozor_14", "Bolidozor", "Rmob", "MySQL"
 Bolidozor_14
 # Observatory Prefix 
-prefix
+ZVPP
