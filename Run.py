@@ -1,11 +1,12 @@
+#!/usr/bin/python
 import os
 import datetime
 import ftplib
 
-dt = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+#dt = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-log = open('log_AutoCron15.txt', 'at')
-log.write('Zacatek prenosu '+ dt )
+log =open('log_AutoCron15.txt', 'at')
+log.write('Zacatek prenosu '+ datetime.datetime.now().isoformat() )
 
 os.system('./RmobGen -input-./io/Observatory.info')
 
@@ -23,6 +24,6 @@ session.quit()
 os.system('mv ./io/gen/*TXT ./io/old/')
 os.system('mv ./io/gen/*jpg ./io/old/')
 
-log.write(' >> ' + dt + ' - konec prenosu \n')
+log.write(' >> ' + datetime.datetime.now().isoformat()  + ' - konec prenosu \n')
 log.close()
 exit(0)

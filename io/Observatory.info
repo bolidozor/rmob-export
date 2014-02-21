@@ -1,51 +1,33 @@
-#															#
-# 				RmobGen Configuration file					#
-#															#
-# ###########################################################
-# ###########################################################
+# RmobGen Configuration file
+# 
 # https://github.com/MLAB-project/rmob-export
 #
 #
-#		Description of inpute data types:
-#
-#			"Bolidozor_14" (Recommended)
-#				
-#				
-#
-#			"Bolidozor"
-#				
+#	If you using SQL data source  
 #
 #
-#			"Rmob"
-#				Standard colorgramm file typ
 #
 #
-#			"MySQL"
-#				Only for specific use !!!
 #
-#
-#															
-# ##########################################################
-# ##########################################################
 #
 # Observatory name
---Observatory--
+SVAKOV-R2
 # Country
 Czech republic
 # City
---City--
+Svakov, Sobeslav
 # Antenna
---Antenna--
+1/4 GP
 # Pramp
---Preamp--
+LNA01A www.mlab.cz
 # Reciever
---Reciever--
+SDRX01B www.mlab.cz
 # Computer
---Computer--
+Ion PC
 # Latitude xxx.xxxxxx
-010.000000
+049.260696
 # Longtitude yyy.yyyyyy
-010.000000
+014.691497
 # Latitude direction 
 E
 # Longtitude direction
@@ -53,10 +35,10 @@ N
 # Frequency
 143 050 000 Hz
 # email
---email--
-# Relative path to RMOB file as -- ./../Spectrum/
-./../Spectrum/
-# Type of input data eg. "Bolidozor_14", "Bolidozor", "Rmob", "MySQL"
+kaklik@mlab.cz
+# Path to RMOB file as
+/media/sd/meteors/SVAKOV-R2/data/
+# Type of input data eg. "Bolidozor", "Rmob", "MySQL"
 Bolidozor_14
-# Observatory Prefix 
-prefix
+#Prefix
+SVAKOV-R2
