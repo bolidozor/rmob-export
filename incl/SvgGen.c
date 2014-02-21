@@ -158,9 +158,6 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	}
 
 
-
-
-
 	//std::cout<< "minimalni hodnota je:"<<MINhourcount<<"a maximalni hodmota je "<< MAXhourcount<<" A deni minimalni hodnota je:"<<DayMINhourcount<<"a maximalni deni hodmota je "<< DayMAXhourcount<<" To je zatim vse :))"<<std::endl;
 
 

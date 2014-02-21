@@ -3,8 +3,6 @@ import os
 import datetime
 import ftplib
 
-#dt = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
 log =open('log_AutoCron15.txt', 'at')
 log.write('Zacatek prenosu '+ datetime.datetime.now().isoformat() )
 
