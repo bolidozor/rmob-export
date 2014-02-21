@@ -39,6 +39,7 @@ Zacatek prenosu 2014-02-20 19:18:16 >> 2014-02-20 19:18:16 - konec prenosu
 Zacatek prenosu 2014-02-20 19:22:55 >> 2014-02-20 19:22:55 - konec prenosu 
 Zacatek prenosu 2014-02-20 20:07:50 >> 2014-02-20 20:07:50 - konec prenosu 
 Zacatek prenosu 2014-02-20 20:23:04 >> 2014-02-20 20:23:04 - konec prenosu 
+<<<<<<< HEAD
 Zacatek prenosu 2014-02-21 17:55:04 >> 2014-02-21 17:55:04 - konec prenosu 
 Zacatek prenosu 2014-02-21 17:57:34 >> 2014-02-21 17:57:34 - konec prenosu 
 Zacatek prenosu 2014-02-21 18:16:36 >> 2014-02-21 18:16:36 - konec prenosu 
@@ -57,3 +58,9 @@ Zacatek prenosu 2014-02-21 19:37:29 >> 2014-02-21 19:37:29 - konec prenosu
 Zacatek prenosu 2014-02-21 19:39:17 >> 2014-02-21 19:39:17 - konec prenosu 
 Zacatek prenosu 2014-02-21 19:39:37 >> 2014-02-21 19:39:37 - konec prenosu 
 Zacatek prenosu 2014-02-21 19:42:53 >> 2014-02-21 19:42:53 - konec prenosu 
+=======
+Zacatek prenosu 2014-02-21T16:41:51.810021 >> 2014-02-21T16:41:53.893957 - konec prenosu 
+Zacatek prenosu 2014-02-21T16:49:04.127820 >> 2014-02-21T16:49:05.752258 - konec prenosu 
+Zacatek prenosu 2014-02-21T16:50:53.763905 >> 2014-02-21T16:50:54.908565 - konec prenosu 
+>>>>>>> 2bf289f34943ae44361716ac725e2f116fdf1b86
+Zacatek prenosu 2014-02-21T20:06:30.800514 >> 2014-02-21T20:06:48.966567 - konec prenosu 

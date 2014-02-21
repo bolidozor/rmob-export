@@ -329,10 +329,10 @@ void ParMySQL(int hcount[]){
 	//char *database = SQLconf[4].c_str();
 
 
-	char *server = "localhost";
-	char *user = "root";
-	char *password = "heslo";
-	char *database = "Bolidozor";
+	const char *server = "localhost";
+	const char *user = "root";
+	const char *password = "heslo";
+	const char *database = "Bolidozor";
 
 
 	conn = mysql_init(NULL);
