@@ -35,6 +35,14 @@ def GenObservatory():
 					i += 1
 					ObsInfo[i]= line
 			read.close()
+	else:
+		i=0
+		read = open('./io/Observatory.info', 'r')
+		for line in iter(read):
+			if line[:1] != "#":
+				i += 1
+				ObsInfo[i]= line
+		read.close()
 
 	print "####################################################################################################\nrmob-export configurator\n####################################################################################################"
 
