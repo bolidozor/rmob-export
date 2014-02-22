@@ -1884,7 +1884,9 @@ void TxtGen(std::string svginfo[15], int hourcount[745],std::string path){
 std::string strhourcount[745];
 std::stringstream c;
 
-for (int i; i < 745 ; ++i)
+unsigned int i=0; 
+
+for (i; i < 745 ; ++i)
 {	
 	c.clear();
 	if (hourcount[i] < 10)
