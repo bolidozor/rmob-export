@@ -20,7 +20,7 @@ var = raw_input("Enter new value [string] or press enter to use old value:")
 if var != "":
 	ObsInfo[1] = var+"\n"
 
-print "\n\n============================================================\n\tObservatory Prefix: "
+print "\n\n============================================================\n\tObservatory Prefix:\n\t\t Prefix is used in names of files"
 print "Old value: ",ObsInfo[16]
 var = raw_input("Enter new value [string] or press enter to use old value: ")
 if var != "":
@@ -120,7 +120,7 @@ write.write("##   THIS FILE IS GENERATED AUTOMATICLY BY Configure.py\n")
 write.write("## \n")
 write.write("##   !!! DO NOT CHANGE this file\n")
 write.write("## \n")
-write.write("##   for edit this file type in 'rmob-export/' dictionary 'python Configure.py'\n")
+write.write("##   for edit this file type 'python Configure.py in 'rmob-export/' dictionary'\n")
 write.write("## \n")
 write.write("#################################################################################################### \n")
 write.write("#################################################################################################### \n")
@@ -160,39 +160,4 @@ write.write("###################################################################
 write.write("## \n")
 write.write("##   END\n")
 
-
 write.close()
-
-
-# Observatory name
-#--Observatory--
-# Country
-#Czech republic
-# City
-#--City--
-# Antenna
-#--Antenna--
-# Pramp
-#--Preamp--
-# Reciever
-#--Reciever--
-## Computer
-#--Computer--
-# Latitude xxx.xxxxxx
-#010.000000
-# Longtitude yyy.yyyyyy
-#010.000000
-# Latitude direction 
-#E
-# Longtitude direction
-#N
-# Frequency
-#143 050 000 Hz
-# email
-#--email--
-# Relative path to RMOB file as -- ./../Spectrum/
-#/home/roman/ion/home/roman/MetData/ZVPP/Sort/data/
-# Type of input data eg. "Bolidozor_14", "Bolidozor", "Rmob", "MySQL"
-#Bolidozor_14
-# Observatory Prefix 
-#ZVPP

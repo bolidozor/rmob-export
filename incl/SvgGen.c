@@ -709,176 +709,6 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "	       id=\"path4454\"	";
 	svgout << "	       inkscape:connector-curvature=\"0\" />	";
 	svgout << "	  </g>	";
-	/*
-	svgout << "	  <g	";
-	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
-	svgout << "	     id=\"texCopy\">	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 411.71075,217.69299 -0.60839,0 -0.61524,-2.59765 -2.0918,0 -0.64257,2.59765 -0.60157,0 2.09864,-8.60644 0.47168,0 1.98925,8.60644 m -1.36035,-3.2334 -0.86816,-3.79394 -0.86817,3.79394 1.73633,0\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4267\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 415.46368,212.43616 -0.6289,0 c -0.23243,-0.30989 -0.5127,-0.46484 -0.84082,-0.46485 -0.20053,1e-5 -0.37142,0.0319 -0.5127,0.0957 -0.0684,0.0456 -0.10937,0.0706 -0.12304,0.0752 -0.0319,0.0228 -0.0843,0.0661 -0.15723,0.12988 -0.15039,0.10027 -0.22559,0.33269 -0.22559,0.69727 0,0.36459 0.16862,0.68588 0.50586,0.96387 l 1.03906,0.63574 c 0.64258,0.39193 0.96387,0.86361 0.96387,1.41504 0,0.44661 -0.13672,0.83854 -0.41015,1.17578 -0.31446,0.38737 -0.73145,0.58105 -1.25098,0.58105 -0.87044,0 -1.43555,-0.48079 -1.69531,-1.44238 l 0.59472,0 c 0.21875,0.57878 0.59245,0.86817 1.1211,0.86817 0.30078,0 0.55143,-0.10026 0.75195,-0.30079 0.20052,-0.20507 0.30078,-0.458 0.30078,-0.75878 0,-0.36003 -0.21192,-0.67904 -0.63574,-0.95704 l -0.77246,-0.50585 c -0.0866,-0.0547 -0.30306,-0.22331 -0.64942,-0.50586 -0.30078,-0.32357 -0.45117,-0.71322 -0.45117,-1.16895 0,-0.47851 0.14811,-0.8636 0.44434,-1.15527 0.29622,-0.29622 0.68587,-0.44433 1.16894,-0.44434 0.75651,1e-5 1.24414,0.35548 1.46289,1.06641\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4269\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 419.35333,212.01233 -1.15527,0 0,5.69434 -0.62891,0 0,-5.69434 -1.11425,0 0,-0.60156 1.11425,0 0,-2.32422 0.62891,0 0,2.32422 1.15527,0 0,0.60156\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4271\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 423.41388,213.0719 -0.58789,0 c 0,-0.71093 -0.40788,-1.0664 -1.22363,-1.06641 l -0.52637,0 0,5.69434 -0.63574,0 0,-6.28223 0.92968,0 c 0.72917,1e-5 1.26009,0.12078 1.59278,0.36231 0.22786,0.16407 0.37825,0.41472 0.45117,0.75195 l 0,0.54004\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4273\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 428.117,215.89514 c 0,0.51042 -0.17318,0.94792 -0.51953,1.3125 -0.34635,0.36003 -0.77246,0.54004 -1.27832,0.54004 -0.5013,0 -0.93424,-0.18457 -1.29883,-0.55371 -0.36002,-0.3737 -0.54003,-0.8112 -0.54003,-1.3125 l 0,-2.65234 c 0,-0.51953 0.17545,-0.95931 0.52636,-1.31934 0.35547,-0.36458 0.79297,-0.54687 1.3125,-0.54687 0.50586,0 0.93197,0.18457 1.27832,0.55371 0.34635,0.36458 0.51953,0.80208 0.51953,1.3125 l 0,2.66601 m -0.63574,-0.13672 0,-2.39941 c 0,-0.36914 -0.0957,-0.68131 -0.28711,-0.93652 -0.21419,-0.28711 -0.49902,-0.43066 -0.85449,-0.43067 -0.30078,1e-5 -0.56738,0.10255 -0.7998,0.30762 -0.28711,0.25521 -0.43067,0.60384 -0.43067,1.0459 l 0,2.41308 c 0,0.42839 0.14583,0.77246 0.4375,1.03223 0.24154,0.21875 0.50586,0.32812 0.79297,0.32812 0.34635,0 0.63118,-0.14355 0.85449,-0.43066 0.19141,-0.24609 0.28711,-0.55599 0.28711,-0.92969\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4275\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 433.29181,211.40393 0.007,0.5332 -3.24708,5.20215 3.19922,-0.0137 0,0.58106 -3.96484,0 0,-0.38282 3.30176,-5.36621 -3.28809,0 0,-0.55371 3.99219,0\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4277\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 438.01544,215.89514 c 0,0.51042 -0.17318,0.94792 -0.51953,1.3125 -0.34636,0.36003 -0.77246,0.54004 -1.27832,0.54004 -0.5013,0 -0.93425,-0.18457 -1.29883,-0.55371 -0.36002,-0.3737 -0.54004,-0.8112 -0.54004,-1.3125 l 0,-2.65234 c 0,-0.51953 0.17546,-0.95931 0.52637,-1.31934 0.35547,-0.36458 0.79297,-0.54687 1.3125,-0.54687 0.50586,0 0.93196,0.18457 1.27832,0.55371 0.34635,0.36458 0.51953,0.80208 0.51953,1.3125 l 0,2.66601 m -0.63574,-0.13672 0,-2.39941 c 0,-0.36914 -0.0957,-0.68131 -0.28711,-0.93652 -0.2142,-0.28711 -0.49903,-0.43066 -0.85449,-0.43067 -0.30079,1e-5 -0.56739,0.10255 -0.79981,0.30762 -0.28711,0.25521 -0.43066,0.60384 -0.43066,1.0459 l 0,2.41308 c 0,0.42839 0.14583,0.77246 0.4375,1.03223 0.24153,0.21875 0.50586,0.32812 0.79297,0.32812 0.34635,0 0.63118,-0.14355 0.85449,-0.43066 0.1914,-0.24609 0.28711,-0.55599 0.28711,-0.92969\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4279\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 442.28107,213.0719 -0.58789,0 c -10e-6,-0.71093 -0.40788,-1.0664 -1.22364,-1.06641 l -0.52636,0 0,5.69434 -0.63575,0 0,-6.28223 0.92969,0 c 0.72917,1e-5 1.26009,0.12078 1.59278,0.36231 0.22786,0.16407 0.37825,0.41472 0.45117,0.75195 l 0,0.54004\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4281\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 443.95587,217.69299 -0.94336,0 0,-0.92968 0.94336,0 0,0.92968\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4283\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 448.04376,217.69983 -2.11914,0 c -0.32812,0 -0.58561,-0.11621 -0.77246,-0.34863 -0.17318,-0.2142 -0.25977,-0.48763 -0.25976,-0.82032 l 0,-3.97851 0.0478,-0.31445 c 0.0592,-0.39193 0.29394,-0.64713 0.7041,-0.76563 0.15494,-0.0456 0.36002,-0.0683 0.61523,-0.0684 l 1.78418,0 0,0.58789 -1.87304,0 c -0.43751,1e-5 -0.65626,0.23243 -0.65625,0.69727 l 0,3.8623 c 0.0638,0.36003 0.27343,0.54004 0.6289,0.54004 l 1.90039,0.007 0,0.60156\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4285\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 453.14337,211.40393 0.007,0.5332 -3.24707,5.20215 3.19922,-0.0137 0,0.58106 -3.96485,0 0,-0.38282 3.30176,-5.36621 -3.28809,0 0,-0.55371 3.99219,0\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4287\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 464.97638,215.04065 -3.91016,0 0,-0.58789 3.91016,0 0,0.58789\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4289\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 480.88361,217.69299 -0.6836,0 -2.00976,-3.78027 -0.92969,0 0,3.78027 -0.63574,0 0,-8.60644 2.0166,0 c 0.2233,1e-5 0.44433,0.0456 0.66308,0.13672 0.89779,0.3737 1.34668,1.11882 1.34668,2.23535 0,0.56055 -0.15723,1.07325 -0.47168,1.53808 -0.34635,0.51042 -0.78385,0.80209 -1.3125,0.875 l 2.01661,3.82129 m -0.84082,-6.23437 c -1e-5,-0.54687 -0.16407,-0.98893 -0.49219,-1.32617 -0.27344,-0.28255 -0.5879,-0.42382 -0.94336,-0.42383 l -1.35352,0 0,3.56836 1.46289,0 c 0.26888,0 0.54232,-0.14811 0.82032,-0.44434 0.33723,-0.35546 0.50585,-0.81347 0.50586,-1.37402\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4291\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 487.159,217.70667 -0.63575,0 0,-6.96583 -1.83886,3.71875 -0.41699,0 -1.83204,-3.71191 0,6.95899 -0.64257,0 0,-8.62012 0.59472,0 2.10547,4.36133 2.05762,-4.36133 0.6084,0 0,8.62012\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4293\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 492.51154,216.10022 c -1e-5,0.49675 -0.20964,0.9069 -0.62891,1.23047 -0.38737,0.29622 -0.83627,0.44433 -1.34668,0.44433 -0.51042,0 -0.96615,-0.15039 -1.36719,-0.45117 -0.4375,-0.33268 -0.65625,-0.74511 -0.65625,-1.2373 l 0,-5.37305 c 0,-0.54231 0.22331,-0.97297 0.66992,-1.29199 0.36459,-0.25976 0.81576,-0.38964 1.35352,-0.38965 0.51041,1e-5 0.95931,0.1504 1.34668,0.45117 0.41927,0.32358 0.6289,0.73373 0.62891,1.23047 l 0,5.38672 m -0.62891,-0.12988 0,-5.12696 c 0,-0.35546 -0.13444,-0.64485 -0.40332,-0.86816 -0.25066,-0.20963 -0.55827,-0.31445 -0.92285,-0.31445 -0.3418,0 -0.6403,0.0775 -0.89551,0.23242 -0.36459,0.21876 -0.54688,0.53321 -0.54688,0.94336 l 0,5.13379 c 0,0.36458 0.18002,0.66081 0.54004,0.88867 0.29167,0.18685 0.59245,0.28027 0.90235,0.28027 0.319,0 0.60839,-0.0911 0.86816,-0.27344 0.30534,-0.21419 0.45801,-0.51269 0.45801,-0.8955\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4295\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 497.6795,215.27307 c 0,0.54232 -0.16862,1.06641 -0.50585,1.57227 -0.38282,0.57422 -0.83627,0.86133 -1.36036,0.86133 l -2.09863,0 0,-8.62012 1.27149,0 c 1.22135,1e-5 1.99381,0.40333 2.31738,1.20996 0.10481,0.25977 0.15722,0.5446 0.15722,0.85449 0,0.40105 -0.0843,0.74968 -0.25293,1.0459 -0.0912,0.15951 -0.31217,0.44662 -0.66308,0.86133 0.7565,0.61979 1.13476,1.35807 1.13476,2.21484 m -0.84765,-4.08789 c -10e-6,-0.97981 -0.53093,-1.46972 -1.59278,-1.46973 l -0.88183,0 0,2.99414 1.4082,0 c 0.30989,1e-5 0.57194,-0.18228 0.78613,-0.54687 0.18685,-0.319 0.28027,-0.64485 0.28028,-0.97754 m 0.21191,4.08789 c 0,-0.43294 -0.139,-0.85904 -0.41699,-1.27832 -0.3099,-0.46484 -0.66992,-0.69726 -1.08008,-0.69726 l -1.18945,0 0,3.80761 1.3125,0 c 0.42382,0 0.7679,-0.20507 1.03223,-0.61523 0.22786,-0.35547 0.34179,-0.76107 0.34179,-1.2168\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4297\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 502.3006,218.74573 c -10e-6,0.32356 -0.1071,0.60384 -0.32129,0.84082 -0.20964,0.23697 -0.47396,0.35546 -0.79297,0.35547 l -2.4541,0 0,-0.62207 2.37891,0 0.18457,-0.0342 c 0.27343,-0.10938 0.41015,-0.37598 0.41015,-0.79981 l 0,-0.78613 -1.75683,0 c -0.51954,0 -0.87728,-0.19141 -1.07325,-0.57422 -0.0592,-0.11393 -0.10937,-0.31217 -0.15039,-0.59473 l 0,-3.83496 c 0,-0.86132 0.39876,-1.29198 1.19629,-1.29199 l 2.37891,0 0,7.3418 m -0.62207,-1.67481 0,-5.06543 -1.64063,0 c -0.45573,1e-5 -0.68359,0.28028 -0.68359,0.84082 l 0,3.53418 c 0,0.20508 0.0684,0.37142 0.20508,0.49903 0.14127,0.1276 0.31445,0.1914 0.51953,0.1914 l 1.59961,0\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4299\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 507.16779,214.7467 -2.98731,0 0,1.39454 c 0,0.63802 0.32129,0.95703 0.96387,0.95703 l 1.92773,0 0,0.60156 -2.19433,0 c -0.51954,0 -0.89323,-0.2028 -1.1211,-0.6084 -0.14583,-0.25976 -0.21875,-0.56055 -0.21875,-0.90234 l 0,-3.02149 c 0,-0.51497 0.17774,-0.94335 0.53321,-1.28515 0.35546,-0.34635 0.79296,-0.51953 1.3125,-0.51953 0.5013,0 0.92512,0.16634 1.27148,0.49902 0.34635,0.32813 0.51953,0.74284 0.51953,1.24414 l -0.007,1.64062 m -0.62207,-1.51074 c -10e-6,-0.36002 -0.10255,-0.65624 -0.30762,-0.88867 -0.20508,-0.23697 -0.48536,-0.35546 -0.84082,-0.35547 -0.30079,1e-5 -0.56055,0.0843 -0.7793,0.25293 -0.29167,0.22331 -0.4375,0.55144 -0.4375,0.98438 l 0,0.92285 2.36524,0 0,-0.91602\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4301\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 511.84357,217.72034 -0.62207,0 0,-4.61426 c -10e-6,-0.36914 -0.0661,-0.63802 -0.19825,-0.80664 -0.14127,-0.15039 -0.34635,-0.22558 -0.61523,-0.22559 l -1.3125,0 0,5.64649 -0.62207,-0.0137 0,-6.2959 1.91406,0 c 0.97982,0 1.46972,0.44434 1.46973,1.333 l -0.0137,4.97657\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4303\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 625.87384,217.70667 -0.46484,0 -1.63379,-6.32325 0.58789,0 1.29883,4.8125 1.26464,-4.79883 0.58106,0 -1.63379,6.30958\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4305\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 632.01935,214.7467 -2.98731,0 0,1.39454 c 0,0.63802 0.32129,0.95703 0.96387,0.95703 l 1.92774,0 0,0.60156 -2.19434,0 c -0.51953,0 -0.89323,-0.2028 -1.12109,-0.6084 -0.14584,-0.25976 -0.21876,-0.56055 -0.21875,-0.90234 l 0,-3.02149 c -10e-6,-0.51497 0.17773,-0.94335 0.5332,-1.28515 0.35547,-0.34635 0.79297,-0.51953 1.3125,-0.51953 0.5013,0 0.92513,0.16634 1.27148,0.49902 0.34635,0.32813 0.51953,0.74284 0.51953,1.24414 l -0.007,1.64062 m -0.62207,-1.51074 c -10e-6,-0.36002 -0.10254,-0.65624 -0.30762,-0.88867 -0.20508,-0.23697 -0.48535,-0.35546 -0.84082,-0.35547 -0.30078,1e-5 -0.56055,0.0843 -0.7793,0.25293 -0.29166,0.22331 -0.4375,0.55144 -0.4375,0.98438 l 0,0.92285 2.36524,0 0,-0.91602\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4307\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 636.28497,213.0719 -0.58789,0 c 0,-0.71093 -0.40788,-1.0664 -1.22363,-1.06641 l -0.52637,0 0,5.69434 -0.63574,0 0,-6.28223 0.92969,0 c 0.72916,1e-5 1.26009,0.12078 1.59277,0.36231 0.22786,0.16407 0.37825,0.41472 0.45117,0.75195 l 0,0.54004\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4309\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 637.95978,217.69299 -0.94336,0 0,-0.92968 0.94336,0 0,0.92968\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4311\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 639.34747,213.85803 -0.62207,0 0,-0.62207 0.62891,0 -0.007,0.62207 m 0,3.30176 -0.62207,0 0,-0.61523 0.62891,0 -0.007,0.61523\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4313\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 647.71466,213.39319 c 0,1.00261 -0.11849,1.88672 -0.35547,2.65234 -0.35547,1.153 -0.92513,1.72949 -1.70898,1.72949 -0.75651,0 -1.31478,-0.58105 -1.67481,-1.74316 -0.24153,-0.77929 -0.3623,-1.65885 -0.3623,-2.63867 0,-2.8802 0.68587,-4.32031 2.05762,-4.32031 1.36262,0 2.04394,1.44011 2.04394,4.32031 m -0.61523,0 c -10e-6,-0.81575 -0.0729,-1.5358 -0.21875,-2.16016 -0.23699,-1.02082 -0.64031,-1.53124 -1.20996,-1.53125 -0.56055,10e-6 -0.96843,0.51043 -1.22364,1.53125 -0.1595,0.63803 -0.23926,1.35808 -0.23926,2.16016 0,0.76107 0.082,1.4834 0.2461,2.16699 0.24609,1.02995 0.64485,1.54492 1.19629,1.54492 0.55143,0 0.95475,-0.51269 1.20996,-1.53808 0.1595,-0.64258 0.23925,-1.36719 0.23926,-2.17383\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4315\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 649.52618,217.69299 -0.94336,0 0,-0.92968 0.94336,0 0,0.92968\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4317\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	    <path	";
-	svgout << "	       d=\"m 654.78986,217.72034 -4.50489,0 0,-0.6084 3.54785,-5.19531 c 0.19596,-0.28711 0.29395,-0.59017 0.29395,-0.90918 0,-0.23242 -0.0547,-0.45573 -0.16406,-0.66993 l -0.16406,-0.25976 c -0.1185,-0.0957 -0.22104,-0.16406 -0.30762,-0.20508 -0.28256,-0.13671 -0.62208,-0.20507 -1.01856,-0.20508 -0.79297,1e-5 -1.32161,0.45574 -1.58593,1.36719 l -0.62207,0 c 0.29622,-1.31705 1.02994,-1.97558 2.20117,-1.97559 0.70182,1e-5 1.24869,0.16635 1.64062,0.49903 0.41471,0.35092 0.62207,0.86361 0.62207,1.53808 0,0.35092 -0.0775,0.66765 -0.23242,0.9502 l -3.43848,5.04492 3.73243,0 0,0.62891\"	";
-	svgout << "	       style=\"font-size:14px;fill:#ff0016;font-family:Solid Edge ISO;-inkscape-font-specification:Solid Edge ISO\"	";
-	svgout << "	       id=\"path4319\"	";
-	svgout << "	       inkscape:connector-curvature=\"0\" />	";
-	svgout << "	  </g>	";*/
-
-
-	//svgout << "	<g  ";
-	//svgout << "		id=\"VerInfoGroup\">  ";
-	//svgout << "	<text  ";
-	//svgout << "		sodipodi:linespacing=\"125%\"  ";
-	//svgout << "			id=\"VerInfoLable\"  ";
-	//svgout << "			y=\"217.77635\"  ";
-	//svgout << "			x=\"406.8938\"  ";
-	//svgout << "			style=\"font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Sans Bold\"  ";
-	//svgout << "			style=\"font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">"<<MINhourcount<<"</tspan></text>	";
-	//svgout << "			xml:space=\"preserve\"><tspan  ";
-	//svgout << "		style=\"font-size:14px;font-weight:normal;fill:#fff0016;fill-opacity:0;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"  ";
-	//svgout << "		y=\"217.77635\"  ";
-	//svgout << "		x=\"406.8938\"  ";
-	//svgout << "		id=\"tspan4765\"  ";
-	//svgout << "		sodipodi:role=\"line\">Astrozar.cz  -   RMOBgen      </tspan></text>  ";
-	//svgout << "	<text  ";
-	//svgout << "		sodipodi:linespacing=\"125%\"  ";
-	//svgout << "			id=\"VerInfoNum\"  ";
-	//svgout << "			y=\"217.64696\"  ";
-	//svgout << "			x=\"623.55505\"  ";
-	//svgout << "			style=\"font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Sans Bold\"  ";
-	//svgout << "			xml:space=\"preserve\"><tspan  ";
-	//svgout << "		style=\"font-size:14px;font-weight:normal;fill:#ff0016;fill-opacity:0;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"  ";
-	///svgout << "		y=\"217.64696\"	";
-	//svgout << "		x=\"623.55505\"  ";
-	//svgout << "		id=\"tspan4765-7\"  ";
-	//svgout << "		sodipodi:role=\"line\">ver.: 0.8 </tspan></text>   ";
-	//svgout << "	</g>  ";
 
 	svgout << "	<g  ";
 	svgout << "		id=\"Version\">  ";
@@ -919,7 +749,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "			y=\"217.30455\"  ";
 
 	///// Ver ver version verze Ver.: Ver.:
-	svgout << "			style=\"font-size:10px;font-weight:normal;fill:#ff0016;fill-opacity:1;-inkscape-font-specification:Ubuntu\">1.0</tspan></text>  ";
+	svgout << "			style=\"font-size:10px;font-weight:normal;fill:#ff0016;fill-opacity:1;-inkscape-font-specification:Ubuntu\">1.1.Dev</tspan></text>  ";
 	svgout << "	</g>  ";
 
 
@@ -1390,15 +1220,6 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 
 			}
 		}
-
-	//svgout << "	  <rect	";
-	//svgout << "	     style=\"opacity:0.42049470000000000;fill:#fff000;fill-opacity:1;stroke:none;stroke-opacity:1\"	";
-	//svgout << "	     id=\"rect3868\"	";
-	//svgout << "	     width=\"5.9932489\"	";
-	//svgout << "	     height=\"5.9932513\"	";
-	//svgout << "	     x=\"408.596\"	";
-	//svgout << "	     y=\"25.0614\" />	";
-
 
 	svgout << "	  <rect	";
 	svgout << "	     y=\"16.22628\"	";
@@ -1974,47 +1795,6 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 	txtout << "[Remarks]" <<  svginfo[6] << "\n";
 	txtout << "[Soft FTP] Astrozor RMOBgen v1.0\n";
 	txtout << "[E]" <<  "-" << "\n";
-	/*
-
-
-[Observer]Roman ZVPPCB
-[Country]Czech Republic 
-[City]Ceske Budejovice
-[Longitude]014°2804 E
-[Latitude ]048°2821 N
-[Longitude GMAP]14.4675321
-[Latitude GMAP]48.9869761
-[Frequencies]143 050 000 Hz - Graves
-[Antenna]1/4 GP
-[Azimut Antenna]290
-[Elevation Antenna]30
-[Pre-Amplifier]LNA01A www.mlab.cz
-[Receiver]SDRX01B www.mlab.cz
-[Observing Method]Fordward scattering
-[Remarks]Ion PC
-[Soft FTP]Colorgramme RMOB Lab v 2.5
-[E]{fdhg$mf{hbIldh`e'js
-
-
-[Observer]
-[Country] 
-[City]
-[Longitude]
-[Latitude ]
-[Longitude GMAP]
-[Latitude GMAP]
-[Frequencies]
-[Antenna]
-[Azimut Antenna]
-[Elevation Antenna]
-[Pre-Amplifier]
-[Receiver]
-[Observing Method]
-[Remarks]
-[Soft FTP] Astrozor RMOBgen v0.5
-[E]
-	*/
-
 
 	txtout.close();
 }

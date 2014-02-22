@@ -4,7 +4,7 @@
 ## 
 ##   !!! DO NOT CHANGE this file
 ## 
-##   for edit this file type in 'rmob-export/' dictionary 'python Configure.py'
+##   for edit this file type 'python Configure.py in 'rmob-export/' dictionary'
 ## 
 #################################################################################################### 
 #################################################################################################### 
@@ -15,11 +15,11 @@ Czech republic
 # City
 --City--
 # Antenna
---Antenna--
+1/4 GP
 # Pramp
---Preamp--
+LNA01A
 # Reciever
---Reciever--
+RMDS01C www.mlab.cz
 # Computer
 --Computer--
 # Latitude xxx.xxxxxx

@@ -52,11 +52,5 @@ int main(int argc, char const *argv[]){
 		ParMySQL(HourCount);
 	}
 
-
-	//ParBolidozorFile(HourCount,ObsInfo[15]);
-	//ParRmobFile(HourCount,ObsInfo[15]);
-
-	//SvgPng("./io/");
-
 	return 0;
 }
