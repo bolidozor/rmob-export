@@ -9,10 +9,10 @@ for line in iter(read):
 	if line[:1] != "#":
 		i += 1
 		ObsInfo[i]= line
-		print i, " - ", ObsInfo[i]
+		#print i, " - ", ObsInfo[i]
 read.close()
 
-print "rmob-export configurator"
+print "####################################################################################################\nrmob-export configurator\n####################################################################################################"
 
 print "\n\n============================================================\n\tObservatory name: "
 print "Old value: ",ObsInfo[1]
@@ -27,7 +27,7 @@ if var != "":
 	ObsInfo[16] = var+"\n"
 
 print "\n\n============================================================\n\tCountry: "
-print "Old value: ",ObsInfo[5]
+print "Old value: ",ObsInfo[2]
 var = raw_input("Enter new value [string] or press enter to use old value: ")
 if var != "":
 	ObsInfo[2] = var+"\n"
