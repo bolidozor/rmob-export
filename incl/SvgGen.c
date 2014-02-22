@@ -7,6 +7,37 @@
 #include <cmath>
 #include <iomanip>
 
+std::string DecDegToDDMMSS (std::string DecDeg){
+
+	std::stringstream ssout;
+	double deg, min, sec, minb, secb, out;
+	
+// 014.4675321
+	ssout << atoi(DecDeg.substr(0,3).c_str()) << "°";	
+//out = 014
+	deg=(double)atoi(DecDeg.substr(4,6).c_str())/1000000;
+//deg = 0.4675321
+	min=deg*60;
+//min = 28.051926
+	sec= modf(deg*60, &minb);
+//sec = 0.051926; min = 28
+	out= modf(sec*60, &secb);
+
+	ssout << minb << "'" << secb << "\"";
+	return ssout.str();
+}
+
+
+
+//  double param, fractpart, intpart;
+
+//  param = 3.14159265;
+//  fractpart = modf (param , &intpart);
+//  0.141593      3.141593     3.000000 
+
+
+
+
 int SvgColRed(int num){
 	int out;
 	if (num <= 12)
@@ -749,7 +780,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "			y=\"217.30455\"  ";
 
 	///// Ver ver version verze Ver.: Ver.:
-	svgout << "			style=\"font-size:10px;font-weight:normal;fill:#ff0016;fill-opacity:1;-inkscape-font-specification:Ubuntu\">1.1</tspan></text>  ";
+	svgout << "			style=\"font-size:10px;font-weight:normal;fill:#ff0016;fill-opacity:1;-inkscape-font-specification:Ubuntu\">1.2</tspan></text>  ";
 	svgout << "	</g>  ";
 
 
@@ -1155,7 +1186,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "	       id=\"tspan4014\"	";
 	svgout << "	       x=\"267.68707\"	";
 	svgout << "	       y=\"11.545778\"	";
-	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[8].substr(0,3) <<"\u00B0"<< atoi(svginfo[8].substr(4,2).c_str())*60 << " " << svginfo[9]<< "</tspan></text>	";
+	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << DecDegToDDMMSS(svginfo[8]) << svginfo[9] << "</tspan></text>	";
 	svgout << "	  <text	";
 	svgout << "	     xml:space=\"preserve\"	";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#9000d3;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
@@ -1168,7 +1199,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "	       id=\"tspan4018\"	";
 	svgout << "	       x=\"267.68707\"	";
 	svgout << "	       y=\"27.212563\"	";
-	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[7].substr(0,3) <<"\u00B0"<< atoi(svginfo[7].substr(4,2).c_str())*60 << " " << svginfo[10]<< "</tspan></text>	";
+	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << DecDegToDDMMSS(svginfo[7]) << svginfo[10]<< "</tspan></text>	";
 	svgout << "	  <text	";
 	svgout << "	     xml:space=\"preserve\"	";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#9000d3;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	";
@@ -1793,7 +1824,7 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 	txtout << "[Receiver]" <<  svginfo[5] << "\n";
 	txtout << "[Observing Method]" <<  "Fordward scattering" << "\n";
 	txtout << "[Remarks]" <<  svginfo[6] << "\n";
-	txtout << "[Soft FTP] Astrozor RMOBgen v1.1\n";
+	txtout << "[Soft FTP] Astrozor RMOBgen v1.2\n";
 	txtout << "[E]" <<  "-" << "\n";
 
 	txtout.close();
