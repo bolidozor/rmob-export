@@ -1710,25 +1710,25 @@ unsigned int i=0;
 
 for (i; i < 745 ; ++i)
 {	
-	c.clear();
+	c.str("");
 	if (hourcount[i] < 10)
 	{
-		c.clear();
+		c.str("");
 		c << "   " << hourcount[i];
 	}
 	else if (hourcount[i] > 9 && hourcount[i] < 100)
 	{
-		c.clear();
+		c.str("");
 		c << "  " << hourcount[i];
 	}
 	else if (hourcount[i] > 99 && hourcount[i] < 1000)
 	{
-		c.clear();
+		c.str("");
 		c << " " << hourcount[i];
 	}
 	else if (hourcount[i]==1111)
 	{
-		c.clear();
+		c.str("");
 		c << "??? ";
 	}
 	
