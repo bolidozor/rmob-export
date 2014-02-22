@@ -18,9 +18,11 @@ Generator of colorgramme graphs to rmob observers database. This program generat
 
 ### Setting
 
-1. Open file rmob-export/io/Observatory.info
+1. go to rmob-export/ directory
 
-2. In Observatory.info file change all parameters
+2. run configure.py
+
+    python Configure.py
 
 
 ### Running

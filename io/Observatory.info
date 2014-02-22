@@ -1,33 +1,13 @@
-#															#
-# 		RmobGen - Configuration file
-#															#
-# ###########################################################
-# ###########################################################
-# https://github.com/MLAB-project/rmob-export
-#
-#
-#		Description of inpute data types:
-#
-#			"Bolidozor_14" (Recommended)
-#				
-#				
-#
-#			"Bolidozor"
-#				
-#
-#
-#			"Rmob"
-#				Standard colorgramm file typ
-#
-#
-#			"MySQL"
-#				Only for specific use !!!
-#
-#
-#															
-# ##########################################################
-# ##########################################################
-#
+#################################################################################################### 
+##
+##   THIS FILE IS GENERATED AUTOMATICLY BY Configure.py
+## 
+##   !!! DO NOT CHANGE this file
+## 
+##   for edit this file type in 'rmob-export/' dictionary 'python Configure.py'
+## 
+#################################################################################################### 
+#################################################################################################### 
 # Observatory name
 --Observatory--
 # Country
@@ -46,17 +26,20 @@ Czech republic
 010.000000
 # Longtitude yyy.yyyyyy
 010.000000
-# Latitude direction 
+# Latitude direction E\W
 E
-# Longtitude direction
+# Longtitude direction S\N
 N
 # Frequency
 143 050 000 Hz
 # email
 --email--
-# Relative path to RMOB file as -- ./../Spectrum/
+# path to source file
 /home/roman/ion/home/roman/MetData/ZVPP/Sort/data/
-# Type of input data eg. "Bolidozor_14", "Bolidozor", "Rmob", "MySQL"
+# input data eg. "Bolidozor_14", "Bolidozor", "Rmob", "MySQL"
 Bolidozor_14
 # Observatory Prefix 
-ZVPP
+--ObsPref--
+#################################################################################################### 
+## 
+##   END

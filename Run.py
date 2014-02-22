@@ -3,6 +3,18 @@ import os
 import datetime
 import ftplib
 
+dir = "./io/gen"
+try:
+    os.stat(dir)
+except:
+    os.mkdir(dir)
+
+dir = "./io/old"
+try:
+    os.stat(dir)
+except:
+    os.mkdir(dir)
+
 log =open('log_AutoCron15.txt', 'at')
 log.write('Zacatek prenosu '+ datetime.datetime.now().isoformat() )
 
