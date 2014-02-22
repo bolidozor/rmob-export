@@ -10,4 +10,4 @@ CC=g++ -g -ggdb3
 
 $(MYPROGRAM): $(SOURCE) Makefile
 
-	$(CC) $(SOURCE) -o $(MYPROGRAM)  $(ARG_magick) $(ARG_mysql)
+	$(CC)  $(SOURCE)  -o $(MYPROGRAM)  $(ARG_magick) $(ARG_mysql)
