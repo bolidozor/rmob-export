@@ -1886,30 +1886,29 @@ std::stringstream c;
 
 for (int i; i < 745 ; ++i)
 {	
-	c.str("");
-    c << hourcount[i];
+	c.clear();
 	if (hourcount[i] < 10)
 	{
-		c.str("");
+		c.clear();
 		c << "   " << hourcount[i];
 	}
-	if (hourcount[i] > 9 && hourcount[i] < 100)
+	else if (hourcount[i] > 9 && hourcount[i] < 100)
 	{
-		c.str("");
+		c.clear();
 		c << "  " << hourcount[i];
 	}
-	if (hourcount[i] > 99 && hourcount[i] < 1000)
+	else if (hourcount[i] > 99 && hourcount[i] < 1000)
 	{
-		c.str("");
+		c.clear();
 		c << " " << hourcount[i];
 	}
-    if (hourcount[i]==1111)
-    {
-    	c.str("");
-    	c << "??? ";
-    }
-
-    strhourcount[i] = c.str();
+	else if (hourcount[i]==1111)
+	{
+		c.clear();
+		c << "??? ";
+	}
+	
+	strhourcount[i] = c.str();
 }
 
 
