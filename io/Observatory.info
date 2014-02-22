@@ -59,4 +59,4 @@ N
 # Type of input data eg. "Bolidozor_14", "Bolidozor", "Rmob", "MySQL"
 Bolidozor_14
 # Observatory Prefix 
-ZVPP
+--Observatory--
