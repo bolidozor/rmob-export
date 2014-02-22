@@ -18,8 +18,8 @@ using namespace std;
 
 int main(int argc, char const *argv[]){
 
-	string ObsInfo[16];
-	int HourCount[745];
+	string ObsInfo[16] = {""};
+	int HourCount[745] = {0};
 
 	ParArgB(argc, argv);
 
