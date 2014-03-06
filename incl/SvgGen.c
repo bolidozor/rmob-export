@@ -145,6 +145,18 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	utc = gmtime ( &rawtime );
 
 
+	int f = 0;
+	int MonthAvgr = 0;
+	for (int i = 0; i < 744; ++i)
+	{
+		if (hourcount[i] != 1111)
+		{	
+			f++;
+			MonthAvgr =+ MonthAvgr;
+		}
+	}
+	MonthAvgr = MonthAvgr/f;
+
 	for (int i = 0; i < 744; ++i)
 	{
 
@@ -158,6 +170,8 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 			MAXhourcount = hourcount[i];
 		}
 	}
+
+	MINhourcount = 0;
 
 	for (int i = (utc->tm_mday-1) * 24; i < (utc->tm_mday-1)*24 + 24; ++i)
 	{
@@ -755,17 +769,17 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "	<text  \n";
 	svgout << "		xml:space=\"preserve\"  \n";
 	svgout << "		style=\"font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ff0016;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Sans Bold\"  \n";
-	svgout << "		x=\"654.65887\"  \n";
+	svgout << "		x=\"672\"  \n";
 	svgout << "		y=\"217.30455\"  \n";
 	svgout << "		id=\"text4743\"  \n";
 	svgout << "		sodipodi:linespacing=\"125%\"><tspan  \n";
 	svgout << "			sodipodi:role=\"line\"  \n";
 	svgout << "			id=\"tspan4745\"  \n";
-	svgout << "			x=\"654.65887\"  \n";
+	svgout << "			x=\"672\"  \n";
 	svgout << "			y=\"217.30455\"  \n";
 
 	///// Ver ver version verze Ver.: Ver.:
-	svgout << "			style=\"font-size:10px;font-weight:normal;fill:#ff0016;fill-opacity:1;-inkscape-font-specification:Ubuntu\">1.3.dev</tspan></text>  \n";
+	svgout << "			style=\"font-size:10px;font-weight:normal;fill:#ff0016;fill-opacity:1;text-align:start;-inkscape-font-specification:Ubuntu\">1.4.dev</tspan></text>  \n";
 	svgout << "	</g>  \n";
 
 
@@ -1226,7 +1240,12 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 			{
 
 				svgout << "	  <rect	\n";
-				svgout << "	     style=\"opacity:1;fill:" << SvgColAll(MAXhourcount, MINhourcount, hourcount[(i*24)+j]) << ";fill-opacity:1;stroke:none;stroke-opacity:1\"	\n";
+				if(i == utc->tm_mday-1 && j == utc->tm_hour)
+				{
+					svgout << "	     style=\"opacity:1;fill:" << SvgColAll(MAXhourcount, MINhourcount, hourcount[(i*24)+j]) << ";stroke:#e6e6e6ff;stroke-opacity:1;stroke-width:1.5;\"	\n";
+				}else{
+					svgout << "	     style=\"opacity:1;fill:" << SvgColAll(MAXhourcount, MINhourcount, hourcount[(i*24)+j]) << ";stroke:" << SvgColAll(MAXhourcount, MINhourcount, hourcount[(i*24)+j]) << ";stroke-opacity:1;stroke-width:0.5;\"	\n";
+				}
 				svgout << "	     id=\"rect3868\"	\n";
 				svgout << "	     width=\"5.9932489\"	\n";
 				svgout << "	     height=\"5.9932513\"	\n";
