@@ -754,7 +754,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "			style=\"font-size:9px;fill:#ff0016;fill-opacity:1\">ver.:</tspan></text>  ";
 	svgout << "	<text  ";
 	svgout << "		xml:space=\"preserve\"  ";
-	svgout << "		style=\"font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ff0016;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Sans Bold\"  ";
+	svgout << "		style=\"font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ff0016;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Sans Bold\"  ";
 	svgout << "		x=\"654.65887\"  ";
 	svgout << "		y=\"217.30455\"  ";
 	svgout << "		id=\"text4743\"  ";
@@ -1491,6 +1491,20 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "	       y=\"179.09091\"	";
 	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"> " << utc->tm_hour << ":" << utc->tm_min << ":" <<  utc->tm_sec << " UT </tspan></text>	";
 	
+	for (int i = 0; i < 24; ++i)
+	{
+
+	svgout << "	  <rect	\n";
+	svgout << "	     width=\"8\"	\n";
+	svgout << "	     height=\"" << Dkrok*hourcount[(utc->tm_mday-1)*24 + i] << "\"	\n";
+	svgout << "	     x=\"" << 115.10423 + (i * 10.00151) << "\"		\n";
+	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(utc->tm_mday-1)*24 + i]) << "\"	\n";
+	svgout << "	     id=\"recDay" << i <<"\"	\n";
+	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />	\n";
+		
+	}
+/*
+
 	svgout << "	  <rect		";
 	svgout << "	     width=\"8\" ";
 	svgout << "	     height=\"" << Dkrok*hourcount[(utc->tm_mday-1)*24 + 0] << "\"		";
@@ -1667,7 +1681,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "	     id=\"recDay23-24\"		";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />		";
 
-
+*/
 
 	svgout << "	  <path	";
 	svgout << "	     style=\"fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3, 3;stroke-dashoffset:0;fill-opacity:1\"	";
