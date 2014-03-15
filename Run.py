@@ -2,6 +2,7 @@
 import os
 import datetime
 import ftplib
+import ConfigParser
 from HTMLParser import HTMLParser
 from urllib import urlopen
 
@@ -24,6 +25,20 @@ class MyHTMLParser(HTMLParser):
 			for name, value in attrs:
 			#	print  value
 				ArrayHTML.append(value)
+
+
+log =open('log_AutoCron15.txt', 'at')
+dir = "./io/gen"
+try:
+    os.stat(dir)
+except:
+    os.mkdir(dir)
+
+dir = "./io/old"
+try:
+    os.stat(dir)
+except:
+    os.mkdir(dir)
 
 
 url_meteors = "http://space.astro.cz/meteors/"
@@ -55,22 +70,17 @@ for observator in ArrayObservator:
 
 print ArrayGenPath
 
-dir = "./io/gen"
-try:
-    os.stat(dir)
-except:
-    os.mkdir(dir)
 
-dir = "./io/old"
-try:
-    os.stat(dir)
-except:
-    os.mkdir(dir)
-
-log =open('log_AutoCron15.txt', 'at')
 log.write('Zacatek prenosu '+ datetime.datetime.now().isoformat() )
 
-os.system('./RmobGen -input-./io/Observatory.info')
+#os.system('./RmobGen -input-./io/Observatory.info')
+for RmobStanice in ArrayGenPath:
+	print "||||||||||||||||||||||||||||||||||||||||||||||||||||"
+	print "Zacatek generovani pro ", RmobStanice
+	html = urlopen(RmobStanice+'rmob.cfg').read()
+
+	os.system('./RmobGen ' + RmobStanice)
+	
 
 #session = ftplib.FTP('217.169.242.217','radiodata','meteor')
 

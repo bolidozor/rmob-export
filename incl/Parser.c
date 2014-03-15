@@ -8,7 +8,7 @@
 #include <iomanip>
 
 
-std::string ParArg(int argc, char const *argv[]){
+std::string ParArg(int argc, char const *argv[], std::string ObsInfo[20]){
 	
 	std::string arv;
 	for (int i = 1; i < argc; ++i)
@@ -17,10 +17,18 @@ std::string ParArg(int argc, char const *argv[]){
 
 		if (arv.substr(0,6)=="-input")
 		{	
-			std::cout << "Vstup -- " << arv.substr( 7 , arv.length()-7) <<std::endl;
+			std::cout << "Locale Vstup >>" << arv.substr( 7 , arv.length()-7) <<std::endl;
+			return arv.substr( 7 , arv.length()-7);
+		}
+		if (arv.substr(0,7)=="http://")
+		{	
+			std::cout << "Remote Vstup >>" << arv <<std::endl;
+			ObsInfo[14]="BolidozorOnline";
+			ObsInfo[13]=arv;
+			return arv;
 		}
 	}
-	return arv.substr( 7 , arv.length()-7);
+	
 }
 
 /*std::string ParArgB(int argc, char const *argv[]){
@@ -38,6 +46,188 @@ std::string ParArg(int argc, char const *argv[]){
 	return arv.substr( 7 , arv.length()-7);
 }
 */
+size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream) { 
+	size_t written; 
+	written = fwrite(ptr, size, nmemb, stream);
+	return written; 
+} 
+
+
+int GetObsInfo(std::string ObsInfo[20], int hcount[]){
+
+	std::string url = ObsInfo[13]+"rmob.cfg";
+	std::cout << "aaaa" << url << std::endl;
+	CURL *curl;
+	CURLcode res;
+	std::string readBuffer = "";
+ 
+	curl = curl_easy_init();
+	if(curl) {
+		FILE * fp;
+		fp = fopen(".tmp","w"); 
+		curl_easy_setopt(curl, CURLOPT_URL, url.c_str()); 
+		curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data); 
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp); 
+		res = curl_easy_perform(curl);
+
+		curl_easy_cleanup(curl);
+		fclose(fp);
+	}
+	std::string Poradi[] = {"stationname", "country", "city", "antenna", "preamp", "reciver", "computer", "latitudedeg", "longtitudedeg", "latitudens", "longtitudeew", "frequency", "email"};
+	std::string line;
+	std::ifstream myfile (".tmp");
+	if (myfile.is_open())
+	{
+		while (getline (myfile,line))
+		{
+			//std::cout << line << "| \t |" << line.substr(0,line.find("=")-1) << "| \t |" << line.substr(line.find("=")+2,line.length()-line.find("=")+2)<<'\n';
+			line.find("=");
+			for (int i = 0; i < 15; ++i)
+			{
+				if (Poradi[i].compare(line.substr(0,line.find("=")-1)) == 0)
+				{
+					//std::cout << "SHODA" << i << std::endl;
+					ObsInfo[i] = line.substr(line.find("=")+2,line.length()-line.find("=")+2);
+				}
+			}
+
+		}
+		myfile.close();
+	}
+
+	std::stringstream ss;
+
+	time_t rawtime;
+	struct tm * utc;
+
+	time ( &rawtime );
+	utc = gmtime ( &rawtime );
+
+	for (int i = 0; i < 744; ++i)
+	{
+		hcount[i]=1111; // Black
+	}
+
+
+	std::cout << "UTC čas je " << utc->tm_hour << " hodin a " << utc->tm_min << " minut. den je " << utc->tm_yday << std::endl;
+
+	int r = utc->tm_year+1900;
+
+
+
+	for (int y = 0; y < 32; ++y)			// den
+	{
+	for (int z = 0; z < 24; ++z)			// hodina
+	{
+
+	int numOfChar = 0;
+
+
+
+
+		line="";
+		ss.str("");
+
+		ss << utc->tm_year+1900 << "/";
+
+		if (utc->tm_mon+1 < 10)
+		{
+			ss << "0" << utc->tm_mon+1;
+		}else{
+			ss << utc->tm_mon+1;
+		}
+		ss << "/";
+
+		if (y+1 < 10)
+		{
+			ss << "0" << y+1;
+		}else{
+			ss << y+1;
+		}
+		ss << "/";
+
+		ss << utc->tm_year+1900;
+
+		if (utc->tm_mon+1 < 10)
+		{
+			ss << "0" << utc->tm_mon+1;
+		}else{
+			ss << utc->tm_mon+1;
+		}
+
+		if (y+1 < 10)
+		{
+			ss << "0" << y+1;
+		}else{
+			ss << y+1;
+		}
+		
+		ss	<< std::setw(2)<<std::setfill('0') << z
+			<< "_"
+			<< ObsInfo[0]
+			<< ".dat";
+
+	//	RPath = ObsInfo[13] + ss.str();
+
+	url = ObsInfo[13] + "data/" + ss.str();
+	curl = curl_easy_init();
+	if(curl) {
+		FILE * fp;
+		fp = fopen(".tmp","w"); 
+		curl_easy_setopt(curl, CURLOPT_URL, url.c_str()); 
+		curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data); 
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp); 
+		res = curl_easy_perform(curl);
+
+		curl_easy_cleanup(curl);
+		fclose(fp);
+	}
+
+		std::ifstream myfile (".tmp");
+
+		if (utc->tm_mon == utc->tm_mon)
+		{
+			if (myfile.is_open())
+			{
+				hcount[y*24 + z] = 0;
+				std::cout << "File exist ";
+				while ( getline (myfile,line) )
+				{
+
+					if (line.find("_met") != std::string::npos) {
+						hcount[y*24 + z] ++;
+					}
+
+					if (line.find("_fb") != std::string::npos) {
+						hcount[y*24 + z] ++;
+					}
+
+				}
+				std::cout << "hodina " << y*24 + z<< "; pocet " << hcount[y*24 + z] << "; ";
+				myfile.close();
+			}
+			else
+			{
+				std::cout << "File is NOT exist ";
+			}
+		}
+		
+
+		std::cout << ObsInfo[13] << ss.str() << std::endl;
+
+	}	// konec hodina
+	}	// konec mesic
+
+
+
+
+
+
+
+
+}
 
 
 void ParObsInfo(std::string data[], std::string path){
@@ -300,7 +490,7 @@ int numOfChar = 0;
 	}	// konec mesic
 }
 
-
+/*
 void ParMySQL(int hcount[]){
 
 	std::ifstream file ("./io/SqlAccess.in");
@@ -362,4 +552,4 @@ void ParMySQL(int hcount[]){
 	mysql_free_result(res);
 	mysql_close(conn);
 
-}
+}*/

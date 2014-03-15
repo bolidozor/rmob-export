@@ -4,7 +4,7 @@
 
 std::string ParArg(int argc, char const *argv[]);
 
-std::string ParArgB(int argc, char const *argv[]);
+int GetObsInfo(std::string ObsInfo[20]);
 
 void ParObsInfo(std::string data[], std::string path);
 
@@ -13,8 +13,6 @@ void ParRmobFile(int hcount[], std::string ObsInfo[20]);
 void ParBolidozorFile(int hcount[], std::string ObsInfo[20]);
 
 void ParBolidozor14File(int hcount[], std::string ObsInfo[20]);
-
-void ParMySQL(int hcount[]);
 
 #include "Parser.c"
 #endif

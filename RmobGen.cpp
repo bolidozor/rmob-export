@@ -9,7 +9,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <Magick++.h>
-#include <mysql/mysql.h>
+#include <curl/curl.h>
 
 #include "incl/SvgGen.h"
 #include "incl/Parser.h"
@@ -21,11 +21,21 @@ int main(int argc, char const *argv[]){
 	string ObsInfo[16] = {""};
 	int HourCount[745] = {0};
 
-	ParArg(argc, argv);
+	ParArg(argc, argv, ObsInfo);
 
-	ParObsInfo(ObsInfo, ParArg(argc, argv));
+	if (ObsInfo[14].compare("BolidozorOnline") == 0)
+	{
+		std::cout <<"----------------"<<std::endl;
+		GetObsInfo(ObsInfo,HourCount);
+		TxtGen(ObsInfo,HourCount, "./io/gen/");
+		SvgGen(ObsInfo,HourCount);
+		SvgJpg("./io/gen/",ObsInfo);
+	}else
+	{
+		ParObsInfo(ObsInfo, ParArg(argc, argv, ObsInfo));
+	}
 
-	if(ObsInfo[14].compare("Bolidozor_14") == 0)
+	if (ObsInfo[14].compare("Bolidozor_14") == 0)
 	{
 		ParBolidozor14File(HourCount,ObsInfo);
 		TxtGen(ObsInfo,HourCount, "./io/gen/");
@@ -46,10 +56,6 @@ int main(int argc, char const *argv[]){
 		TxtGen(ObsInfo,HourCount, "./io/gen/");
 		SvgGen(ObsInfo,HourCount);
 		SvgJpg("./io/gen/",ObsInfo);
-	}
-	if (ObsInfo[14].compare("MySQL") == 0)
-	{
-		ParMySQL(HourCount);
 	}
 
 	return 0;

@@ -17,8 +17,8 @@ config.set('RmobConfig', 'LongtitudeDeg', 'ZVPP')
 config.set('RmobConfig', 'Email', 'roman-dvorak@email.cz')
 config.set('RmobConfig', 'Computer', 'Ion PC')
 config.set('RmobConfig', 'Antenna', '1/4GP')
-config.set('RmobConfig', 'Preamp', 'LNA01A (www.mlab.cz)')
-config.set('RmobConfig', 'Reciver', 'RMDS01B')
+config.set('RmobConfig', 'Preamp', 'LNA01A www.mlab.cz')
+config.set('RmobConfig', 'Reciver', 'RMDS01B www.mlab.cz')
 config.set('RmobConfig', 'Frequency', '140 050 000 Hz')
 
 with open('rmob.cfg', 'wb') as configfile:
