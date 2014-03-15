@@ -4,11 +4,10 @@
 ## 
 ##   !!! DO NOT CHANGE this file
 ## 
-##   for edit this file type 'python Configure.py in 'rmob-export/' dictionary'
+##   for edit this file type 'python Configure.py in 'rmob-export/' directory
 ## 
 #################################################################################################### 
-#!
-#!
+#![date]="2014-03-06T22:03:04.474063"
 #################################################################################################### 
 # Observatory name
 --Observatory--
@@ -37,12 +36,11 @@ N
 # email
 --email--
 # path to source file
-/home/roman/ion/home/roman/MetData/ZVPP/Sort/data/
+/home/roman/ion/MetData/ZVPP/Sort/data/
 # input data eg. "Bolidozor_14", "Bolidozor", "Rmob", "MySQL"
 Bolidozor_14
 # Observatory Prefix 
---ObsPref--
+ZVPP
 #################################################################################################### 
 ## 
 ##   END
-
