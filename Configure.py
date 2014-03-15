@@ -152,7 +152,7 @@ def GenObservatory():
 	write.write("## \n")
 	write.write("##   !!! DO NOT CHANGE this file\n")
 	write.write("## \n")
-	write.write("##   for edit this file type 'python Configure.py in 'rmob-export/' dictionary'\n")
+	write.write("##   for edit this file type 'python Configure.py in 'rmob-export/' directory\n")
 	write.write("## \n")
 	write.write("#################################################################################################### \n")
 	write.write("#![date]=\"" + datetime.datetime.now().isoformat() + "\"\n")

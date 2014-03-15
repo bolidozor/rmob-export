@@ -779,7 +779,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "			y=\"217.30455\"  \n";
 
 	///// Ver ver version verze Ver.: Ver.:
-	svgout << "			style=\"font-size:10px;font-weight:normal;fill:#ff0016;fill-opacity:1;text-align:start;-inkscape-font-specification:Ubuntu\">1.4.dev</tspan></text>  \n";
+	svgout << "			style=\"font-size:10px;font-weight:normal;fill:#ff0016;fill-opacity:1;text-align:start;-inkscape-font-specification:Ubuntu\">1.5 Dev</tspan></text>  \n";
 	svgout << "	</g>  \n";
 
 
