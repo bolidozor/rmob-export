@@ -23,7 +23,7 @@ std::string ParArg(int argc, char const *argv[]){
 	return arv.substr( 7 , arv.length()-7);
 }
 
-std::string ParArgB(int argc, char const *argv[]){
+/*std::string ParArgB(int argc, char const *argv[]){
 	
 	std::string arv;
 	for (int i = 1; i < argc; ++i)
@@ -37,7 +37,7 @@ std::string ParArgB(int argc, char const *argv[]){
 	}
 	return arv.substr( 7 , arv.length()-7);
 }
-
+*/
 
 
 void ParObsInfo(std::string data[], std::string path){

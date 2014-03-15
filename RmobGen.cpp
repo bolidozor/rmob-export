@@ -21,7 +21,7 @@ int main(int argc, char const *argv[]){
 	string ObsInfo[16] = {""};
 	int HourCount[745] = {0};
 
-	ParArgB(argc, argv);
+	ParArg(argc, argv);
 
 	ParObsInfo(ObsInfo, ParArg(argc, argv));
 
