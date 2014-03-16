@@ -1663,7 +1663,7 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 	txtout << "[Receiver]" <<  svginfo[5] << "\n";
 	txtout << "[Observing Method]" <<  "Fordward scattering" << "\n";
 	txtout << "[Remarks]" <<  svginfo[6] << "\n";
-	txtout << "[Soft FTP] Astrozor RMOBgen v1.3.dev\n";
+	txtout << "[Soft FTP] Astrozor RMOBgen v1.6 - Bolidozor MultiGen\n";
 	txtout << "[E]" <<  "-" << "\n";
 
 	txtout.close();

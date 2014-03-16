@@ -5,12 +5,16 @@ import ftplib
 import ConfigParser
 from HTMLParser import HTMLParser
 from urllib import urlopen
+import subprocess
 
 ArrayObservator = []
 ArrayHTML = []
 ArrayStanice = []
 ArrayRMOB = []
 ArrayGenPath = []
+
+subprocess.Popen(['notify-send', "START OF rmob-export/Run.py"])
+
 
 class MyHTMLParser(HTMLParser):
 	global ArrayHTML
@@ -79,7 +83,8 @@ for RmobStanice in ArrayGenPath:
 	print "Zacatek generovani pro ", RmobStanice
 	log.write(' >> ' + 'Stanice: ' + RmobStanice + '\t\t ' + datetime.datetime.now().isoformat()  + ' \n')
 	html = urlopen(RmobStanice+'rmob.cfg').read()
-
+	
+	subprocess.Popen(['notify-send', "START OF rmob-export/RmobGen \n"+RmobStanice+"\n "+datetime.datetime.now().isoformat()])
 	os.system('./RmobGen ' + RmobStanice)
 
 	session = ftplib.FTP('217.169.242.217','radiodata','meteor')
@@ -95,6 +100,7 @@ for RmobStanice in ArrayGenPath:
 os.system('mv ./io/gen/*TXT ./io/old/')
 os.system('mv ./io/gen/*jpg ./io/old/')
 
-log.write(' >> ' + datetime.datetime.now().isoformat()  + ' - konec prenosu \n')
+log.write('Konec prenosu ' + datetime.datetime.now().isoformat()  + ' \n')
 log.close()
+subprocess.Popen(['notify-send', "END OF rmob-export/Run.py"])
 exit(0)

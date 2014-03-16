@@ -31,21 +31,6 @@ std::string ParArg(int argc, char const *argv[], std::string ObsInfo[20]){
 	
 }
 
-/*std::string ParArgB(int argc, char const *argv[]){
-	
-	std::string arv;
-	for (int i = 1; i < argc; ++i)
-	{
-		arv = argv[i];
-
-		if (arv.substr(0,6)=="-input")
-		{	
-			std::cout << "Vstup -- " << arv.substr( 7 , arv.length()-7) <<std::endl;
-		}
-	}
-	return arv.substr( 7 , arv.length()-7);
-}
-*/
 size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream) { 
 	size_t written; 
 	written = fwrite(ptr, size, nmemb, stream);
