@@ -1172,7 +1172,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "	       id=\"tspan4010\"	\n";
 	svgout << "	       x=\"59.015121\"	\n";
 	svgout << "	       y=\"100.53019\"	\n";
-	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[6] << "</tspan></text>	\n";
+	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << svginfo[6] << "</tspan></text>";
 	svgout << "	  <text	\n";
 	svgout << "	     xml:space=\"preserve\"	\n";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#9000d3;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	\n";

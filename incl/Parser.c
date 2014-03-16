@@ -74,21 +74,25 @@ int GetObsInfo(std::string ObsInfo[20], int hcount[]){
 		curl_easy_cleanup(curl);
 		fclose(fp);
 	}
-	std::string Poradi[] = {"stationname", "country", "city", "antenna", "preamp", "reciver", "computer", "latitudedeg", "longtitudedeg", "latitudens", "longtitudeew", "frequency", "email"};
+	std::string Poradi[15] = {"stationname", "country", "city", "antenna", "preamp", "reciver", "computer", "latitudedeg", "longtitudedeg", "latitudens", "longtitudeew", "frequency", "email"};
 	std::string line;
 	std::ifstream myfile (".tmp");
 	if (myfile.is_open())
 	{
 		while (getline (myfile,line))
 		{
-			//std::cout << line << "| \t |" << line.substr(0,line.find("=")-1) << "| \t |" << line.substr(line.find("=")+2,line.length()-line.find("=")+2)<<'\n';
-			line.find("=");
-			for (int i = 0; i < 15; ++i)
+			//std::cout << line << "|  |" << line.substr(0,line.find("=")-1) << "|  |" << line.substr(line.find("=")+2,line.length()-line.find("=")+2)<<'\n';
+			//line.find("=");
+			if (line.find("=") != std::string::npos)
 			{
-				if (Poradi[i].compare(line.substr(0,line.find("=")-1)) == 0)
+				for (int i = 0; i < 15; ++i)
 				{
-					//std::cout << "SHODA" << i << std::endl;
-					ObsInfo[i] = line.substr(line.find("=")+2,line.length()-line.find("=")+2);
+					if (Poradi[i].compare(line.substr(0,line.find("=")-1)) == 0)
+					{
+						std::cout << "SHODA" << i << std::endl;
+					    ObsInfo[i] = line.substr((line.find("=")+2), (line.length()-line.find("=")+2));
+						//ObsInfo[i] = line.substr(5, 5);
+					}
 				}
 			}
 
@@ -115,15 +119,12 @@ int GetObsInfo(std::string ObsInfo[20], int hcount[]){
 	int r = utc->tm_year+1900;
 
 
-
-	for (int y = 0; y < 32; ++y)			// den
+	for (int y = 0; y < 31; ++y)			// den
 	{
 	for (int z = 0; z < 24; ++z)			// hodina
 	{
 
 	int numOfChar = 0;
-
-
 
 
 		line="";
