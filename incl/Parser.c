@@ -192,10 +192,17 @@ int GetObsInfo(std::string ObsInfo[20], int hcount[]){
 		{
 			if (myfile.is_open())
 			{
+				
 				hcount[y*24 + z] = 0;
 				std::cout << "File exist ";
-				while ( getline (myfile,line) )
+				while (getline (myfile,line))
 				{
+					if (line.find("404 Not Found") != std::string::npos)
+					{
+						std::cout << "File is NOT on server ";
+						hcount[y*24 + z] = 1111;
+						break;
+					}
 
 					if (line.find("_met") != std::string::npos) {
 						hcount[y*24 + z] ++;
