@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //		Run whit -input parameter whit path to .info file as: ./RmobGen -input-./io/Observatory.info
-//
+//			or url path to obs file on Ondrejov space.astro.cz server
 //
 
 #include <iostream>

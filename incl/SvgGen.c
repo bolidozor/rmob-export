@@ -135,12 +135,12 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	float y = 17.174;
 
 	int out;
-	time_t now = time(0);  
+	time_t now = time(0);
 	tm *ltm = localtime(&now);
 
 	time_t rawtime;
 	struct tm * utc;
-	
+
 	time ( &rawtime );
 	utc = gmtime ( &rawtime );
 
@@ -150,7 +150,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	for (int i = 0; i < 744; ++i)
 	{
 		if (hourcount[i] != 1111)
-		{	
+		{
 			f++;
 			MonthAvgr =+ MonthAvgr;
 		}
@@ -779,7 +779,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "			y=\"217.30455\"  \n";
 
 	///// Ver ver version verze Ver.: Ver.:
-	svgout << "			style=\"font-size:10px;font-weight:normal;fill:#ff0016;fill-opacity:1;text-align:start;-inkscape-font-specification:Ubuntu\">1.6 MultiGen</tspan></text>  \n";
+	svgout << "			style=\"font-size:10px;font-weight:normal;fill:#ff0016;fill-opacity:1;text-align:start;-inkscape-font-specification:Ubuntu\">1.7 MultiGen </tspan></text>  \n";
 	svgout << "	</g>  \n";
 
 
@@ -1185,7 +1185,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "	       id=\"tspan4014\"	\n";
 	svgout << "	       x=\"267.68707\"	\n";
 	svgout << "	       y=\"11.545778\"	\n";
-	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << DecDegToDDMMSS(svginfo[8]) << svginfo[9] << "</tspan></text>	\n";
+	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << DecDegToDDMMSS(svginfo[8]) << svginfo[10] << "</tspan></text>	\n";
 	svgout << "	  <text	\n";
 	svgout << "	     xml:space=\"preserve\"	\n";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#9000d3;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	\n";
@@ -1198,7 +1198,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "	       id=\"tspan4018\"	\n";
 	svgout << "	       x=\"267.68707\"	\n";
 	svgout << "	       y=\"27.212563\"	\n";
-	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << DecDegToDDMMSS(svginfo[7]) << svginfo[10]<< "</tspan></text>	\n";
+	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\">" << DecDegToDDMMSS(svginfo[7]) << svginfo[9]<< "</tspan></text>	\n";
 	svgout << "	  <text	\n";
 	svgout << "	     xml:space=\"preserve\"	\n";
 	svgout << "	     style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#9000d3;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"	\n";
@@ -1509,7 +1509,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "	       x=\"48.419983\"	\n";
 	svgout << "	       y=\"179.09091\"	\n";
 	svgout << "	       style=\"font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#9000d3;fill-opacity:1;font-family:Ubuntu;-inkscape-font-specification:Ubuntu\"> " << utc->tm_hour << ":" << utc->tm_min << ":" <<  utc->tm_sec << " UT </tspan></text>	\n";
-	
+
 	for (int i = 0; i < 24; ++i)
 	{
 
@@ -1520,7 +1520,7 @@ int SvgGen(std::string svginfo[15], int hourcount[745]){
 	svgout << "	     y=\"" << 202.866002 - (Dkrok*hourcount[(utc->tm_mday-1)*24 + i]) << "\"	\n";
 	svgout << "	     id=\"recDay" << i <<"\"	\n";
 	svgout << "	     style=\"fill:#f7444f;fill-opacity:1;stroke:none\" />	\n";
-		
+
 	}
 
 	svgout << "	  <path	\n";
@@ -1576,10 +1576,10 @@ std::string strhourcount[745];
 std::stringstream c;
 
 
-unsigned int i=0; 
+unsigned int i=0;
 
 for (i; i < 745 ; ++i)
-{	
+{
 	c.str("");
 	if (hourcount[i] < 10)
 	{
@@ -1601,7 +1601,7 @@ for (i; i < 745 ; ++i)
 		c.str("");
 		c << "??? ";
 	}
-	
+
 	strhourcount[i] = c.str();
 }
 
@@ -1615,13 +1615,12 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 
 	time_t rawtime;
 	struct tm * utc;
-	
+
 	time ( &rawtime );
 	utc = gmtime ( &rawtime );
 
 	std::ofstream txtout;
 
-	
 
 // ZVPPCB_012014rmob.TXT
 
@@ -1663,7 +1662,7 @@ const char* const MonthNames[] = { "jan", "feb", "mar", "apr", "may", "Jun", "Ju
 	txtout << "[Receiver]" <<  svginfo[5] << "\n";
 	txtout << "[Observing Method]" <<  "Fordward scattering" << "\n";
 	txtout << "[Remarks]" <<  svginfo[6] << "\n";
-	txtout << "[Soft FTP] Astrozor RMOBgen v1.6 - Bolidozor MultiGen\n";
+	txtout << "[Soft FTP] Astrozor RMOBgen v1.7 - Bolidozor MultiGen (RadioObserver) - https://github.com/bolidozor/rmob-export\n";
 	txtout << "[E]" <<  "-" << "\n";
 
 	txtout.close();

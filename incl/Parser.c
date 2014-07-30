@@ -22,7 +22,7 @@ std::string ParArg(int argc, char const *argv[], std::string ObsInfo[20]){
 		}
 		if (arv.substr(0,7)=="http://")
 		{	
-			std::cout << "Remote Vstup >>" << arv <<std::endl;
+			std::cout << "Remote Input >>" << arv <<std::endl;
 			ObsInfo[14]="BolidozorOnline";
 			ObsInfo[13]=arv;
 			return arv;
@@ -39,9 +39,10 @@ size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream) {
 
 
 int GetObsInfo(std::string ObsInfo[20], int hcount[]){
-
+	int datatyp;
+	datatyp = 0; // 0-neni urcene, 1-Speclab, 2-RadObs
 	std::string url = ObsInfo[13]+"rmob.cfg";
-	std::cout << "aaaa" << url << std::endl;
+	std::cout << "rmob.cfg parsing " << url << std::endl;
 	CURL *curl;
 	CURLcode res;
 	std::string readBuffer = "";
@@ -74,8 +75,8 @@ int GetObsInfo(std::string ObsInfo[20], int hcount[]){
 				{
 					if (Poradi[i].compare(line.substr(0,line.find("=")-1)) == 0)
 					{
-						std::cout << "SHODA" << i << std::endl;
 					    ObsInfo[i] = line.substr((line.find("=")+2), (line.length()-line.find("=")+2));
+					    std::cout << "SHODA " << i << ":  " << ObsInfo[i] << std::endl;
 						//ObsInfo[i] = line.substr(5, 5);
 					}
 				}
@@ -86,6 +87,7 @@ int GetObsInfo(std::string ObsInfo[20], int hcount[]){
 	}
 
 	std::stringstream ss;
+	std::stringstream ssRadObs;
 
 	time_t rawtime;
 	struct tm * utc;
@@ -109,7 +111,7 @@ int GetObsInfo(std::string ObsInfo[20], int hcount[]){
 	for (int z = 0; z < 24; ++z)			// hodina
 	{
 
-	int numOfChar = 0;
+		int numOfChar = 0;
 
 
 		line="";
@@ -154,27 +156,68 @@ int GetObsInfo(std::string ObsInfo[20], int hcount[]){
 			<< ObsInfo[0]
 			<< ".dat";
 
-	//	RPath = ObsInfo[13] + ss.str();
+		line="";
+		ssRadObs.str("");
 
-	url = ObsInfo[13] + "data/" + ss.str();
-	curl = curl_easy_init();
-	if(curl) {
-		FILE * fp;
-		fp = fopen(".tmp","w"); 
-		curl_easy_setopt(curl, CURLOPT_URL, url.c_str()); 
-		curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
-		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data); 
-		curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp); 
-		res = curl_easy_perform(curl);
+		ssRadObs << utc->tm_year+1900 << "/";
 
-		curl_easy_cleanup(curl);
-		fclose(fp);
-	}
-
-		std::ifstream myfile (".tmp");
-
-		if (utc->tm_mon == utc->tm_mon)
+		if (utc->tm_mon+1 < 10)
 		{
+			ssRadObs << "0" << utc->tm_mon+1;
+		}else{
+			ssRadObs << utc->tm_mon+1;
+		}
+		ssRadObs << "/";
+
+		if (y+1 < 10)
+		{
+			ssRadObs << "0" << y+1;
+		}else{
+			ssRadObs << y+1;
+		}
+		ssRadObs << "/";
+
+		ssRadObs << utc->tm_year+1900;
+
+		if (utc->tm_mon+1 < 10)
+		{
+			ssRadObs << "0" << utc->tm_mon+1;
+		}else{
+			ssRadObs << utc->tm_mon+1;
+		}
+
+		if (y+1 < 10)
+		{
+			ssRadObs << "0" << y+1;
+		}else{
+			ssRadObs << y+1;
+		}
+		
+		ssRadObs	<< std::setw(2)<<std::setfill('0') << z
+			<< "0000_"
+			<< ObsInfo[0]
+			<< "_meta.csv";
+
+		//	RPath = ObsInfo[13] + ss.str();
+		if (datatyp == 1 || datatyp ==0)
+		{
+			url = ObsInfo[13] + "data/" + ss.str();
+			curl = curl_easy_init();
+			if(curl) {
+				FILE * fp;
+				fp = fopen(".tmp","w"); 
+				curl_easy_setopt(curl, CURLOPT_URL, url.c_str()); 
+				curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+				curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data); 
+				curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp); 
+				res = curl_easy_perform(curl);
+
+				curl_easy_cleanup(curl);
+				fclose(fp);
+			}
+
+			std::ifstream myfile (".tmp");
+
 			if (myfile.is_open())
 			{
 				
@@ -189,12 +232,14 @@ int GetObsInfo(std::string ObsInfo[20], int hcount[]){
 						break;
 					}
 
-					if (line.find("_met") != std::string::npos) {
+					if (line.find("_met;") != std::string::npos) {
 						hcount[y*24 + z] ++;
+						datatyp=1;
 					}
 
 					if (line.find("_fb") != std::string::npos) {
 						hcount[y*24 + z] ++;
+						datatyp=1;
 					}
 
 				}
@@ -203,23 +248,61 @@ int GetObsInfo(std::string ObsInfo[20], int hcount[]){
 			}
 			else
 			{
-				std::cout << "File is NOT exist ";
+				std::cout << "Nelze otevrit SpecLab soubor; ";
 			}
 		}
-		
+		if (datatyp == 2 || datatyp == 0)
+		{
+			url = ObsInfo[13] + "data/" + ssRadObs.str();
+			std::cout << ObsInfo[13] + "data/" + ssRadObs.str();
+			curl = curl_easy_init();
+			if(curl) {
+				FILE * fp;
+				fp = fopen(".tmp","w"); 
+				curl_easy_setopt(curl, CURLOPT_URL, url.c_str()); 
+				curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+				curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data); 
+				curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp); 
+				res = curl_easy_perform(curl);
+
+				curl_easy_cleanup(curl);
+				fclose(fp);
+
+				std::ifstream myfile (".tmp");
+
+				if (myfile.is_open())
+				{
+					
+					hcount[y*24 + z] = 0;
+					std::cout << "File RadObs exist ";
+					while (getline (myfile,line))
+					{
+						if (line.find("404 Not Found") != std::string::npos)
+						{
+							std::cout << "File is NOT on server ";
+							hcount[y*24 + z] = 1111;
+							break;
+						}
+
+						if (line.find("_met.fits") != std::string::npos) {
+							hcount[y*24 + z] ++;
+							datatyp=2;
+						}
+					}
+					std::cout << "hodina " << y*24 + z<< "; pocet " << hcount[y*24 + z] << "; ";
+					myfile.close();
+				}
+				else
+				{
+					std::cout << "Nelze otevrit RadObs soubor; ";
+				}
+			}
+		}
 
 		std::cout << ObsInfo[13] << ss.str() << std::endl;
 
 	}	// konec hodina
 	}	// konec mesic
-
-
-
-
-
-
-
-
 }
 
 

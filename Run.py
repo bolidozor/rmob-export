@@ -5,7 +5,7 @@ import ftplib
 import ConfigParser
 from HTMLParser import HTMLParser
 from urllib import urlopen
-import subprocess
+#import subprocess
 
 ArrayObservator = []
 ArrayHTML = []
@@ -13,7 +13,7 @@ ArrayStanice = []
 ArrayRMOB = []
 ArrayGenPath = []
 
-subprocess.Popen(['notify-send', "START OF rmob-export/Run.py"])
+#subprocess.Popen(['notify-send', "START OF rmob-export/Run.py"])
 
 
 class MyHTMLParser(HTMLParser):
@@ -45,7 +45,7 @@ except:
     os.mkdir(dir)
 
 
-url_meteors = "http://space.astro.cz/meteors/"
+url_meteors = "http://space.astro.cz/bolidozor/"
 html = urlopen(url_meteors).read()
 
 parser = MyHTMLParser()
@@ -84,7 +84,7 @@ for RmobStanice in ArrayGenPath:
 	log.write(' >> ' + 'Stanice: ' + RmobStanice + '\t\t ' + datetime.datetime.now().isoformat()  + ' \n')
 	html = urlopen(RmobStanice+'rmob.cfg').read()
 	
-	subprocess.Popen(['notify-send', "START OF rmob-export/RmobGen \n"+RmobStanice+"\n "+datetime.datetime.now().isoformat()])
+#	subprocess.Popen(['notify-send', "START OF rmob-export/RmobGen \n"+RmobStanice+"\n "+datetime.datetime.now().isoformat()])
 	os.system('./RmobGen ' + RmobStanice)
 
 	session = ftplib.FTP('217.169.242.217','radiodata','meteor')
@@ -102,5 +102,5 @@ os.system('mv ./io/gen/*jpg ./io/old/')
 
 log.write('Konec prenosu ' + datetime.datetime.now().isoformat()  + ' \n')
 log.close()
-subprocess.Popen(['notify-send', "END OF rmob-export/Run.py"])
+#subprocess.Popen(['notify-send', "END OF rmob-export/Run.py"])
 exit(0)

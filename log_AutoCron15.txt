@@ -1,0 +1,70 @@
+Zacatek prenosu 2014-03-27T14:43:20.373181 
+ >> Stanice: http://space.astro.cz/meteors/ZVPP/ZVPP-R1/		 2014-03-27T14:43:20.373393 
+ >> Stanice: http://space.astro.cz/meteors/svakov/SVAKOV-R3/		 2014-03-27T14:44:52.420210 
+Konec prenosu 2014-03-27T14:46:10.192812 
+Zacatek prenosu 2014-04-13T18:50:18.354945 
+ >> Stanice: http://space.astro.cz/meteors/ZVPP/ZVPP-R1/		 2014-04-13T18:50:18.355002 
+Zacatek prenosu 2014-04-13T18:52:19.301790 
+ >> Stanice: http://space.astro.cz/meteors/ZVPP/ZVPP-R1/		 2014-04-13T18:52:19.301850 
+Zacatek prenosu 2014-04-13T19:00:31.482144 
+ >> Stanice: http://space.astro.cz/meteors/ZVPP/ZVPP-R1/		 2014-04-13T19:00:31.482203 
+ >> Stanice: http://space.astro.cz/meteors/svakov/SVAKOV-R4/		 2014-04-13T19:14:21.426613 
+Zacatek prenosu 2014-04-13T19:16:49.530177 
+ >> Stanice: http://space.astro.cz/meteors/ZVPP/ZVPP-R1/		 2014-04-13T19:16:49.530237 
+ >> Stanice: http://space.astro.cz/meteors/svakov/SVAKOV-R4/		 2014-04-13T19:33:43.603946 
+Konec prenosu 2014-04-13T19:35:14.273235 
+Zacatek prenosu 2014-04-13T19:36:10.735198 
+ >> Stanice: http://space.astro.cz/meteors/ZVPP/ZVPP-R1/		 2014-04-13T19:36:10.735258 
+Zacatek prenosu 2014-04-13T19:36:17.336343 
+ >> Stanice: http://space.astro.cz/meteors/ZVPP/ZVPP-R1/		 2014-04-13T19:36:17.336402 
+ >> Stanice: http://space.astro.cz/meteors/svakov/SVAKOV-R4/		 2014-04-13T19:37:40.986938 
+Konec prenosu 2014-04-13T19:39:12.920499 
+Zacatek prenosu 2014-07-29T16:18:37.459810 
+ >> Stanice: http://space.astro.cz/bolidozor/HPHK/HPHK-R1/		 2014-07-29T16:18:37.459871 
+Zacatek prenosu 2014-07-29T16:25:01.901744 
+ >> Stanice: http://space.astro.cz/bolidozor/HPHK/HPHK-R1/		 2014-07-29T16:25:01.901823 
+Zacatek prenosu 2014-07-29T16:26:40.924625 
+ >> Stanice: http://space.astro.cz/bolidozor/HPHK/HPHK-R1/		 2014-07-29T16:26:40.924763 
+Zacatek prenosu 2014-07-29T16:27:27.767514 
+ >> Stanice: http://space.astro.cz/bolidozor/HPHK/HPHK-R1/		 2014-07-29T16:27:27.767564 
+Zacatek prenosu 2014-07-30T12:01:31.297220 
+ >> Stanice: http://space.astro.cz/bolidozor/HPHK/HPHK-R1/		 2014-07-30T12:01:31.297329 
+Zacatek prenosu 2014-07-30T12:05:11.140177 
+ >> Stanice: http://space.astro.cz/bolidozor/HPHK/HPHK-R1/		 2014-07-30T12:05:11.140321 
+ >> Stanice: http://space.astro.cz/bolidozor/OBSJAROMER/OBSJAROMER-R1/		 2014-07-30T12:06:51.885098 
+ >> Stanice: http://space.astro.cz/bolidozor/OBSUPICE/OBSUPICE-R1/		 2014-07-30T12:08:30.618512 
+ >> Stanice: http://space.astro.cz/bolidozor/ZVPP/ZVPP-R1/		 2014-07-30T12:10:40.456973 
+ >> Stanice: http://space.astro.cz/bolidozor/svakov/SVAKOV-R4/		 2014-07-30T12:11:15.284161 
+Konec prenosu 2014-07-30T12:11:51.596711 
+Zacatek prenosu 2014-07-30T12:25:39.362256 
+ >> Stanice: http://space.astro.cz/bolidozor/HPHK/HPHK-R1/		 2014-07-30T12:25:39.362305 
+ >> Stanice: http://space.astro.cz/bolidozor/OBSJAROMER/OBSJAROMER-R1/		 2014-07-30T12:27:14.024411 
+ >> Stanice: http://space.astro.cz/bolidozor/OBSUPICE/OBSUPICE-R1/		 2014-07-30T12:28:29.599363 
+ >> Stanice: http://space.astro.cz/bolidozor/ZVPP/ZVPP-R1/		 2014-07-30T12:29:21.776704 
+ >> Stanice: http://space.astro.cz/bolidozor/svakov/SVAKOV-R4/		 2014-07-30T12:29:57.848080 
+Konec prenosu 2014-07-30T12:30:34.354651 
+Zacatek prenosu 2014-07-30T12:37:57.565493 
+ >> Stanice: http://space.astro.cz/bolidozor/HPHK/HPHK-R1/		 2014-07-30T12:37:57.565754 
+Zacatek prenosu 2014-07-30T12:38:17.972369 
+ >> Stanice: http://space.astro.cz/bolidozor/HPHK/HPHK-R1/		 2014-07-30T12:38:17.972484 
+Zacatek prenosu 2014-07-30T12:38:36.272430 
+ >> Stanice: http://space.astro.cz/bolidozor/HPHK/HPHK-R1/		 2014-07-30T12:38:36.272518 
+ >> Stanice: http://space.astro.cz/bolidozor/OBSJAROMER/OBSJAROMER-R1/		 2014-07-30T12:39:35.645456 
+ >> Stanice: http://space.astro.cz/bolidozor/OBSUPICE/OBSUPICE-R1/		 2014-07-30T12:40:11.813682 
+ >> Stanice: http://space.astro.cz/bolidozor/ZVPP/ZVPP-R1/		 2014-07-30T12:41:07.373009 
+ >> Stanice: http://space.astro.cz/bolidozor/svakov/SVAKOV-R4/		 2014-07-30T12:41:45.411961 
+Konec prenosu 2014-07-30T12:42:29.168561 
+Zacatek prenosu 2014-07-30T12:46:31.709508 
+ >> Stanice: http://space.astro.cz/bolidozor/HPHK/HPHK-R1/		 2014-07-30T12:46:31.709655 
+ >> Stanice: http://space.astro.cz/bolidozor/OBSJAROMER/OBSJAROMER-R1/		 2014-07-30T12:47:14.599115 
+ >> Stanice: http://space.astro.cz/bolidozor/OBSUPICE/OBSUPICE-R1/		 2014-07-30T12:47:50.007649 
+ >> Stanice: http://space.astro.cz/bolidozor/ZVPP/ZVPP-R1/		 2014-07-30T12:48:46.242014 
+ >> Stanice: http://space.astro.cz/bolidozor/svakov/SVAKOV-R4/		 2014-07-30T12:49:23.751459 
+Konec prenosu 2014-07-30T12:49:59.831245 
+Zacatek prenosu 2014-07-30T13:00:10.986387 
+ >> Stanice: http://space.astro.cz/bolidozor/HPHK/HPHK-R1/		 2014-07-30T13:00:10.986568 
+ >> Stanice: http://space.astro.cz/bolidozor/OBSJAROMER/OBSJAROMER-R1/		 2014-07-30T13:01:00.345753 
+ >> Stanice: http://space.astro.cz/bolidozor/OBSUPICE/OBSUPICE-R1/		 2014-07-30T13:01:35.498336 
+ >> Stanice: http://space.astro.cz/bolidozor/ZVPP/ZVPP-R1/		 2014-07-30T13:02:35.766014 
+ >> Stanice: http://space.astro.cz/bolidozor/svakov/SVAKOV-R4/		 2014-07-30T13:03:08.315735 
+Konec prenosu 2014-07-30T13:03:46.026102 
