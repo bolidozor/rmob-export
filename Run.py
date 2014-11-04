@@ -62,14 +62,16 @@ for observator in ArrayObservator:
 	ArrayStanice=ArrayHTML[1:]
 	print "--------------------",ArrayStanice
 	for stanice in ArrayStanice:
-		ArrayHTML=[]
-		url_stanice = url_meteors+observator+stanice
-		html = urlopen(url_stanice).read()
-		parser.feed(html)
-		ArrayRMOB=ArrayHTML[1:]
-		print "-----------------------------",ArrayRMOB
-		if "rmob.cfg" in ArrayRMOB:
-			ArrayGenPath.append(url_stanice)
+		if stanice[-1:] is "/":
+			ArrayHTML=[]
+			url_stanice = url_meteors+observator+stanice
+			html = urlopen(url_stanice).read()
+			parser.feed(html)
+			ArrayRMOB=ArrayHTML[1:]
+			print "-----------------------------",ArrayRMOB
+			if "rmob.cfg" in ArrayRMOB:
+				print "rmob.cfg found in", ArrayRMOB, url_stanice
+				ArrayGenPath.append(url_stanice)
 	
 
 print ArrayGenPath
