@@ -9,6 +9,7 @@ import paramiko
 import numpy
 import numpy as np
 import ConfigParser
+import svgwrite
 
 class rmob():
 	def __init__(self):
@@ -17,11 +18,12 @@ class rmob():
 		self.genYear  = now.year
 		self.genMonth = now.month
 		self.genObservatory = None
-		self.cenStation = None
+		self.genStation = None
 		self.LastData = False
 		self.ftp = None
 		self.configFiles = []
 		self.monthData = np.zeros((24, 31), dtype=numpy.int)
+		self.monthDataSize = np.zeros((24, 31))
 		self.stationName = None
 		self.stationCountry = None
 		self.stationCity = None
@@ -97,6 +99,14 @@ class rmob():
 
 	def parseMonthData(self, ObservatoryName = None, StationName = None, Year = None, Month = None):
 		monthPath = "/storage/bolidozor/" + self.genObservatory + "/" + self.genStation + "/data/" + str(self.genYear) + "/" + str(self.genMonth).zfill(2)
+		try:
+			data = np.load(self.genObservatory+"_"+self.genStation+".npz")
+			self.monthData=data['monthData']
+			self.monthDataSize=data['monthDataSize']
+			print self.monthData
+			print self.monthDataSize
+		except Exception, e:
+			print e
 		days = sorted(self.ftp.listdir(monthPath))
 		print days
 		for day in days:
@@ -104,14 +114,20 @@ class rmob():
 			hours = sorted(self.ftp.listdir(monthPath+"/"+day))
 			print hours
 			for hour in hours:
-				if hour.find("meta"):
-					file = self.ftp.file(monthPath+"/"+day+"/"+hour)
-					for i in file:
-						if i.find("met"):
-							#print int(hour[8:10]), int(day), i
-							self.monthData[int(hour[8:10])][int(day)-1] += 1
-					print int(hour[8:10]), day, self.monthData[int(hour[8:10])][int(day)-1]
+				if self.ftp.stat(monthPath+"/"+day+"/"+hour).st_size != self.monthDataSize[int(hour[8:10])][int(day)-1]:
+					self.monthData[int(hour[8:10])][int(day)-1] = 0
+					if hour.find("meta"):
+						file = self.ftp.file(monthPath+"/"+day+"/"+hour)
+						for i in file:
+							if i.find("met"):
+								#print int(hour[8:10]), int(day), i
+								self.monthData[int(hour[8:10])][int(day)-1] += 1
+						self.monthDataSize[int(hour[8:10])][int(day)-1] = self.ftp.stat(monthPath+"/"+day+"/"+hour).st_size
+						print "Soubor je pouzit",int(hour[8:10]), day, self.monthData[int(hour[8:10])][int(day)-1]
+				else:
+					print "Hodina je přeskočena, MpH:", self.monthData[int(hour[8:10])][int(day)-1]
 		print self.monthData
+		np.savez(self.genObservatory+"_"+self.genStation+".npz", monthData=self.monthData, monthDataSize=self.monthDataSize)
 
 		self.LastData = True
 
@@ -137,14 +153,13 @@ class rmob():
 			deg,mnt = divmod(mnt,60)
 			return deg,mnt,sec
 
-
 		f.write("[Observer]"+self.stationName+"\n\r")
 		f.write("[Country]"+self.stationCountry+"\n\r")
 		f.write("[City]"+self.stationCity+"\n\r")
-		deg, mnt, sec = decdeg2dms(float(self.stationLon)+"\n\r")
-		f.write("[Longitude]"+str(deg)+"d"+str(mnt)+str(sec)+self.stationLonL+"\n\r")
-		deg, mnt, sec = decdeg2dms(float(self.stationLat)+"\n\r")
-		f.write("[Latitude]"+str(deg)+"d"+str(mnt)+str(sec)+self.stationLatL+"\n\r")
+		deg, mnt, sec = decdeg2dms(float(self.stationLon))
+		f.write("[Longitude]"+str(int(deg))+"d"+str(int(mnt))+str(int(sec))+self.stationLonL+"\n\r")
+		deg, mnt, sec = decdeg2dms(float(self.stationLat))
+		f.write("[Latitude]"+str(int(deg))+"d"+str(int(mnt))+str(int(sec))+self.stationLatL+"\n\r")
 		f.write("[Longitude GMAP]"+self.stationLon+"\n\r")
 		f.write("[Latitude GMAP]"+self.stationLat+"\n\r")
 		f.write("[Frequencies]"+self.stationFreq+"\n\r")
@@ -158,5 +173,40 @@ class rmob():
 		f.write("[Soft FTP] Astrozor pyRMOBgen v1.8 - Bolidozor MultiGen (RadioObserver) - https://github.com/bolidozor/rmob-export"+"\n\r")
 		f.write("[E]-"+"\n\r")
 		f.close()
+
 	def getRmobPlot(self):
-		pass
+		dwg = svgwrite.Drawing('test.svg', size=(700,220))
+		dwg.add(dwg.line((0, 0), (10, 0), stroke=svgwrite.rgb(10, 10, 16, '%')))
+		dwg.add(dwg.text('Test', insert=(3, 3), fill='red'))
+		dwg.add(dwg.rect(insert=(120, 110), size=(245, 95), stroke = "black", fill = "white"))
+		dwg.add(dwg.rect(insert=(405, 16), size=(248, 192), stroke = "black", fill = "black"))
+		dwg.add(dwg.rect(insert=(657, 16), size=(8, 192), stroke = "black", fill = "black"))
+		#dwg.add(dwg.rect(insert=(657, 16), size=(6, 6), stroke = "blue", fill = "blue"))
+
+		def getColor(value, range):
+			value = value*3
+			range = range*3
+			if value <= range/3:
+				red=0
+				green=int(float(value)*((float(225)/(float(range)/3))))
+				blue=255
+			elif value <= range/3*2:
+				red=int(float(value)*(float(255)/(float(range)/3)))-255
+				green=255
+				blue=int(float(range-value)*(float(255)/(float(range)/3)))-255
+			else:
+				red=255
+				green=int(float(range-value)*((float(255)/(float(range)/3))))
+				blue=0
+			return str("rgb("+str(red)+","+str(green)+","+str(blue)+")")
+
+		for step in range(24):
+			dwg.add(dwg.rect(insert=(657, 16+step*8), size=(8, 8), stroke = "black", fill = getColor(step,23)))
+
+			
+		for day in range(31):
+			for hour in range(24):
+				dwg.add(dwg.rect(insert=(405+day*8, 16+hour*8), size=(8, 8), stroke = "black", fill = getColor(10,100)))
+				
+		#dwg.add( )
+		dwg.save()

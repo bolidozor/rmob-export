@@ -14,6 +14,7 @@ if __name__ == "__main__":
 	#gui.main()
 
 	rmob = rmob.rmob()
+	rmob.getRmobPlot()
 	rmob.setSftp('space.astro.cz', 'ZVPP')
 	rmob.setGenPreferences("ZVPP")
 	#rmob.setGenPreferences("ZVPP")
@@ -24,6 +25,7 @@ if __name__ == "__main__":
 			rmob.parseConfigData()
 			rmob.parseMonthData()
 			rmob.getRmobTxt()
+			rmob.getRmobPlot()
 		except Exception, e:
 			print e
 
