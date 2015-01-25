@@ -14,9 +14,9 @@ if __name__ == "__main__":
 	#gui.main()
 
 	rmob = rmob.rmob()
-	rmob.getRmobPlot()
 	rmob.setSftp('space.astro.cz', 'ZVPP')
-	rmob.setGenPreferences("ZVPP")
+	rmob.setGenPreferences("svakov")
+	rmob.info()
 	#rmob.setGenPreferences("ZVPP")
 	for station in rmob.getStations():
 		try:
