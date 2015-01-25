@@ -15,19 +15,20 @@ if __name__ == "__main__":
 
 	rmob = rmob.rmob()
 	rmob.setSftp('space.astro.cz', 'ZVPP')
-	rmob.setGenPreferences("svakov")
-	rmob.info()
-	#rmob.setGenPreferences("ZVPP")
-	for station in rmob.getStations():
-		try:
-			print "probíhá nastavování na:", station
-			rmob.setGenPreferences_stanice(str(station))
-			rmob.parseConfigData()
-			rmob.parseMonthData()
-			rmob.getRmobTxt()
-			rmob.getRmobPlot()
-		except Exception, e:
-			print e
+	for observatory in rmob.getObservatorys():
+		rmob.setGenPreferences(observatory)
+		rmob.setActual(True)
+		#rmob.setGenPreferences("ZVPP")
+		for station in rmob.getStations():
+			try:
+				print "probíhá nastavování na:", station
+				rmob.setGenPreferences_stanice(str(station))
+				rmob.parseConfigData()
+				rmob.parseMonthData()
+				rmob.getRmobTxt()
+				rmob.getRmobPlot()
+			except Exception, e:
+				print e
 
 
 

@@ -40,6 +40,7 @@ class rmob():
 		self.stationPreAmp = None
 		self.stationReciver = None
 		self.stationFreq = None
+		self.genActual = False
 
 	def info(self):
 		print "#####################################################"
@@ -57,6 +58,9 @@ class rmob():
 		print "StationName:", self.stationName
 		print "#####################################################"
 		print "#####################################################"
+
+	def setActual(self, actual = True):
+		self.genActual = actual
 
 
 	def setGenPreferences(self, ObservatoryName = None, GenYear = None, GenMonth = None, GenDay = None):
@@ -88,6 +92,9 @@ class rmob():
 		print "Pripojeni sftp na:", sftpUser+"@"+sftpURL, "bylo uspesne"
 	
 	#def getStations(self):
+	def getObservatorys(self):
+		observatorys = sorted(self.ftp.listdir("/storage/bolidozor/"))
+		return observatorys
 
 	def getStations(self):
 		stations = self.ftp.listdir("/storage/bolidozor/"+self.genObservatory)
@@ -122,7 +129,7 @@ class rmob():
 	def parseMonthData(self, ObservatoryName = None, StationName = None, Year = None, Month = None):
 		monthPath = "/storage/bolidozor/" + self.genObservatory + "/" + self.genStation + "/data/" + str(self.genYear) + "/" + str(self.genMonth).zfill(2)
 		try:
-			data = np.load(str(self.genObservatory)+"_"+str(self.genStation)+"_"+str(self.genYear)+str(self.genMonth)+".npz")
+			data = np.load('./cache/'+str(self.genObservatory)+"_"+str(self.genStation)+"_"+str(self.genYear)+str(self.genMonth)+".npz")
 			self.monthData=data['monthData']
 			self.monthDataSize=data['monthDataSize']
 			print self.monthData
@@ -145,16 +152,17 @@ class rmob():
 			for hour in hours:
 				if self.ftp.stat(monthPath+"/"+day+"/"+hour).st_size != self.monthDataSize[int(hour[8:10])][int(day)-1]:
 					file = self.ftp.file(monthPath+"/"+day+"/"+hour)
+					self.monthData[int(hour[8:10])][int(day)-1] = 0
 					for i in file:
 						if i.find("met") != -1:
 							self.monthData[int(hour[8:10])][int(day)-1] += 1
-					self.monthData[int(hour[8:10])][int(day)-1] += 1
+					#self.monthData[int(hour[8:10])][int(day)-1] += 1
 					self.monthDataSize[int(hour[8:10])][int(day)-1] = self.ftp.stat(monthPath+"/"+day+"/"+hour).st_size
-					print "Hodina", hour[8:10], "byla pozměněna", day, self.monthData[int(hour[8:10])][int(day)-1]
+					print "Hodina", hour[8:10], "byla pozměněna, MpH:",  self.monthData[int(hour[8:10])][int(day)-1], "dne:", int(day)
 				else:
-					print "Hodina", hour[8:10]," má lakální zálohu, MpH:", self.monthData[int(hour[8:10])][int(day)-1], "dne:", int(day)-1
+					print "Hodina", hour[8:10]," má lakální zálohu, MpH:", self.monthData[int(hour[8:10])][int(day)-1], "dne:", int(day)
 		print self.monthData
-		np.savez(str(self.genObservatory)+"_"+str(self.genStation)+"_"+str(self.genYear)+str(self.genMonth)+".npz", monthData=self.monthData, monthDataSize=self.monthDataSize)
+		np.savez('./cache/'+str(self.genObservatory)+"_"+str(self.genStation)+"_"+str(self.genYear)+str(self.genMonth)+".npz", monthData=self.monthData, monthDataSize=self.monthDataSize)
 		print self.monthData
 		self.LastData = True
 
@@ -164,7 +172,7 @@ class rmob():
 		monthDict = {1:'jan', 2:'feb', 3:'mar', 4:'apr', 5:'may', 6:'jun', 
             7:'jul', 8:'aug', 9:'sep', 10:'oct', 11:'nov', 12:'dec'}
 
-		f = open(str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+".TXT", 'w')
+		f = open('./out/'+str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+".TXT", 'w')
 		f.write(str(monthDict[self.genMonth]) + "| 00h| 01h| 02h| 03h| 04h| 05h| 06h| 07h| 08h| 09h| 10h| 11h| 12h| 13h| 14h| 15h| 16h| 17h| 18h| 19h| 20h| 21h| 22h| 23h|\n")
 		for day in range(31):
 			name=" "+str(day+1).zfill(2)+"|"
@@ -199,12 +207,12 @@ class rmob():
 		f.write("[Receiver]"+self.stationReciver+"\n")
 		f.write("[Observing Method]"+"Fordward scattering"+"\n")
 		f.write("[Remarks]"+self.stationComputer+"\n")
-		f.write("[Soft FTP] Astrozor pyRMOBgen v1.8 - Bolidozor MultiGen (RadioObserver) - https://github.com/bolidozor/rmob-export"+"\n")
-		f.write("[E]-"+"\n")
+		f.write("[Soft FTP]Astrozor pyRMOBgen v1.8 - astrozor.cz, bolidozor.cz MultiGen (RadioObserver) - https://github.com/bolidozor/rmob-export"+"\n")
+		f.write("[E]"+self.stationEmail+"\n")
 		f.close()
 
 	def getRmobPlot(self):
-		dwg = svgwrite.Drawing(str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+".svg", size=(700,220))
+		dwg = svgwrite.Drawing('./out/'+str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+".svg", size=(700,220))
 		dwg.add(dwg.rect(insert=(120, 110), size=(245, 95), stroke = "black", fill = "white"))
 		dwg.add(dwg.rect(insert=(405, 16), size=(248, 192), stroke = "black", fill = "black"))
 		dwg.add(dwg.rect(insert=(657, 16), size=(8, 192), stroke = "black", fill = "black"))
@@ -245,7 +253,7 @@ class rmob():
 		dwg.add(dwg.text(str("24h"), insert=(350, 216), fill='#61218f', style = "font-size:12px; font-family:Arial"))
 
 		dwg.add(dwg.text(str("1  Days --->"), insert=(405, 11), fill='#61218f', style = "font-size:12px; font-family:Arial"))
-		dwg.add(dwg.text(str("15"), insert=(520, 11), fill='#61218f', style = "font-size:12px; font-family:Arial"))
+		dwg.add(dwg.text(str("15"), insert=(517, 11), fill='#61218f', style = "font-size:12px; font-family:Arial"))
 		dwg.add(dwg.text(str("31"), insert=(643, 11), fill='#61218f', style = "font-size:12px; font-family:Arial"))
 
 		dwg.add(dwg.text(str("0h"), insert=(382, 24), fill='#61218f', style = "font-size:12px; font-family:Arial"))
@@ -254,7 +262,7 @@ class rmob():
 		dwg.add(dwg.text(str("24h"), insert=(382, 207), fill='#61218f', style = "font-size:12px; font-family:Arial"))
 
 		dwg.add(dwg.text(str("0"), insert=(667, 24), fill='#61218f', style = "font-size:12px; font-family:Arial"))
-		dwg.add(dwg.text(str(np.amax(self.genMonth)), insert=(667, 207), fill='#61218f', style = "font-size:12px; font-family:Arial"))
+		dwg.add(dwg.text(str(np.max(self.monthData)), insert=(667, 207), fill='#61218f', style = "font-size:12px; font-family:Arial"))
 
 		dwg.add(dwg.text("pyRMOBgen,   v1.8 - MULTIgen,   astrozor.cz", insert=(405, 218), fill='#61218f', style = "font-size:11px; font-family:Arial"))
 
@@ -301,15 +309,19 @@ class rmob():
 			for hour in range(24):
 				print self.monthData[hour][day],
 				dwg.add(dwg.rect(insert=(405+day*8, 16+hour*8), size=(8, 8), stroke = "black", fill = getColor(self.monthData[hour][day],np.amax(self.monthData))))
+		if self.genActual:
+			dwg.add(dwg.rect(insert=(405+time.gmtime().tm_mday*8, 16+time.gmtime().tm_hour*8), size=(8, 8), stroke = "white", fill = getColor(self.monthData[time.gmtime().tm_hour][self.genDay],np.amax(self.monthData))))
 
+		
+		dwg.add(dwg.line((120,163),(365,163), stroke = "#61218f", fill = "black"))
 		for todayhour in range(24):
 			try:
 				if self.monthData[todayhour][self.genDay-1] != -1:
 					dwg.add(dwg.rect(insert=(123+10*todayhour, 205-85.0*(float(self.monthData[todayhour][self.genDay-1])/float(np.amax(self.monthData, axis=0)[self.genDay-1])) ), size=(8, 85.0*(float(self.monthData[todayhour][self.genDay-1])/float(np.amax(self.monthData, axis=0)[self.genDay-1])) ), stroke = "#61218f", fill = getColor(self.monthData[todayhour][self.genDay-1],np.amax(self.monthData)) ))
 			except Exception, e:
 				print e
-		dwg.add(dwg.line((103,120),(364,120), stroke = "black", fill = "black"))
-		dwg.add(dwg.text(str(np.amax(self.monthData, axis=0)[self.genDay-1]), insert=(103, 116), fill='#61218f', style = "font-size:10px; font-family:Arial"))
+		dwg.add(dwg.line((101,120),(364,120), stroke = "black", fill = "black"))
+		dwg.add(dwg.text(str(np.amax(self.monthData, axis=0)[self.genDay-1]), insert=(101, 116), fill='#61218f', style = "font-size:10px; font-family:Arial"))
 
 
 		#dwg.add( )
