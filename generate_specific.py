@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
 	rmob = rmob.rmob()
 	rmob.setSftp('space.astro.cz', 'ZVPP')
-	rmob.setGenPreferences(self, ObservatoryName = genObservatory, GenYear = genYear, GenMonth = genMonth, GenDay = GenDay):
+	rmob.setGenPreferences(ObservatoryName = genObservatory, GenYear = genYear, GenMonth = genMonth, GenDay = GenDay)
 	rmob.parseConfigData()
 	rmob.parseMonthData()
 	rmob.getRmobTxt()
