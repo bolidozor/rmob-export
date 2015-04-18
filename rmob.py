@@ -187,7 +187,7 @@ class rmob():
 		for day in range(31):
 			name=" "+str(day+1).zfill(2)+"|"
 			for hour in range(24):
-				print "hour", hour, day
+#				print "hour", hour, day
 				if self.monthData[hour][day] == -1:
 					name += "???"+" |"
 				else:	
@@ -228,6 +228,7 @@ class rmob():
 			return str(str(int(deg))+"d "+str(int(mnt))+'\" '+str(int(sec))+"\' ")
 		monthMax=np.amax(self.monthData)
 #		monthMax=int(np.median(self.monthData)+np.std(self.monthData)*5)
+                monthMin= np.min(self.monthData[np.nonzero(self.monthData)])
 		
 		dwg = svgwrite.Drawing(str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+".svg", size=(700,220))
 		dwg.add(dwg.rect(insert=(120, 110), size=(245, 95), stroke = "black", fill = "white"))
@@ -278,8 +279,12 @@ class rmob():
 		dwg.add(dwg.text(str("12h"), insert=(382, 116), fill='#61218f', style = "font-size:12px; font-family:Arial"))
 		dwg.add(dwg.text(str("24h"), insert=(382, 207), fill='#61218f', style = "font-size:12px; font-family:Arial"))
 
-		dwg.add(dwg.text(str("0"), insert=(667, 24), fill='#61218f', style = "font-size:12px; font-family:Arial"))
-		dwg.add(dwg.text(str(monthMax), insert=(667, 207), fill='#61218f', style = "font-size:12px; font-family:Arial"))
+		dwg.add(dwg.text(str(monthMin), insert=(667, 24), fill='#61218f', style = "font-size:12px; font-family:Arial"))
+		
+                dwg.add(dwg.text(".", insert=(667, 70), fill='#61218f', style = "font-size:12px; font-family:Arial"))
+                dwg.add(dwg.text(".", insert=(667, 116), fill='#61218f', style = "font-size:12px; font-family:Arial"))
+                dwg.add(dwg.text(".", insert=(667, 161), fill='#61218f', style = "font-size:12px; font-family:Arial"))
+                dwg.add(dwg.text(str(monthMax), insert=(667, 207), fill='#61218f', style = "font-size:12px; font-family:Arial"))
 
 		dwg.add(dwg.text("pyRMOBgen,   v1.8 - MULTIgen,   astrozor.cz", insert=(405, 218), fill='#61218f', style = "font-size:11px; font-family:Arial"))
 
@@ -303,9 +308,9 @@ class rmob():
 				blue=255
 			elif value <= range/3*2:
 			#	print "hodnota 2",
-				red=int(float(value)*(float(255)/(float(range)/3)))-255
+				red=int(float(value)*(float(255)/(float(range)/3)))-254
 				green=255
-				blue=int(float(range-value)*(float(255)/(float(range)/3)))-255
+				blue=int(float(range-value)*(float(255)/(float(range)/3)))-254
 			elif value <= range:
 			#	print "hodnota 3",
 				red=255
