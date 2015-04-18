@@ -10,6 +10,7 @@ import ftplib
 import paramiko
 import numpy
 import numpy as np
+import numpy.ma as ma
 import ConfigParser
 import svgwrite
 import ftplib
@@ -43,6 +44,7 @@ class rmob():
 		self.stationReciver = None
 		self.stationFreq = None
 		self.genActual = False
+		self.UsePlotMask = True
 
 	def info(self):
 		print "#####################################################"
@@ -169,7 +171,7 @@ class rmob():
 				else:
 					print "Hodina", hour[8:10]," má lakální zálohu, MpH:", self.monthData[int(hour[8:10])][int(day)-1], "dne:", int(day)
 
-#		np.savez('./cache/'+str(self.genObservatory)+"_"+str(self.genStation)+"_"+ str(self.genYear) + str(self.genMonth) +".npz", monthData=self.monthData, monthDataSize=self.monthDataSize)
+				#np.savez('./cache/'+str(self.genObservatory)+"_"+str(self.genStation)+"_"+ str(self.genYear) + str(self.genMonth) +".npz", monthData=self.monthData, monthDataSize=self.monthDataSize)
                 np.savez('./cache/'+str(self.genObservatory)+"_"+str(self.genStation)+".npz", **{"monthData_"+str(self.genYear) + "_" +str(self.genMonth): self.monthData, "monthDataSize_"+str(self.genYear) + "_" +str(self.genMonth): self.monthDataSize})
 		self.LastData = True
 
@@ -226,9 +228,21 @@ class rmob():
 			mnt, sec = divmod(dd*3600,60)
 			deg, mnt = divmod(mnt, 60)
 			return str(str(int(deg))+"d "+str(int(mnt))+'\" '+str(int(sec))+"\' ")
-		monthMax=np.amax(self.monthData)
-#		monthMax=int(np.median(self.monthData)+np.std(self.monthData)*5)
-                monthMin= np.min(self.monthData[np.nonzero(self.monthData)])
+
+		try:
+			monthDataMask = np.load("./cache/"+str(self.genObservatory)+"_"+str(self.genStation)+"_dataMask_"+str(self.genYear) + "_" +str(self.genMonth)+".npy")
+		except Exception, e:
+			monthDataMask = np.full((23,30), True, bool)
+
+		monthDataMasked = ma.masked_array(self.monthData, np.invert(monthDataMask))
+		
+
+		monthMax=np.amax(monthDataMasked)
+#		monthMax=int(np.median(monthDataMasked)+np.std(monthDataMasked)*5)
+		monthMin= np.min(monthDataMasked[np.nonzero(monthDataMasked)])+1
+
+		print monthDataMask
+		print monthDataMasked
 		
 		dwg = svgwrite.Drawing(str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+".svg", size=(700,220))
 		dwg.add(dwg.rect(insert=(120, 110), size=(245, 95), stroke = "black", fill = "white"))
@@ -333,21 +347,21 @@ class rmob():
 
 		for day in range(31):
 			for hour in range(24):
-				print day, hour," - ", self.monthData[hour][day]
-				dwg.add(dwg.rect(insert=(405+day*8, 16+hour*8), size=(8, 8), stroke = "black", fill = getColor(self.monthData[hour][day],monthMax)))
+				print day, hour," - ", monthDataMasked[hour][day]
+				dwg.add(dwg.rect(insert=(405+day*8, 16+hour*8), size=(8, 8), stroke = "black", fill = getColor(monthDataMasked[hour][day],monthMax)))
 		if self.genActual:
-			dwg.add(dwg.rect(insert=(405+(time.gmtime().tm_mday-1)*8, 16+time.gmtime().tm_hour*8), size=(8, 8), stroke = "white", fill = getColor(self.monthData[time.gmtime().tm_hour][self.genDay],np.amax(self.monthData))))
+			dwg.add(dwg.rect(insert=(405+(time.gmtime().tm_mday-1)*8, 16+time.gmtime().tm_hour*8), size=(8, 8), stroke = "white", fill = getColor(monthDataMasked[time.gmtime().tm_hour][self.genDay],np.amax(monthDataMasked))))
 
 		
 		dwg.add(dwg.line((120,163),(365,163), stroke = "#61218f", fill = "black"))
 		for todayhour in range(24):
 			try:
-				if self.monthData[todayhour][self.genDay-1] != -1:
-					dwg.add(dwg.rect(insert=(123+10*todayhour, 205-85.0*(float(self.monthData[todayhour][self.genDay-1])/float(np.amax(self.monthData, axis=0)[self.genDay-1])) ), size=(8, 85.0*(float(self.monthData[todayhour][self.genDay-1])/float(np.amax(self.monthData, axis=0)[self.genDay-1])) ), stroke = "#61218f", fill = getColor(self.monthData[todayhour][self.genDay-1],np.amax(self.monthData)) ))
+				if monthDataMasked[todayhour][self.genDay-1] != -1:
+					dwg.add(dwg.rect(insert=(123+10*todayhour, 205-85.0*(float(monthDataMasked[todayhour][self.genDay-1])/float(np.amax(monthDataMasked, axis=0)[self.genDay-1])) ), size=(8, 85.0*(float(monthDataMasked[todayhour][self.genDay-1])/float(np.amax(monthDataMasked, axis=0)[self.genDay-1])) ), stroke = "#61218f", fill = getColor(monthDataMasked[todayhour][self.genDay-1],np.amax(monthDataMasked)) ))
 			except Exception, e:
 				print e
 		dwg.add(dwg.line((101,120),(364,120), stroke = "black", fill = "black"))
-		dwg.add(dwg.text(str(np.amax(self.monthData, axis=0)[self.genDay-1]), insert=(101, 116), fill='#61218f', style = "font-size:10px; font-family:Arial"))
+		dwg.add(dwg.text(str(np.amax(monthDataMasked, axis=0)[self.genDay-1]), insert=(101, 116), fill='#61218f', style = "font-size:10px; font-family:Arial"))
 
 		dwg.save()
 		svg = dwg.tostring()

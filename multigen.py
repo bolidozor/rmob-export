@@ -14,7 +14,7 @@ if __name__ == "__main__":
 	#gui.main()
 	os.chdir(r"./out/")
 	rmob = rmob.rmob()
-	rmob.setSftp('space.astro.cz', 'indexer')
+	rmob.setSftp('space.astro.cz', 'ZVPP')
 	for observatory in rmob.getObservatorys():
 		rmob.setGenPreferences(observatory)
 		rmob.setActual(True)
