@@ -219,7 +219,7 @@ class rmob():
 		f.write("[Receiver]"+self.stationReciver+"\n")
 		f.write("[Observing Method]"+"Fordward scattering"+"\n")
 		f.write("[Remarks]"+self.stationComputer+"\n")
-		f.write("[Soft FTP]Astrozor pyRMOBgen v1.8 - astrozor.cz, bolidozor.cz MultiGen (RadioObserver) - https://github.com/bolidozor/rmob-export"+"\n")
+		f.write("[Soft FTP]Astrozor pyRMOBgen v1.9 - astrozor.cz, bolidozor.cz MultiGen (RadioObserver) - https://github.com/bolidozor/rmob-export"+"\n")
 		f.write("[E]"+self.stationEmail+"\n")
 		f.close()
 
@@ -300,7 +300,7 @@ class rmob():
                 dwg.add(dwg.text(".", insert=(667, 161), fill='#61218f', style = "font-size:12px; font-family:Arial"))
                 dwg.add(dwg.text(str(monthMax), insert=(667, 207), fill='#61218f', style = "font-size:12px; font-family:Arial"))
 
-		dwg.add(dwg.text("pyRMOBgen,   v1.8 - MULTIgen,   astrozor.cz", insert=(405, 218), fill='#61218f', style = "font-size:11px; font-family:Arial"))
+		dwg.add(dwg.text("pyRMOBgen,   v1.9 - MULTIgen,   astrozor.cz", insert=(405, 218), fill='#61218f', style = "font-size:11px; font-family:Arial"))
 
 		def getColor(value, range):
 			value = value*3
