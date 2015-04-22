@@ -232,7 +232,7 @@ class rmob():
 		try:
 			monthDataMask = np.load("./cache/"+str(self.genObservatory)+"_"+str(self.genStation)+"_dataMask_"+str(self.genYear) + "_" +str(self.genMonth)+".npy")
 		except Exception, e:
-			monthDataMask = np.full((23,30), True, bool)
+			monthDataMask = np.full((24,32), True, bool)
 
 		monthDataMasked = ma.masked_array(self.monthData, np.invert(monthDataMask))
 		
@@ -299,6 +299,7 @@ class rmob():
                 dwg.add(dwg.text(".", insert=(667, 116), fill='#61218f', style = "font-size:12px; font-family:Arial"))
                 dwg.add(dwg.text(".", insert=(667, 161), fill='#61218f', style = "font-size:12px; font-family:Arial"))
                 dwg.add(dwg.text(str(monthMax), insert=(667, 207), fill='#61218f', style = "font-size:12px; font-family:Arial"))
+                dwg.add(dwg.text(str(np.amax(self.monthData)), insert=(667, 220), fill='#61218f', style = "font-size:10px; font-family:Arial"))
 
 		dwg.add(dwg.text("pyRMOBgen,   v1.9 - MULTIgen,   astrozor.cz", insert=(405, 218), fill='#61218f', style = "font-size:11px; font-family:Arial"))
 
@@ -348,7 +349,14 @@ class rmob():
 		for day in range(31):
 			for hour in range(24):
 				print day, hour," - ", monthDataMasked[hour][day]
-				dwg.add(dwg.rect(insert=(405+day*8, 16+hour*8), size=(8, 8), stroke = "black", fill = getColor(monthDataMasked[hour][day],monthMax)))
+				if monthDataMask[hour][day] != False:
+					dwg.add(dwg.rect(insert=(405+day*8, 16+hour*8), size=(8, 8), stroke = "black", fill = getColor(monthDataMasked[hour][day],monthMax)))
+				else:
+					dwg.add(dwg.rect(insert=(405+day*8, 16+hour*8), size=(8, 8), stroke = "black", fill = "white"))
+					dwg.add(dwg.line((405+day*8, 16+hour*8),(405+day*8+8, 16+hour*8+8), stroke="black", stroke_width=1.5))
+                                        dwg.add(dwg.line((405+day*8+8, 16+hour*8),(405+day*8, 16+hour*8+8), stroke="black", stroke_width=1.5))
+
+	
 		if self.genActual:
 			dwg.add(dwg.rect(insert=(405+(time.gmtime().tm_mday-1)*8, 16+time.gmtime().tm_hour*8), size=(8, 8), stroke = "white", fill = getColor(monthDataMasked[time.gmtime().tm_hour][self.genDay],np.amax(monthDataMasked))))
 
@@ -357,7 +365,11 @@ class rmob():
 		for todayhour in range(24):
 			try:
 				if monthDataMasked[todayhour][self.genDay-1] != -1:
-					dwg.add(dwg.rect(insert=(123+10*todayhour, 205-85.0*(float(monthDataMasked[todayhour][self.genDay-1])/float(np.amax(monthDataMasked, axis=0)[self.genDay-1])) ), size=(8, 85.0*(float(monthDataMasked[todayhour][self.genDay-1])/float(np.amax(monthDataMasked, axis=0)[self.genDay-1])) ), stroke = "#61218f", fill = getColor(monthDataMasked[todayhour][self.genDay-1],np.amax(monthDataMasked)) ))
+					if monthDataMask[todayhour][self.genDay-1] != False:			
+						dwg.add(dwg.rect(insert=(123+10*todayhour, 205-85.0*(float(monthDataMasked[todayhour][self.genDay-1])/float(np.amax(monthDataMasked, axis=0)[self.genDay-1])) ), size=(8, 85.0*(float(monthDataMasked[todayhour][self.genDay-1])/float(np.amax(monthDataMasked, axis=0)[self.genDay-1])) ), stroke = "#61218f", fill = getColor(monthDataMasked[todayhour][self.genDay-1],np.amax(monthDataMasked)) ))
+					else:
+						dwg.add(dwg.rect(insert=(123+10*todayhour, 110), size=(8, 205 ), stroke = "#61218f", fill = "white" ))
+					#	dwg.add(dwg.line(123+10*todayhour, 110),123+10*todayhour, 110)))
 			except Exception, e:
 				print e
 		dwg.add(dwg.line((101,120),(364,120), stroke = "black", fill = "black"))
