@@ -19,21 +19,23 @@ if __name__ == "__main__":
 		rmob.setGenPreferences(observatory)
 		rmob.setActual(True)
 		#rmob.setGenPreferences("ZVPP")
-		for station in rmob.getStations():
-			try:
-				print "probíhá nastavování na:", station
-				rmob.setGenPreferences_stanice(str(station))
-				rmob.parseConfigData()
-				rmob.parseMonthData()
-				rmob.getRmobTxt()
-				print "po txt gen"
-				rmob.getRmobPlot()
-				print "po plot"
-				rmob.rmobupload()
-				print "dokonceno :::::::::::::::::::::::::"
-			except Exception, e:
-				print e
-
+		try:
+			for station in rmob.getStations():
+				try:
+					print "Zmena stanice:", station
+					rmob.setGenPreferences_stanice(str(station))
+					rmob.parseConfigData()
+					rmob.parseMonthData()
+					rmob.getRmobTxt()
+					print "po txt gen"
+					rmob.getRmobPlot()
+					print "po plot"
+					rmob.rmobupload()
+					print "dokonceno :::::::::::::::::::::::::"
+				except Exception, e:
+					print e
+		except Exception, e:
+			print e
 
 
 

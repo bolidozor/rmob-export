@@ -13,19 +13,20 @@ import sys
 if __name__ == "__main__":
 	#gui.main()
 
-	print "otev√≠r√°n√≠ souboru" + sys.argv[0] + "."
+	print "otevirani≠ souboru" + sys.argv[0] + "."
 
 	year = 2015
-	month = 4
+	month = 5
 
 
 	#manthData = np.load("ZVPP_ZVPP-R2_dataMask_"+str(year) + "_" +str(month)+".npy")
 			#np.save("ZVPP_ZVPP-R2_dataMask_"+str(year) + "_" +str(month)+".npy", monthDataMask)
 	try:
 		monthDataMask = np.load("./out/cache/ZVPP_ZVPP-R2_dataMask_"+str(year) + "_" +str(month)+".npy")
+		print "maska existuje"
 	except Exception, e:
 		monthDataMask = np.full((24,32), True, bool)
-		print e
+		print "maska nenÌ", e
 	monthDataMask=monthDataMask.astype(bool)
 	monthDataMask=numpy.resize(monthDataMask,(24,32))
 
