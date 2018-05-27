@@ -11,14 +11,14 @@ import paramiko
 import numpy
 import numpy as np
 import numpy.ma as ma
-import ConfigParser
+import configparser
 import svgwrite
 import ftplib
 import cairosvg
 
 class rmob():
     def __init__(self):
-        print "Rmob"
+        print("Rmob")
         now = datetime.datetime.now()
         self.genYear  = now.year
         self.genMonth = now.month
@@ -47,21 +47,21 @@ class rmob():
         self.UsePlotMask = True
 
     def info(self):
-        print "#####################################################"
-        print "#####################################################"
-        print "rok:", self.genYear
-        print "mesic:", self.genMonth
-        print "den:", self.genDay
-        print "observator:", self.genObservatory
-        print "stanice:", self.genStation
-        print "data:", self.LastData
-        print "ftp:", self.ftp
-        print "cfg", self.configFiles
-        print "monthData: ", self.monthData
-        print "monthDataSize:", self.monthDataSize
-        print "StationName:", self.stationName
-        print "#####################################################"
-        print "#####################################################"
+        print("#####################################################")
+        print("#####################################################")
+        print("rok:", self.genYear)
+        print("mesic:", self.genMonth)
+        print("den:", self.genDay)
+        print("observator:", self.genObservatory)
+        print("stanice:", self.genStation)
+        print("data:", self.LastData)
+        print("ftp:", self.ftp)
+        print("cfg", self.configFiles)
+        print("monthData: ", self.monthData)
+        print("monthDataSize:", self.monthDataSize)
+        print("StationName:", self.stationName)
+        print("#####################################################")
+        print("#####################################################")
 
     def setActual(self, actual = True):
         self.genActual = actual
@@ -94,7 +94,7 @@ class rmob():
         self.ssh.set_missing_host_key_policy( paramiko.AutoAddPolicy() )
         self.ssh.connect(sftpURL, username=sftpUser)
         self.ftp = self.ssh.open_sftp()
-        print "Pripojeni sftp na:", sftpUser+"@"+sftpURL, "bylo uspesne"
+        print("Pripojeni sftp na:", sftpUser+"@"+sftpURL, "bylo uspesne")
     
     #def getStations(self):
     def getObservatorys(self):
@@ -111,9 +111,9 @@ class rmob():
         return self.configFiles
 
     def parseConfigData(self):
-        print "/storage/bolidozor/" , str(self.genObservatory), "/", str(self.genStation), "/rmob.cfg"
+        print("/storage/bolidozor/" , str(self.genObservatory), "/", str(self.genStation), "/rmob.cfg")
         file = self.ftp.file("/storage/bolidozor/" + str(self.genObservatory) + "/" + str(self.genStation) + "/rmob.cfg")
-        Config = ConfigParser.ConfigParser()
+        Config = configparser.ConfigParser()
         Config.readfp(file)
         #print Config.get("RmobConfig","stationname")
         
@@ -130,7 +130,7 @@ class rmob():
         self.stationPreAmp = Config.get("RmobConfig", "preamp")
         self.stationReciver = Config.get("RmobConfig", "reciver")
         self.stationFreq = Config.get("RmobConfig", "frequency")
-        print "parse config file: DONE"
+        print("parse config file: DONE")
 
     def parseMonthData(self, ObservatoryName = None, StationName = None, Year = None, Month = None):
         monthPath = "/storage/bolidozor/" + self.genObservatory + "/" + self.genStation + "/data/" + str(self.genYear) + "/" + str(self.genMonth).zfill(2)
@@ -143,11 +143,11 @@ class rmob():
             self.monthDataSize=data["monthDataSize_"+str(self.genYear) + "_" +str(self.genMonth)]
             #print self.monthData
 #           print self.monthDataSize
-        except Exception, e:
-            print "je nastaveno na -1"
+        except Exception as e:
+            print("je nastaveno na -1")
             self.monthData.fill(-1)
             self.monthDataSize.fill(-1)
-            print e
+            print("e>", e)
 
         tmp = sorted(self.ftp.listdir(monthPath))
         days = []
@@ -161,7 +161,7 @@ class rmob():
             for hour in sorted(self.ftp.listdir(monthPath+"/"+day)):
                 if hour.find("meta.csv") != -1:
                     hours.append(hour)
-#           print hours
+#           print qjjhours
             for hour in hours:
                 if self.ftp.stat(monthPath+"/"+day+"/"+hour).st_size != self.monthDataSize[int(hour[8:10])][int(day)-1]:
                     file = self.ftp.file(monthPath+"/"+day+"/"+hour)
@@ -171,13 +171,13 @@ class rmob():
                             self.monthData[int(hour[8:10])][int(day)-1] += 1
                     #self.monthData[int(hour[8:10])][int(day)-1] += 1
                     self.monthDataSize[int(hour[8:10])][int(day)-1] = self.ftp.stat(monthPath+"/"+day+"/"+hour).st_size
-                    print "Hodina", hour[8:10], "NEW, MpH:",  self.monthData[int(hour[8:10])][int(day)-1], "dne:", int(day)
+                    print("Hodina", hour[8:10], "NEW, MpH:",  self.monthData[int(hour[8:10])][int(day)-1], "dne:", int(day))
                 else:
-                    print "Hod", hour[8:10],", MpH:", self.monthData[int(hour[8:10])][int(day)-1], "dne:", int(day), "||",
+                    print("Hod", hour[8:10],", MpH:", self.monthData[int(hour[8:10])][int(day)-1], "dne:", int(day), "||")
 
                 #np.savez('./cache/'+str(self.genObservatory)+"_"+str(self.genStation)+"_"+ str(self.genYear) + str(self.genMonth) +".npz", monthData=self.monthData, monthDataSize=self.monthDataSize)
                 np.savez('./cache/'+str(self.genObservatory)+"_"+str(self.genStation)+".npz", **{"monthData_"+str(self.genYear) + "_" +str(self.genMonth): self.monthData, "monthDataSize_"+str(self.genYear) + "_" +str(self.genMonth): self.monthDataSize})
-            print day
+            print(day)
         self.LastData = True
 
     def getMonthData(self):
@@ -185,7 +185,7 @@ class rmob():
 
     
     def getRmobTxt(self):
-        print "získávání rmox TXT souboru"
+        print("získávání rmox TXT souboru")
         monthDict = {1:'jan', 2:'feb', 3:'mar', 4:'apr', 5:'may', 6:'jun', 
             7:'jul', 8:'aug', 9:'sep', 10:'oct', 11:'nov', 12:'dec'}
 
@@ -239,32 +239,31 @@ class rmob():
             sftp = self.ssh.open_sftp()
             monthPath = "/storage/bolidozor/" + self.genObservatory + "/" + self.genStation + "/data/" + str(self.genYear) + "/" + str(self.genMonth).zfill(2)
             localPath = str(self.genYear) + str(self.genMonth).zfill(2) + "_" + str(self.genStation) + "_badData.npy"
-            print "pred ctenim -------------------", monthPath
+            print("pred ctenim -------------------", monthPath)
             
             #f = open(str(self.genYear) + str(self.genMonth).zfill(2) + "_" + str(self.genObservatory) + "_badData.npy","wb")
             sftp.get(monthPath+"/"+localPath,"./"+localPath)
             #f.close()          
 
             #file = self.ftp.file(monthPath+"/"+str(self.genYear) + str(self.genMonth).zfill(2) + "_" + str(self.genObservatory) + "_badData.npy")
-            print "aaa"
+            print("aaa")
             ##monthDataMask = np.load("./cache/"+str(self.genObservatory)+"_"+str(self.genStation)+"_dataMask_"+str(self.genYear) + "_" +str(self.genMonth)+".npy")
             monthDataMask = np.load(localPath)
             #f.close()
             sftp.close()
-            print "Po cteni -------------------"
-        except Exception, e:
-            print "chyba - cteni mask:", e
+            print("Po cteni -------------------")
+        except Exception as e:
+            print("chyba - cteni mask:", e)
             monthDataMask = np.full((24,32), True, bool)
 
         monthDataMasked = ma.masked_array(self.monthData, np.invert(monthDataMask))
-        
 
         monthMax=np.amax(monthDataMasked)
 #       monthMax=int(np.median(monthDataMasked)+np.std(monthDataMasked)*5)
         monthMin= np.min(monthDataMasked[np.nonzero(monthDataMasked)])+1
 
-        print monthDataMask
-        print monthDataMasked
+        print(monthDataMask)
+        print(monthDataMasked)
         
         dwg = svgwrite.Drawing(str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+".svg", size=(700,220))
         dwg.add(dwg.rect(insert=(120, 110), size=(245, 95), stroke = "black", fill = "white"))
@@ -371,7 +370,7 @@ class rmob():
             dwg.add(dwg.rect(insert=(657, 16+step*8), size=(8, 8), stroke = "black", fill = getColor(step+1,23+1)))
 
         for day in range(31):
-            print "day:", day
+            print("day:", day)
             for hour in range(24):
                 #print day, hour," - ", monthDataMasked[hour][day]
                 if monthDataMask[hour][day] != False:
@@ -390,28 +389,38 @@ class rmob():
         for todayhour in range(24):
             try:
                 if monthDataMasked[todayhour][self.genDay-1] != -1:
-                    if monthDataMask[todayhour][self.genDay-1] != False:            
+                    if monthDataMask[todayhour][self.genDay-1] != False:
                         dwg.add(dwg.rect(insert=(123+10*todayhour, 205-85.0*(float(monthDataMasked[todayhour][self.genDay-1])/float(np.amax(monthDataMasked, axis=0)[self.genDay-1])) ), size=(8, 85.0*(float(monthDataMasked[todayhour][self.genDay-1])/float(np.amax(monthDataMasked, axis=0)[self.genDay-1])) ), stroke = "#61218f", fill = getColor(monthDataMasked[todayhour][self.genDay-1],np.amax(monthDataMasked)) ))
                     else:
                         dwg.add(dwg.rect(insert=(123+10*todayhour, 110), size=(8, 205 ), stroke = "#61218f", fill = "white" ))
                     #   dwg.add(dwg.line(123+10*todayhour, 110),123+10*todayhour, 110)))
-            except Exception, e:
-                print e
+            except Exception as e:
+                print(e)
         dwg.add(dwg.line((101,120),(364,120), stroke = "black", fill = "black"))
         dwg.add(dwg.text(str(np.amax(monthDataMasked, axis=0)[self.genDay-1]), insert=(101, 116), fill='#61218f', style = "font-size:10px; font-family:Arial"))
 
         dwg.save()
-        svg = dwg.tostring()
-        out=open(str(self.stationName)+'_'+   str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+".jpg",'w')
-        cairosvg.svg2png(bytestring=svg,write_to=out)
-        out.close()
+        file = str(self.stationName)+"_"+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)
+        print(">>>>", self.stationName)
+        #print(file)
+        #cairosvg.svg2png(ulr = file+".svg", write_to = file+".jpg")
+        print(os.getcwd())
+        cairosvg.svg2png(url=file+'.svg', write_to=file+'.jpg') 
+        print("Svg to jpg")
+
+        #svg = dwg.tostring()
+        #out=open(str(self.stationName)+'_'+   str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+".jpg",'w')
+        #cairosvg.svg2png(bytestring=svg,write_to=out)
+        #out.close()
+        
 
     def rmobupload(self):
-        print "upload zahajen"
+        print("upload zahajen")
         session = ftplib.FTP('217.169.242.217','radiodata','meteor')
 
         file0 = str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+".jpg"
-        file1 =  str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+"rmob.TXT"
+        file1 = str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+"rmob.TXT"
+        print("Upload:", file0)
         file = open(file0, 'rb')
         session.storbinary('STOR /' +file0, file)
         file = open(file1, 'rb')

@@ -14,7 +14,7 @@ if __name__ == "__main__":
 	#gui.main()
 	os.chdir(r"./out/")
 	rmob = rmob.rmob()
-	rmob.setSftp('space.astro.cz', 'indexer')
+	rmob.setSftp('space.astro.cz', 'roman')
 	for observatory in rmob.getObservatorys():
 		rmob.setGenPreferences(observatory)
 		rmob.setActual(True)
@@ -22,20 +22,20 @@ if __name__ == "__main__":
 		try:
 			for station in rmob.getStations():
 				try:
-					print "Zmena stanice:", station
+					print("Zmena stanice:", station)
 					rmob.setGenPreferences_stanice(str(station))
 					rmob.parseConfigData()
 					rmob.parseMonthData()
 					rmob.getRmobTxt()
-					print "po txt gen"
+					print("po txt gen")
 					rmob.getRmobPlot()
-					print "po plot"
+					print("po plot")
 					rmob.rmobupload()
-					print "dokonceno :::::::::::::::::::::::::"
-				except Exception, e:
-					print e
-		except Exception, e:
-			print e
+					print("dokonceno :::::::::::::::::::::::::")
+				except Exception as e:
+					print(">>", e)
+		except Exception as e:
+			print(">", e)
 
 
 
