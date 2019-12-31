@@ -31,6 +31,14 @@ Generator of colorgramme graphs to rmob observers database. This program generat
 
 2. python Run.py
 
+
+## Multigen
+
+Multigen can be automatically launched from system cron with:
+
+  */10 * * * * cd /home/<data>/rmob-export/; python3 multigen.py
+
+
 ## FAQ
 
 after run Run.py

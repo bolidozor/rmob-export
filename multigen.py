@@ -1,14 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-
 import os
 import datetime
 import ftplib
 
 import paramiko
 import rmob
-
 
 if __name__ == "__main__":
 	#gui.main()
@@ -22,7 +20,7 @@ if __name__ == "__main__":
 		try:
 			for station in rmob.getStations():
 				try:
-					print("Zmena stanice:", station)
+					print("Selected station:", station)
 					rmob.setGenPreferences_stanice(str(station))
 					rmob.parseConfigData()
 					rmob.parseMonthData()
@@ -31,13 +29,11 @@ if __name__ == "__main__":
 					rmob.getRmobPlot()
 					print("po plot")
 					rmob.rmobupload()
-					print("dokonceno :::::::::::::::::::::::::")
+					print("done :::::::::::::::::::")
 				except Exception as e:
 					print(">>", e)
 		except Exception as e:
 			print(">", e)
-
-
 
 
 
