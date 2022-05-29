@@ -1,7 +1,7 @@
 rmob-export
 ===========
 
-Generator of colorgramme graphs to rmob observers database. This program generate rmob (http://www.rmob.org/livedata/main.php) compitible graphs from radio meteor detection sofware data. 
+Generator of colorgramme graphs to rmob observers database. This program generate the [rmob](http://www.rmob.org/livedata/main.php) compitible graphs from [radio meteor detection station](https://github.com/bolidozor/RMDS) recorded data. 
 
 rmob-export is not a primary stand-alone station-based application. Instead of this is primarilly intended as a service for observers, to process the station's data uploaded by [data-uploader](https://github.com/MLAB-project/data-uploader) to the central Bolidozor network data server.
 
