@@ -28,7 +28,7 @@ class rmob():
         self.LastData = False
         self.ftp = None
         self.configFiles = []
-        self.monthData = np.zeros((24, 32), dtype=numpy.int)
+        self.monthData = np.zeros((24, 32), dtype=numpy.int32)
         self.monthDataSize = np.zeros((24, 32))
         self.stationName = None
         self.stationCountry = None
@@ -144,7 +144,9 @@ class rmob():
             self.monthDataSize.fill(-1)
             print("e>", e)
 
+        #print("List dir", monthPath)
         tmp = sorted(self.ftp.listdir(monthPath))
+        #print("parseMonthData-tmp>", tmp)
         days = []
         for tmpV in tmp:
             if tmpV.isdigit():
@@ -162,9 +164,10 @@ class rmob():
                         if i.find("met") != -1:
                             self.monthData[int(hour[8:10])][int(day)-1] += 1
                     self.monthDataSize[int(hour[8:10])][int(day)-1] = self.ftp.stat(monthPath+"/"+day+"/"+hour).st_size
-                    print("Hodina", hour[8:10], "NEW, MpH:",  self.monthData[int(hour[8:10])][int(day)-1], "dne:", int(day))
+                    #print("Hodina", hour[8:10], "NEW, MpH:",  self.monthData[int(hour[8:10])][int(day)-1], "dne:", int(day))
                 else:
-                    print("Hod", hour[8:10],", MpH:", self.monthData[int(hour[8:10])][int(day)-1], "dne:", int(day), "||")
+                    pass
+                    #print("Hod", hour[8:10],", MpH:", self.monthData[int(hour[8:10])][int(day)-1], "dne:", int(day), "||")
 
                 #np.savez('./cache/'+str(self.genObservatory)+"_"+str(self.genStation)+"_"+ str(self.genYear) + str(self.genMonth) +".npz", monthData=self.monthData, monthDataSize=self.monthDataSize)
                 np.savez('./cache/'+str(self.genObservatory)+"_"+str(self.genStation)+".npz", **{"monthData_"+str(self.genYear) + "_" +str(self.genMonth): self.monthData, "monthDataSize_"+str(self.genYear) + "_" +str(self.genMonth): self.monthDataSize})
@@ -386,7 +389,7 @@ class rmob():
                         today_max = float(np.amax(monthDataMasked, axis=0)[self.genDay-1])
                         yestearday_max = float(np.amax(monthDataMasked, axis=0)[self.genDay-2])
                         height_value = float(monthDataMasked[todayhour][self.genDay-2])/today_max if float(monthDataMasked[todayhour][self.genDay-2])/today_max<1 else 1
-                        dwg.add(dwg.rect(insert=(123+10*todayhour, 205-95.0*height_value), size=(8, 95.0*height_value), stroke = "#61218f", fill = getColor(monthDataMasked[todayhour][self.genDay-2],np.amax(monthDataMasked)), opacity = 0.2 ))
+                        dwg.add(dwg.rect(insert=(123+10*todayhour, 205-95.0*height_value), size=(8, 95.0*height_value), stroke = "white", fill = getColor(monthDataMasked[todayhour][self.genDay-2],np.amax(monthDataMasked)), opacity = 0.2 ))
 
             except Exception as e:
                 print(e)
