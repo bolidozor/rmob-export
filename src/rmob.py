@@ -15,6 +15,7 @@ import configparser
 import svgwrite
 import ftplib
 import cairosvg
+from tempfile import TemporaryFile
 
 class rmob():
     def __init__(self):
@@ -86,35 +87,26 @@ class rmob():
     def setGenPreferences_stanice(self, stanice):
         self.genStation = stanice
 
-    def setSftp(self, ftp):
-        self.ftp = ftp
-
-    def setSftp(self, sftpURL, sftpUser):
-        self.ssh = paramiko.SSHClient()
-        self.ssh.set_missing_host_key_policy( paramiko.AutoAddPolicy() )
-        self.ssh.connect(sftpURL, username=sftpUser)
-        self.ftp = self.ssh.open_sftp()
-        print("Pripojeni sftp na:", sftpUser+"@"+sftpURL, "bylo uspesne")
     
     #def getStations(self):
     def getObservatorys(self):
-        observatorys = sorted(self.ftp.listdir("/storage/bolidozor/"))
+        observatorys = sorted(os.listdir("/storage/bolidozor/"))
         return observatorys
 
     def getStations(self):
-        stations = self.ftp.listdir("/storage/bolidozor/"+self.genObservatory)
+        stations = os.listdir("/storage/bolidozor/"+self.genObservatory)
         for station in sorted(stations):
             if not "." in station:
-                stations = self.ftp.listdir("/storage/bolidozor/"+self.genObservatory+"/"+station)
+                stations = os.listdir("/storage/bolidozor/"+self.genObservatory+"/"+station)
                 if "rmob.cfg" in stations:
                     self.configFiles.append(station)
         return self.configFiles
 
     def parseConfigData(self):
         print("/storage/bolidozor/" , str(self.genObservatory), "/", str(self.genStation), "/rmob.cfg")
-        file = self.ftp.file("/storage/bolidozor/" + str(self.genObservatory) + "/" + str(self.genStation) + "/rmob.cfg")
+        file_path = "/storage/bolidozor/" + str(self.genObservatory) + "/" + str(self.genStation) + "/rmob.cfg"
         Config = configparser.ConfigParser()
-        Config.readfp(file)
+        Config.read(file_path)
         #print Config.get("RmobConfig","stationname")
         
         self.stationName = Config.get("RmobConfig", "stationname")
@@ -134,8 +126,10 @@ class rmob():
 
     def parseMonthData(self, ObservatoryName = None, StationName = None, Year = None, Month = None):
         monthPath = "/storage/bolidozor/" + self.genObservatory + "/" + self.genStation + "/data/" + str(self.genYear) + "/" + str(self.genMonth).zfill(2)
+        cache_file = '/storage/bolidozor/support/rmob/'+str(self.genObservatory)+"_"+str(self.genStation)+".npz"
         try:
-            data = np.load('./cache/'+str(self.genObservatory)+"_"+str(self.genStation)+".npz")
+            print("Opening cache file")
+            data = np.load(cache_file)
             self.monthData=data["monthData_"+str(self.genYear) + "_" +str(self.genMonth)]
             self.monthDataSize=data["monthDataSize_"+str(self.genYear) + "_" +str(self.genMonth)]
 
@@ -145,33 +139,43 @@ class rmob():
             print("e>", e)
 
         #print("List dir", monthPath)
-        tmp = sorted(self.ftp.listdir(monthPath))
+        tmp = sorted(os.listdir(monthPath))
         #print("parseMonthData-tmp>", tmp)
-        days = []
-        for tmpV in tmp:
-            if tmpV.isdigit():
-                days.append(tmpV) 
-        for day in days:
+        #days = []
+        #for tmpV in tmp:
+        #    if tmpV.isdigit():
+        #        days.append(tmpV) 
+        #for day in days:
+        for day in tmp:
+            if not day.isdigit():
+                continue
             hours=[]
-            for hour in sorted(self.ftp.listdir(monthPath+"/"+day)):
+            for hour in sorted(os.listdir(monthPath+"/"+day)):
                 if hour.find("meta.csv") != -1:
                     hours.append(hour)
             for hour in hours:
-                if self.ftp.stat(monthPath+"/"+day+"/"+hour).st_size != self.monthDataSize[int(hour[8:10])][int(day)-1]:
-                    file = self.ftp.file(monthPath+"/"+day+"/"+hour)
-                    self.monthData[int(hour[8:10])][int(day)-1] = 0
-                    for i in file:
-                        if i.find("met") != -1:
-                            self.monthData[int(hour[8:10])][int(day)-1] += 1
-                    self.monthDataSize[int(hour[8:10])][int(day)-1] = self.ftp.stat(monthPath+"/"+day+"/"+hour).st_size
+                if os.path.getsize(monthPath+"/"+day+"/"+hour) != self.monthDataSize[int(hour[8:10])][int(day)-1]:
+                    with open(monthPath+"/"+day+"/"+hour, 'r') as file:
+                        self.monthData[int(hour[8:10])][int(day)-1] = 0
+                        for line in file:
+                            if "met" in line:
+                                self.monthData[int(hour[8:10])][int(day)-1] += 1
+                    self.monthDataSize[int(hour[8:10])][int(day)-1] = os.path.getsize(monthPath+"/"+day+"/"+hour)
                     #print("Hodina", hour[8:10], "NEW, MpH:",  self.monthData[int(hour[8:10])][int(day)-1], "dne:", int(day))
                 else:
                     pass
                     #print("Hod", hour[8:10],", MpH:", self.monthData[int(hour[8:10])][int(day)-1], "dne:", int(day), "||")
 
                 #np.savez('./cache/'+str(self.genObservatory)+"_"+str(self.genStation)+"_"+ str(self.genYear) + str(self.genMonth) +".npz", monthData=self.monthData, monthDataSize=self.monthDataSize)
-                np.savez('./cache/'+str(self.genObservatory)+"_"+str(self.genStation)+".npz", **{"monthData_"+str(self.genYear) + "_" +str(self.genMonth): self.monthData, "monthDataSize_"+str(self.genYear) + "_" +str(self.genMonth): self.monthDataSize})
+                #print("Saving cache file")
+
+                #cache_file_o = open(cache_file, 'wb')
             print(day)
+
+        #outfile = TemporaryFile()
+        print("Ukladam cache", cache_file)
+        np.savez(cache_file, **{"monthData_"+str(self.genYear) + "_" +str(self.genMonth): self.monthData, "monthDataSize_"+str(self.genYear) + "_" +str(self.genMonth): self.monthDataSize})
+        #cache_file_o.c lose()
         self.LastData = True
 
     def getMonthData(self):
@@ -183,7 +187,8 @@ class rmob():
         monthDict = {1:'jan', 2:'feb', 3:'mar', 4:'apr', 5:'may', 6:'jun', 
             7:'jul', 8:'aug', 9:'sep', 10:'oct', 11:'nov', 12:'dec'}
 
-        f = open(str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+"rmob.TXT", 'w')
+        image_path = '/storage/bolidozor/support/rmob/'+str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)
+        f = open(image_path+"rmob.TXT", 'w')
         f.write(str(monthDict[self.genMonth]) + "| 00h| 01h| 02h| 03h| 04h| 05h| 06h| 07h| 08h| 09h| 10h| 11h| 12h| 13h| 14h| 15h| 16h| 17h| 18h| 19h| 20h| 21h| 22h| 23h|\n")
         for day in range(31):
             name=" "+str(day+1).zfill(2)+"|"
@@ -219,7 +224,7 @@ class rmob():
         f.write("[Receiver]"+self.stationReciver+"\n")
         f.write("[Observing Method]"+"Fordward scattering"+"\n")
         f.write("[Remarks]"+self.stationComputer+"\n")
-        f.write("[Soft FTP]pyRMOBgen v1.10, bolidozor.cz MultiGen (RadioObserver) - https://github.com/bolidozor/rmob-export"+"\n")
+        f.write("[Soft FTP]pyRMOBgen v2.01, bolidozor.cz MultiGen (RadioObserver) - https://github.com/bolidozor/rmob-export"+"\n")
         f.write("[E]"+self.stationEmail+"\n")
         f.close()
 
@@ -230,36 +235,23 @@ class rmob():
             return str(str(int(deg))+"d "+str(int(mnt))+'\" '+str(int(sec))+"\' ")
 
         try:
-            sftp = self.ssh.open_sftp()
             monthPath = "/storage/bolidozor/" + self.genObservatory + "/" + self.genStation + "/data/" + str(self.genYear) + "/" + str(self.genMonth).zfill(2)
             localPath = str(self.genYear) + str(self.genMonth).zfill(2) + "_" + str(self.genStation) + "_badData.npy"
-            print("pred ctenim -------------------", monthPath)
-            
-            #f = open(str(self.genYear) + str(self.genMonth).zfill(2) + "_" + str(self.genObservatory) + "_badData.npy","wb")
-            sftp.get(monthPath+"/"+localPath,"./"+localPath)
-            #f.close()          
-
-            #file = self.ftp.file(monthPath+"/"+str(self.genYear) + str(self.genMonth).zfill(2) + "_" + str(self.genObservatory) + "_badData.npy")
-            print("aaa")
-            ##monthDataMask = np.load("./cache/"+str(self.genObservatory)+"_"+str(self.genStation)+"_dataMask_"+str(self.genYear) + "_" +str(self.genMonth)+".npy")
             monthDataMask = np.load(localPath)
-            #f.close()
-            sftp.close()
-            print("Po cteni -------------------")
         except Exception as e:
-            print("chyba - cteni mask:", e)
             monthDataMask = np.full((24,32), True, bool)
 
         monthDataMasked = ma.masked_array(self.monthData, np.invert(monthDataMask))
 
         monthMax=np.amax(monthDataMasked)
-#       monthMax=int(np.median(monthDataMasked)+np.std(monthDataMasked)*5)
         monthMin= np.min(monthDataMasked[np.nonzero(monthDataMasked)])+1
 
         print(monthDataMask)
         print(monthDataMasked)
         
-        dwg = svgwrite.Drawing(str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+".svg", size=(700,220))
+        image_path = '/storage/bolidozor/support/rmob/'+str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)
+
+        dwg = svgwrite.Drawing(image_path+".svg", size=(700,220))
         dwg.add(dwg.rect(insert=(120, 110), size=(245, 95), stroke = "black", fill = "white"))
         dwg.add(dwg.rect(insert=(405, 16), size=(248, 192), stroke = "black", fill = "black"))
         dwg.add(dwg.rect(insert=(657, 16), size=(8, 192), stroke = "black", fill = "black"))
@@ -410,30 +402,21 @@ class rmob():
                 print(e)
         dwg.add(dwg.line((101,120),(364,120), stroke = "black", fill = "black", style = 'stroke-dasharray: 1 4;'))
         dwg.add(dwg.text(str(np.amax(monthDataMasked, axis=0)[self.genDay-1]), insert=(101, 116), fill='#61218f', style = "font-size:10px; font-family:Arial"))
-
         dwg.save()
-        file = str(self.stationName)+"_"+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)
-        print(">>>>", self.stationName)
-        print(os.getcwd())
-        cairosvg.svg2png(url=file+'.svg', write_to=file+'.jpg') 
-        print("Svg to jpg")
+        cairosvg.svg2png(url=image_path+'.svg', write_to=image_path+'.jpg') 
 
-        #svg = dwg.tostring()
-        #out=open(str(self.stationName)+'_'+   str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+".jpg",'w')
-        #cairosvg.svg2png(bytestring=svg,write_to=out)
-        #out.close()
-        
 
     def rmobupload(self):
+        image_path = '/storage/bolidozor/support/rmob/'+str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)
         print("upload zahajen")
         session = ftplib.FTP('217.169.242.217','radiodata','meteor')
 
         file0 = str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+".jpg"
         file1 = str(self.stationName)+'_'+str(self.genMonth).zfill(2)+str(self.genYear).zfill(2)+"rmob.TXT"
         print("Upload:", file0)
-        file = open(file0, 'rb')
+        file = open(image_path+'.jpg', 'rb')
         session.storbinary('STOR /' +file0, file)
-        file = open(file1, 'rb')
+        file = open(image_path+'rmob.TXT', 'rb')
         session.storbinary('STOR /' +file1, file)
 
         file.close()

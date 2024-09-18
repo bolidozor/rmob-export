@@ -1,0 +1,9 @@
+services:
+  rmob-cron:
+    image: rmob-multigen
+    build: .
+    volumes:
+      - /storage/bolidozor:/storage/bolidozor
+      - ./src:/app
+    container_name: rmob-multigen
+    restart: always
